@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ハントチャート記録 | NSWER JAPAN</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 基本設定 */
+        body {
+            font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
+            background-color: #0d0d1a;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* サブページ用のヘッダー */
+        header {
+            background-color: #1a1a2e;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 2px solid #ff007f;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #ff007f, #b388ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        header p {
+            margin-top: 10px;
+            color: #cccccc;
+            font-size: 1.1em;
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        /* 記録を見やすくする「表」のデザイン */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 50px;
+            background-color: #1a1a2e;
+            border-radius: 10px;
+            overflow: hidden; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        th, td {
+            padding: 15px 20px;
+            text-align: center; 
+            border-bottom: 1px solid #33334d;
+        }
+        
+        th {
+            background-color: #2a2a4a;
+            color: #b388ff;
+            font-weight: 900;
+            font-size: 1.1em;
+            white-space: nowrap; 
+        }
+        
+        td:first-child {
+            font-weight: 700;
+            color: #ff007f; 
+            text-align: left; 
+        }
+
+        tr:hover td {
+            background-color: #22223b;
+        }
+
+        /* トップへ戻るボタン */
+        .back-btn {
+            display: inline-block;
+            background-color: transparent;
+            border: 2px solid #b388ff;
+            color: #ffffff;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background-color: #ff007f;
+            border-color: #ff007f;
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Hanteo Chart Record</h1>
+        <p>韓国のアルバム販売量集計「ハントチャート」におけるNMIXXの記録</p>
+    </header>
+
+    <div class="container">
+        <table>
+            <tr>
+                <th>タイトル (種類)</th>
+                <th>初動枚数</th>
+                <th>初週枚数</th>
+            </tr>
+            <tr>
+                <td>O.O<br><span style="font-size: 0.8em; color: #888;">デビューシングル</span></td>
+                <td>20,300枚</td>
+                <td>227,399枚</td>
+            </tr>
+            <tr>
+                <td>DICE<br><span style="font-size: 0.8em; color: #888;">2nd シングル</span></td>
+                <td>250,661枚</td>
+                <td>442,207枚</td>
+            </tr>
+            <tr>
+                <td>Love Me Like This<br><span style="font-size: 0.8em; color: #888;">1st アルバム</span></td>
+                <td>405,580枚</td>
+                <td>630,811枚</td>
+            </tr>
+            <tr>
+                <td>Party O'Clock<br><span style="font-size: 0.8em; color: #888;">3rd シングル</span></td>
+                <td>719,886枚</td>
+                <td>1,030,541枚</td>
+            </tr>
+            <tr>
+                <td>DASH<br><span style="font-size: 0.8em; color: #888;">2nd アルバム</span></td>
+                <td>127,908枚</td>
+                <td>618,550枚</td>
+            </tr>
+            <tr>
+                <td>별별별 (See that?)<br><span style="font-size: 0.8em; color: #888;">3rd アルバム</span></td>
+                <td>341,362枚</td>
+                <td>585,717枚</td>
+            </tr>
+            <tr>
+                <td>KNOW ABOUT ME<br><span style="font-size: 0.8em; color: #888;">4th アルバム</span></td>
+                <td>435,914枚</td>
+                <td>702,876枚</td>
+            </tr>
+            <tr>
+                <td>Blue Valentine<br><span style="font-size: 0.8em; color: #888;">1st フルアルバム</span></td>
+                <td><span style="color: #ff007f; font-weight: bold;">468,587枚</span></td>
+                <td><span style="color: #ff007f; font-weight: bold;">644,865枚</span></td>
+            </tr>
+        </table>
+
+        <div style="text-align: center;">
+            <a href="index.html" class="back-btn">← トップページに戻る</a>
+        </div>
+    </div>
+
+</body>
+</html>
