@@ -9,7 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
     
     <style>
-        /* 基本設定 */
         body {
             font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
             background-color: #0d0d1a;
@@ -19,7 +18,6 @@
             line-height: 1.6;
         }
 
-        /* サブページ用の小さなヘッダー */
         header {
             background-color: #1a1a2e;
             padding: 40px 20px;
@@ -45,20 +43,26 @@
         }
 
         .container {
-            max-width: 1050px; /* MV列を追加した分、少し幅を広げました */
+            max-width: 1050px; 
             margin: 0 auto;
             padding: 50px 20px;
         }
 
-        /* 記録を見やすくする「表（テーブル）」のデザイン */
+        /* ▼ 表をスマホで横スクロールさせるための枠組み ▼ */
+        .table-wrap {
+            width: 100%;
+            overflow-x: auto; 
+            -webkit-overflow-scrolling: touch; 
+            margin-bottom: 50px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
         table {
             width: 100%;
+            min-width: 900px; /* 列が多いのでPC幅を死守してスクロールさせる */
             border-collapse: collapse;
-            margin-bottom: 50px;
             background-color: #1a1a2e;
-            border-radius: 10px;
-            overflow: hidden; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
         
         th, td {
@@ -85,10 +89,9 @@
             background-color: #22223b;
         }
 
-        /* ▼ 追加：YouTubeボタンのデザイン ▼ */
         .youtube-btn {
             display: inline-block;
-            background-color: #ff0000; /* YouTubeの赤色 */
+            background-color: #ff0000;
             color: #ffffff;
             padding: 8px 15px;
             text-decoration: none;
@@ -97,17 +100,16 @@
             font-size: 0.9em;
             letter-spacing: 1px;
             transition: all 0.3s ease;
-            white-space: nowrap; /* ボタン内の文字が改行されないように */
+            white-space: nowrap; 
         }
         
         .youtube-btn:hover {
             background-color: #cc0000;
-            box-shadow: 0 0 15px rgba(255, 0, 0, 0.6); /* 赤く光る */
-            transform: scale(1.05); /* 少し大きく */
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.6); 
+            transform: scale(1.05); 
             color: #ffffff;
         }
 
-        /* トップへ戻るボタン */
         .back-btn {
             display: inline-block;
             background-color: transparent;
@@ -125,6 +127,31 @@
             border-color: #ff007f;
             box-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
         }
+
+        /* ★★★ Melonページのスマホ対応コード ★★★ */
+        @media (max-width: 768px) {
+            header {
+                padding: 30px 15px;
+            }
+            header h1 {
+                font-size: 1.8em; 
+                letter-spacing: 1px;
+            }
+            header p {
+                font-size: 0.85em; 
+            }
+            .container {
+                padding: 30px 15px; 
+            }
+            th, td {
+                padding: 10px; 
+                font-size: 0.9em; 
+            }
+            .youtube-btn {
+                padding: 6px 10px;
+                font-size: 0.8em;
+            }
+        }
     </style>
 </head>
 <body>
@@ -135,95 +162,94 @@
     </header>
 
     <div class="container">
-        <table>
-            <tr>
-                <th>タイトル (種類)</th>
-                <th>初日 ユニークリスナー</th>
-                <th>ピーク ユニークリスナー</th>
-                <th>初日 日間順位</th>
-                <th>ピーク 日間順位</th>
-                <th>TOP100 最高順位</th>
-                <th>MV</th>
-            </tr>
-            <tr>
-                <td>O.O<br><span style="font-size: 0.8em; color: #888;">デビューシングル</span></td>
-                <td>34,731人</td>
-                <td>79,691人<br><span style="font-size: 0.8em; color: #888;">(2022/4/20)</span></td>
-                <td>162位</td>
-                <td>90位</td>
-                <td>65位</td>
-                <td><a href="https://www.youtube.com/watch?v=3GWscde8rM8" target="_blank" class="youtube-btn">▶ Watch</a></td>
-            </tr>
-            <tr>
-                <td>DICE<br><span style="font-size: 0.8em; color: #888;">2nd シングル</span></td>
-                <td>58,561人</td>
-                <td>107,449人<br><span style="font-size: 0.8em; color: #888;">(2022/10/12)</span></td>
-                <td>111位</td>
-                <td>50位</td>
-                <td>49位</td>
-                <td><a href="https://www.youtube.com/watch?v=p1bjnyDqI9k" target="_blank" class="youtube-btn">▶ Watch</a></td>
-            </tr>
-            <tr>
-                <td>Love Me Like This<br><span style="font-size: 0.8em; color: #888;">1st アルバム</span></td>
-                <td>56,882人</td>
-                <td>234,293人<br><span style="font-size: 0.8em; color: #888;">(2023/4/16)</span></td>
-                <td>100位</td>
-                <td>6位</td>
-                <td>4位</td>
-                <td><a href="https://youtu.be/EDnwWcFpObo?si=RdwE73vunCdqu_Pf" target="_blank" class="youtube-btn">▶ Watch</a></td>
-            </tr>
-            <tr>
-                <td>Party O'Clock<br><span style="font-size: 0.8em; color: #888;">3rd シングル</span></td>
-                <td>44,412人</td>
-                <td>44,412人<br><span style="font-size: 0.8em; color: #888;">(2023/7/11)</span></td>
-                <td>123位</td>
-                <td>123位</td>
-                <td>なし</td>
-                <td><a href="https://youtu.be/Rd2wppggYxo?si=YKvNG6x1wBCDyRct" target="_blank" class="youtube-btn">▶ Watch</a></td>
-            </tr>
-            <tr>
-                <td>DASH<br><span style="font-size: 0.8em; color: #888;">2nd アルバム</span></td>
-                <td>41,580人</td>
-                <td>46,444人<br><span style="font-size: 0.8em; color: #888;">(2024/2/13)</span></td>
-                <td>101位</td>
-                <td>100位</td>
-                <td>87位</td>
-                <td><a href="https://youtu.be/7UecFm_bSTU?si=VyaZZ3h_ZWLTw7hW" target="_blank" class="youtube-btn">▶ Watch</a></td>
-            </tr>
-            <tr>
-                <td>별별별 (See that?)<br><span style="font-size: 0.8em; color: #888;">3rd アルバム</span></td>
-                <td>55,636人</td>
-                <td>93,627人<br><span style="font-size: 0.8em; color: #888;">(2024/9/19)</span></td>
-                <td>78位</td>
-                <td>26位</td>
-                <td>25位</td>
-                <td><a href="https://youtu.be/_Q8Jskeps9w?si=wKt183lCAiP3DGMO" target="_blank" class="youtube-btn">▶ Watch</a></td>
-            </tr>
-            <tr>
-                <td>KNOW ABOUT ME<br><span style="font-size: 0.8em; color: #888;">4th アルバム</span></td>
-                <td>38,245人</td>
-                <td>38,245人<br><span style="font-size: 0.8em; color: #888;">(2025/3/17)</span></td>
-                <td>114位</td>
-                <td>114位</td>
-                <td>76位</td>
-                <td><a href="https://youtu.be/aFrQIJ5cbRc?si=veQqGuF57f_CTV8v" target="_blank" class="youtube-btn">▶ Watch</a></td>
-            </tr><tr>
-                <td>Blue Valentine<br><span style="font-size: 0.8em; color: #888;">1st フルアルバム</span></td>
-                <td>46,799人</td>
-                <td>239,400人<br><span style="font-size: 0.8em; color: #888;">(2025/11/2)</span></td>
-                <td>85位</td>
-                <td>1位<br><span style="font-size: 0.8em; color: #ff007f;">(30日間1位)</span></td>
-                <td>1位<br><span style="font-size: 0.8em; color: #ff007f;">(743時間1位)</span></td>
-                <td><a href="https://youtu.be/EmeW6li6bbo?si=mv8IyNgcnalROk5i" target="_blank" class="youtube-btn">▶ Watch</a></td>
-            </tr></table>
-
-        <div style="text-align: center;">
+        <div class="table-wrap">
+            <table>
+                <tr>
+                    <th>タイトル (種類)</th>
+                    <th>初日 ユニークリスナー</th>
+                    <th>ピーク ユニークリスナー</th>
+                    <th>初日 日間順位</th>
+                    <th>ピーク 日間順位</th>
+                    <th>TOP100 最高順位</th>
+                    <th>MV</th>
+                </tr>
+                <tr>
+                    <td>O.O<br><span style="font-size: 0.8em; color: #888;">デビューシングル</span></td>
+                    <td>34,731人</td>
+                    <td>79,691人<br><span style="font-size: 0.8em; color: #888;">(2022/4/20)</span></td>
+                    <td>162位</td>
+                    <td>90位</td>
+                    <td>65位</td>
+                    <td><a href="https://www.youtube.com/watch?v=3GWscde8rM8" target="_blank" class="youtube-btn">▶ Watch</a></td>
+                </tr>
+                <tr>
+                    <td>DICE<br><span style="font-size: 0.8em; color: #888;">2nd シングル</span></td>
+                    <td>58,561人</td>
+                    <td>107,449人<br><span style="font-size: 0.8em; color: #888;">(2022/10/12)</span></td>
+                    <td>111位</td>
+                    <td>50位</td>
+                    <td>49位</td>
+                    <td><a href="https://www.youtube.com/watch?v=p1bjnyDqI9k" target="_blank" class="youtube-btn">▶ Watch</a></td>
+                </tr>
+                <tr>
+                    <td>Love Me Like This<br><span style="font-size: 0.8em; color: #888;">1st アルバム</span></td>
+                    <td>56,882人</td>
+                    <td>234,293人<br><span style="font-size: 0.8em; color: #888;">(2023/4/16)</span></td>
+                    <td>100位</td>
+                    <td>6位</td>
+                    <td>4位</td>
+                    <td><a href="#" target="_blank" class="youtube-btn">▶ Watch</a></td>
+                </tr>
+                <tr>
+                    <td>Party O'Clock<br><span style="font-size: 0.8em; color: #888;">3rd シングル</span></td>
+                    <td>44,412人</td>
+                    <td>44,412人<br><span style="font-size: 0.8em; color: #888;">(2023/7/11)</span></td>
+                    <td>123位</td>
+                    <td>123位</td>
+                    <td>なし</td>
+                    <td><a href="#" target="_blank" class="youtube-btn">▶ Watch</a></td>
+                </tr>
+                <tr>
+                    <td>DASH<br><span style="font-size: 0.8em; color: #888;">2nd アルバム</span></td>
+                    <td>41,580人</td>
+                    <td>46,444人<br><span style="font-size: 0.8em; color: #888;">(2024/2/13)</span></td>
+                    <td>101位</td>
+                    <td>100位</td>
+                    <td>87位</td>
+                    <td><a href="#" target="_blank" class="youtube-btn">▶ Watch</a></td>
+                </tr>
+                <tr>
+                    <td>별별별 (See that?)<br><span style="font-size: 0.8em; color: #888;">3rd アルバム</span></td>
+                    <td>55,636人</td>
+                    <td>93,627人<br><span style="font-size: 0.8em; color: #888;">(2024/9/19)</span></td>
+                    <td>78位</td>
+                    <td>26位</td>
+                    <td>25位</td>
+                    <td><a href="#" target="_blank" class="youtube-btn">▶ Watch</a></td>
+                </tr>
+                <tr>
+                    <td>KNOW ABOUT ME<br><span style="font-size: 0.8em; color: #888;">4th アルバム</span></td>
+                    <td>38,245人</td>
+                    <td>38,245人<br><span style="font-size: 0.8em; color: #888;">(2025/3/17)</span></td>
+                    <td>114位</td>
+                    <td>114位</td>
+                    <td>76位</td>
+                    <td><a href="#" target="_blank" class="youtube-btn">▶ Watch</a></td>
+                </tr>
+                <tr>
+                    <td>Blue Valentine<br><span style="font-size: 0.8em; color: #888;">1st フルアルバム</span></td>
+                    <td>46,799人</td>
+                    <td>239,400人<br><span style="font-size: 0.8em; color: #888;">(2025/11/2)</span></td>
+                    <td>85位</td>
+                    <td>1位<br><span style="font-size: 0.8em; color: #ff007f;">(30日間1位)</span></td>
+                    <td>1位<br><span style="font-size: 0.8em; color: #ff007f;">(743時間1位)</span></td>
+                    <td><a href="#" target="_blank" class="youtube-btn">▶ Watch</a></td>
+                </tr>
+            </table>
+        </div> <div style="text-align: center;">
             <a href="index.html" class="back-btn">← トップページに戻る</a>
         </div>
     </div>
 
 </body>
-
 </html>
-
-
