@@ -10,9 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
     
     <style>
-        /* サイト全体の基本設定 */
         body {
-            /* ▼ クールなゴシック体「Noto Sans JP」を全体に適用 ▼ */
             font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
             background-color: #0d0d1a;
             color: #ffffff;
@@ -21,17 +19,13 @@
             line-height: 1.6;
         }
 
-        /* ヘッダー（トップの画像部分）のデザイン */
         header {
             background-image: url('header-image.jpg'); 
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            
-            /* ▼ 画像を明るく見せるため、暗いフィルターを薄くしました ▼ */
             background-color: rgba(0, 0, 0, 0.2); 
             background-blend-mode: overlay;
-            
             height: 380px; 
             display: flex;
             flex-direction: column;
@@ -44,15 +38,13 @@
         
         header h1 {
             font-family: 'Montserrat', sans-serif;
-            /* ▼ 極太の斜体にして、かっこよさと疾走感を出す ▼ */
             font-style: italic;
             font-weight: 900;
             margin: 0;
-            font-size: 4em; /* タイトルをさらに大きく */
+            font-size: 4em; 
             letter-spacing: 2px;
             text-transform: uppercase;
             color: #ffffff; 
-            /* ▼ 明るい背景でも文字が目立つ、ピンクと黒の立体的な影 ▼ */
             text-shadow: 4px 4px 0px #ff007f, 6px 6px 15px rgba(0,0,0,0.9); 
         }
         header p {
@@ -62,17 +54,15 @@
             color: #ffffff;
             font-weight: 700;
             letter-spacing: 1.5px;
-            text-shadow: 2px 2px 8px rgba(0,0,0,1); /* くっきりとした影 */
+            text-shadow: 2px 2px 8px rgba(0,0,0,1); 
         }
 
-        /* コンテンツを中央にまとめる枠 */
         .container {
             max-width: 1000px;
             margin: 0 auto;
             padding: 60px 20px;
         }
 
-        /* 見出しのデザイン */
         .section-title {
             font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
             font-size: 2.2em;
@@ -87,11 +77,9 @@
             display: inline-block;
         }
 
-        /* Aboutセクションの箱 */
         .about-box {
             background-color: #1a1a2e; 
             padding: 35px;
-            /* ▼ 少し角張らせてクールな印象に ▼ */
             border-radius: 10px; 
             border-left: 6px solid #b388ff; 
             margin-bottom: 70px;
@@ -101,22 +89,20 @@
             margin: 0;
             font-size: 1.1em;
             color: #cccccc; 
-            font-weight: 400; /* 日本語は読みやすさ重視 */
+            font-weight: 400; 
         }
 
-        /* リンクを並べるグリッド */
         .card-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px; 
         }
 
-        /* 各リンク（ボタン）のデザイン */
         .card {
             font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
             background-color: #0d0d1a; 
             border: 2px solid #b388ff; 
-            border-radius: 10px; /* ここも丸みを抑えてクールに */
+            border-radius: 10px; 
             padding: 35px 25px;
             text-decoration: none;
             color: #ffffff; 
@@ -161,6 +147,42 @@
         .card:hover::before {
             opacity: 1; 
         }
+
+        /* ★★★ トップページのスマホ対応コード ★★★ */
+        @media (max-width: 768px) {
+            header {
+                height: 280px; /* 画像の高さを少し抑える */
+                padding: 30px 20px;
+            }
+            header h1 {
+                font-size: 2.2em; /* 文字をスマホ画面に収める */
+                letter-spacing: 1px;
+                text-shadow: 3px 3px 0px #ff007f, 4px 4px 10px rgba(0,0,0,0.9);
+            }
+            header p {
+                font-size: 0.9em;
+            }
+            .container {
+                padding: 40px 15px;
+            }
+            .section-title {
+                font-size: 1.8em;
+                margin-bottom: 25px;
+            }
+            .about-box {
+                padding: 25px 20px;
+                margin-bottom: 50px;
+            }
+            .card-grid {
+                grid-template-columns: 1fr; /* リンクボタンを縦1列にする */
+                gap: 20px;
+            }
+            .card {
+                padding: 25px 20px;
+                min-height: 80px;
+                font-size: 1.1em;
+            }
+        }
     </style>
 </head>
 <body>
@@ -190,5 +212,4 @@
     </div>
 
 </body>
-
 </html>
