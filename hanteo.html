@@ -50,22 +50,20 @@
             padding: 50px 20px;
         }
 
-        /* ▼ 表をスマホで横スクロールさせるための枠組み ▼ */
+        /* ▼ PC用：横スクロールはさせず、綺麗に収める ▼ */
         .table-wrap {
             width: 100%;
-            overflow-x: auto; /* はみ出した部分をスクロール可能に */
-            -webkit-overflow-scrolling: touch; /* スマホで滑らかに動くように */
             margin-bottom: 50px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
-        /* 記録を見やすくする「表」のデザイン */
+        /* 記録を見やすくする「表」のデザイン（PC用） */
         table {
             width: 100%;
-            min-width: 800px; /* PCと同じ幅をキープして崩れないようにする */
             border-collapse: collapse;
             background-color: #1a1a2e;
+            border-radius: 10px;
+            overflow: hidden; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
         
         th, td {
@@ -116,24 +114,35 @@
             box-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
         }
 
-        /* ★★★ ここから下がスマホ用の魔法のコード ★★★ */
+        /* ★★★ スマホ画面 (768px以下) の時だけの特別ルール ★★★ */
         @media (max-width: 768px) {
             header {
-                padding: 30px 15px; /* 余白を狭く */
+                padding: 30px 15px;
             }
             header h1 {
-                font-size: 1.8em; /* タイトルの文字を小さく */
+                font-size: 1.8em; 
                 letter-spacing: 1px;
             }
             header p {
-                font-size: 0.85em; /* 説明文も小さく */
+                font-size: 0.85em; 
             }
             .container {
-                padding: 30px 15px; /* コンテンツ全体の余白を狭く */
+                padding: 30px 15px; 
+            }
+            /* スマホの時だけ横スクロールを許可する */
+            .table-wrap {
+                overflow-x: auto; 
+                -webkit-overflow-scrolling: touch; 
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            }
+            table {
+                min-width: 800px; /* スマホの時だけ最低幅を確保 */
+                box-shadow: none; /* 影がダブるのを防ぐ */
             }
             th, td {
-                padding: 10px; /* 表の隙間を少し詰める */
-                font-size: 0.9em; /* 表の文字も少し小さく */
+                padding: 10px; 
+                font-size: 0.9em; 
             }
         }
     </style>
@@ -212,7 +221,9 @@
                     <td><span style="color: #ff007f; font-weight: bold;">644,865枚</span></td>
                 </tr>
             </table>
-        </div> <div style="text-align: center;">
+        </div>
+
+        <div style="text-align: center;">
             <a href="index.html" class="back-btn">← トップページに戻る</a>
         </div>
     </div>
