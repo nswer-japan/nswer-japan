@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音楽番組1位 まとめ | NSWER JAPAN</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
+            background-color: #0d0d1a;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: #1a1a2e;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 2px solid #ff007f;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        
+        header h1 {
+            font-size: 2.2em;
+            margin: 0;
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #ff007f, #b388ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        /* 受賞年ごとのセクション */
+        .year-section {
+            margin-bottom: 60px;
+        }
+
+        .year-title {
+            font-size: 2em;
+            border-left: 5px solid #ff007f;
+            padding-left: 15px;
+            margin-bottom: 30px;
+            color: #b388ff;
+        }
+
+        /* 受賞カードのデザイン */
+        .win-card {
+            background-color: #1a1a2e;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 1px solid #33334d;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        .song-title {
+            font-size: 1.5em;
+            font-weight: 900;
+            color: #ff007f;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .win-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .win-list li {
+            padding: 5px 0;
+            border-bottom: 1px solid #2a2a4a;
+            font-size: 0.95em;
+        }
+
+        /* YouTube動画のレスポンシブ対応 */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 の比率 */
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background-color: transparent;
+            border: 2px solid #b388ff;
+            color: #ffffff;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background-color: #ff007f;
+            border-color: #ff007f;
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.6em; }
+            .year-title { font-size: 1.5em; }
+            .song-title { font-size: 1.2em; }
+            .container { padding: 30px 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Music Show Wins</h1>
+    </header>
+
+    <div class="container">
+
+        <div class="year-section">
+            <h2 class="year-title">2025 - 2026</h2>
+            
+            <div class="win-card">
+                <div class="song-title">👑 Blue Valentine (10冠)</div>
+                <ul class="win-list">
+                    <li>10月22日: SHOW CHAMPION</li>
+                    <li>10月23日: M COUNTDOWN</li>
+                    <li>10月24日: Music Bank</li>
+                    <li>10月25日: ショー！音楽中心</li>
+                    <li>10月26日: 人気歌謡</li>
+                    <li>11月9日: 人気歌謡 (2回目)</li>
+                    <li>...他 合計10冠 (2026年1月2日 Music Bank含む)</li>
+                </ul>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/rKg9I4mVLVc" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="win-card">
+                <div class="song-title">KNOW ABOUT ME (3冠)</div>
+                <ul class="win-list">
+                    <li>3月26日: SHOW CHAMPION</li>
+                    <li>3月28日: Music Bank</li>
+                    <li>3月30日: 人気歌謡</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="year-section">
+            <h2 class="year-title">2024</h2>
+            
+            <div class="win-card">
+                <div class="song-title">DASH (4冠)</div>
+                <ul class="win-list">
+                    <li>1月24日: SHOW CHAMPION</li>
+                    <li>1月25日: M COUNTDOWN</li>
+                    <li>1月26日: Music Bank</li>
+                    <li>1月28日: 人気歌謡</li>
+                </ul>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/hoHy38Jjkvg" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="win-card">
+                <div class="song-title">별별別 (See that?) (3冠)</div>
+                <ul class="win-list">
+                    <li>8月29日: M COUNTDOWN</li>
+                    <li>8月30日: Music Bank</li>
+                    <li>9月1日: 人気歌謡</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="year-section">
+            <h2 class="year-title">2023</h2>
+            <div class="win-card">
+                <div class="song-title">Love Me Like This (1冠 - 初1位!)</div>
+                <ul class="win-list">
+                    <li>3月29日: SHOW CHAMPION</li>
+                </ul>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/O8zBPFYgz04" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px;">
+            <a href="index.html" class="back-btn">← トップページに戻る</a>
+        </div>
+    </div>
+
+</body>
+</html>
