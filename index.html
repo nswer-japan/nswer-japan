@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NSWER JAPAN | NMIXX Fan Site</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* サイト全体の基本設定 */
+        body {
+            /* ▼ クールなゴシック体「Noto Sans JP」を全体に適用 ▼ */
+            font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
+            background-color: #0d0d1a;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* ヘッダー（トップの画像部分）のデザイン */
+        header {
+            background-image: url('header-image.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            
+            /* ▼ 画像を明るく見せるため、暗いフィルターを薄くしました ▼ */
+            background-color: rgba(0, 0, 0, 0.2); 
+            background-blend-mode: overlay;
+            
+            height: 380px; 
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end; 
+            align-items: flex-start; 
+            padding: 50px 40px; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            position: relative;
+        }
+        
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            /* ▼ 極太の斜体にして、かっこよさと疾走感を出す ▼ */
+            font-style: italic;
+            font-weight: 900;
+            margin: 0;
+            font-size: 4em; /* タイトルをさらに大きく */
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #ffffff; 
+            /* ▼ 明るい背景でも文字が目立つ、ピンクと黒の立体的な影 ▼ */
+            text-shadow: 4px 4px 0px #ff007f, 6px 6px 15px rgba(0,0,0,0.9); 
+        }
+        header p {
+            font-family: 'Noto Sans JP', sans-serif;
+            margin-top: 15px;
+            font-size: 1.2em;
+            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,1); /* くっきりとした影 */
+        }
+
+        /* コンテンツを中央にまとめる枠 */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* 見出しのデザイン */
+        .section-title {
+            font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
+            font-size: 2.2em;
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #ff007f, #b388ff); 
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            border-bottom: 3px solid #ff007f; 
+            padding-bottom: 12px;
+            margin-bottom: 40px;
+            display: inline-block;
+        }
+
+        /* Aboutセクションの箱 */
+        .about-box {
+            background-color: #1a1a2e; 
+            padding: 35px;
+            /* ▼ 少し角張らせてクールな印象に ▼ */
+            border-radius: 10px; 
+            border-left: 6px solid #b388ff; 
+            margin-bottom: 70px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4); 
+        }
+        .about-box p {
+            margin: 0;
+            font-size: 1.1em;
+            color: #cccccc; 
+            font-weight: 400; /* 日本語は読みやすさ重視 */
+        }
+
+        /* リンクを並べるグリッド */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; 
+        }
+
+        /* 各リンク（ボタン）のデザイン */
+        .card {
+            font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
+            background-color: #0d0d1a; 
+            border: 2px solid #b388ff; 
+            border-radius: 10px; /* ここも丸みを抑えてクールに */
+            padding: 35px 25px;
+            text-decoration: none;
+            color: #ffffff; 
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.2em;
+            letter-spacing: 1.5px;
+            transition: all 0.4s ease; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden; 
+        }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff007f, #7b1fa2); 
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+
+        .card span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.02); 
+            border-color: #ff007f; 
+            box-shadow: 0 10px 30px rgba(255, 0, 127, 0.6), 0 10px 50px rgba(123, 31, 162, 0.4); 
+        }
+        
+        .card:hover::before {
+            opacity: 1; 
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>NSWER JAPAN</h1>
+        <p>NMIXXを応援する日本NSWERのためのファンサイト</p>
+    </header>
+
+    <div class="container">
+        <h2 class="section-title">ABOUT</h2>
+        <div class="about-box">
+            <p>このサイトは、KPOP女性アイドルグループのNMIXXを応援する日本NSWER向けのサイトです。<br>
+            音楽番組での1位獲得に向けた投票方法や、各種チャートの記録などをまとめています。</p>
+        </div>
+
+        <h2 class="section-title">RECORD & GUIDE</h2>
+        <div class="card-grid">
+            <a href="#" class="card"><span>Melon チャート記録 まとめ</span></a>
+            <a href="#" class="card"><span>ハントチャート記録 まとめ</span></a>
+            <a href="#" class="card"><span>音楽番組１位 まとめ</span></a>
+            <a href="#" class="card"><span>NMIXX応援必須アプリ 一覧</span></a>
+            <a href="#" class="card"><span>音楽番組について</span></a>
+            <a href="#" class="card"><span>YouTube再生回数記録</span></a>
+            <a href="#" class="card"><span>授賞式 まとめ</span></a>
+        </div>
+    </div>
+
+</body>
+</html>
