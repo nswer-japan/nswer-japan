@@ -45,7 +45,7 @@
         }
 
         .container {
-            max-width: 1000px; /* 表が横に広いので少し幅を広げました */
+            max-width: 1050px; /* MV列を追加した分、少し幅を広げました */
             margin: 0 auto;
             padding: 50px 20px;
         }
@@ -57,35 +57,54 @@
             margin-bottom: 50px;
             background-color: #1a1a2e;
             border-radius: 10px;
-            overflow: hidden; /* 角丸を効かせるため */
+            overflow: hidden; 
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
         
         th, td {
-            padding: 15px 20px;
-            text-align: center; /* 文字を中央揃えに */
+            padding: 15px 15px;
+            text-align: center; 
             border-bottom: 1px solid #33334d;
         }
         
-        /* 表のタイトル行 */
         th {
             background-color: #2a2a4a;
             color: #b388ff;
             font-weight: 900;
             font-size: 1.1em;
-            white-space: nowrap; /* タイトル行で文字が改行されないように */
+            white-space: nowrap; 
         }
         
-        /* 曲名の列だけ少し強調 */
         td:first-child {
             font-weight: 700;
-            color: #ff007f; /* ネオンピンク */
-            text-align: left; /* 曲名だけ左揃え */
+            color: #ff007f; 
+            text-align: left; 
         }
 
-        /* マウスを乗せた行の色を少し変える（見やすくする工夫） */
         tr:hover td {
             background-color: #22223b;
+        }
+
+        /* ▼ 追加：YouTubeボタンのデザイン ▼ */
+        .youtube-btn {
+            display: inline-block;
+            background-color: #ff0000; /* YouTubeの赤色 */
+            color: #ffffff;
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 900;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            white-space: nowrap; /* ボタン内の文字が改行されないように */
+        }
+        
+        .youtube-btn:hover {
+            background-color: #cc0000;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.6); /* 赤く光る */
+            transform: scale(1.05); /* 少し大きく */
+            color: #ffffff;
         }
 
         /* トップへ戻るボタン */
@@ -124,6 +143,7 @@
                 <th>初日 日間順位</th>
                 <th>ピーク 日間順位</th>
                 <th>TOP100 最高順位</th>
+                <th>MV</th>
             </tr>
             <tr>
                 <td>O.O<br><span style="font-size: 0.8em; color: #888;">デビューシングル</span></td>
@@ -132,6 +152,7 @@
                 <td>162位</td>
                 <td>90位</td>
                 <td>65位</td>
+                <td><a href="https://www.youtube.com/watch?v=3GWscde8rM8" target="_blank" class="youtube-btn">▶ Watch</a></td>
             </tr>
             <tr>
                 <td>DICE<br><span style="font-size: 0.8em; color: #888;">2nd シングル</span></td>
@@ -140,6 +161,7 @@
                 <td>111位</td>
                 <td>50位</td>
                 <td>49位</td>
+                <td><a href="https://www.youtube.com/watch?v=p1bjnyDqI9k" target="_blank" class="youtube-btn">▶ Watch</a></td>
             </tr>
             <tr>
                 <td>Love Me Like This<br><span style="font-size: 0.8em; color: #888;">1st アルバム</span></td>
@@ -148,6 +170,7 @@
                 <td>100位</td>
                 <td>6位</td>
                 <td>4位</td>
+                <td><a href="#" target="_blank" class="youtube-btn">▶ Watch</a></td>
             </tr>
             <tr>
                 <td>Party O'Clock<br><span style="font-size: 0.8em; color: #888;">3rd シングル</span></td>
@@ -156,6 +179,7 @@
                 <td>123位</td>
                 <td>123位</td>
                 <td>なし</td>
+                <td><a href="#" target="_blank" class="youtube-btn">▶ Watch</a></td>
             </tr>
             <tr>
                 <td>DASH<br><span style="font-size: 0.8em; color: #888;">2nd アルバム</span></td>
@@ -164,6 +188,7 @@
                 <td>101位</td>
                 <td>100位</td>
                 <td>87位</td>
+                <td><a href="#" target="_blank" class="youtube-btn">▶ Watch</a></td>
             </tr>
             <tr>
                 <td>별별별 (See that?)<br><span style="font-size: 0.8em; color: #888;">3rd アルバム</span></td>
@@ -172,6 +197,7 @@
                 <td>78位</td>
                 <td>26位</td>
                 <td>25位</td>
+                <td><a href="#" target="_blank" class="youtube-btn">▶ Watch</a></td>
             </tr>
             <tr>
                 <td>KNOW ABOUT ME<br><span style="font-size: 0.8em; color: #888;">4th アルバム</span></td>
@@ -180,6 +206,7 @@
                 <td>114位</td>
                 <td>114位</td>
                 <td>76位</td>
+                <td><a href="#" target="_blank" class="youtube-btn">▶ Watch</a></td>
             </tr>
         </table>
 
