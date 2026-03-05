@@ -45,20 +45,27 @@
         }
 
         .container {
-            max-width: 1100px; /* 列が増えたので幅を広げました */
+            max-width: 1100px;
             margin: 0 auto;
             padding: 50px 20px;
+        }
+
+        /* ▼ 表をスマホで横スクロールさせるための枠組み ▼ */
+        .table-wrap {
+            width: 100%;
+            overflow-x: auto; /* はみ出した部分をスクロール可能に */
+            -webkit-overflow-scrolling: touch; /* スマホで滑らかに動くように */
+            margin-bottom: 50px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
         /* 記録を見やすくする「表」のデザイン */
         table {
             width: 100%;
+            min-width: 800px; /* PCと同じ幅をキープして崩れないようにする */
             border-collapse: collapse;
-            margin-bottom: 50px;
             background-color: #1a1a2e;
-            border-radius: 10px;
-            overflow: hidden; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
         
         th, td {
@@ -75,14 +82,12 @@
             white-space: nowrap; 
         }
 
-        /* アルバム名の列を左寄せにして強調 */
         td.album-col {
             text-align: left;
             font-weight: bold;
             color: #ffffff;
         }
 
-        /* タイトル曲の列をピンクにして強調 */
         td.title-col {
             font-weight: 900;
             color: #ff007f;
@@ -110,6 +115,27 @@
             border-color: #ff007f;
             box-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
         }
+
+        /* ★★★ ここから下がスマホ用の魔法のコード ★★★ */
+        @media (max-width: 768px) {
+            header {
+                padding: 30px 15px; /* 余白を狭く */
+            }
+            header h1 {
+                font-size: 1.8em; /* タイトルの文字を小さく */
+                letter-spacing: 1px;
+            }
+            header p {
+                font-size: 0.85em; /* 説明文も小さく */
+            }
+            .container {
+                padding: 30px 15px; /* コンテンツ全体の余白を狭く */
+            }
+            th, td {
+                padding: 10px; /* 表の隙間を少し詰める */
+                font-size: 0.9em; /* 表の文字も少し小さく */
+            }
+        }
     </style>
 </head>
 <body>
@@ -120,73 +146,73 @@
     </header>
 
     <div class="container">
-        <table>
-            <tr>
-                <th>発売日</th>
-                <th>アルバム名 (種類)</th>
-                <th>タイトル曲</th>
-                <th>初動枚数</th>
-                <th>初週枚数</th>
-            </tr>
-            <tr>
-                <td>2022/2/22</td>
-                <td class="album-col">AD MARE<br><span style="font-size: 0.8em; color: #888;">1st シングル</span></td>
-                <td class="title-col">O.O</td>
-                <td>20,300枚</td>
-                <td>227,399枚</td>
-            </tr>
-            <tr>
-                <td>2022/9/19</td>
-                <td class="album-col">ENTWURF<br><span style="font-size: 0.8em; color: #888;">2nd シングル</span></td>
-                <td class="title-col">DICE</td>
-                <td>250,661枚</td>
-                <td>442,207枚</td>
-            </tr>
-            <tr>
-                <td>2023/3/20</td>
-                <td class="album-col">expérgo<br><span style="font-size: 0.8em; color: #888;">1st ミニアルバム</span></td>
-                <td class="title-col">Love Me Like This</td>
-                <td>405,580枚</td>
-                <td>630,811枚</td>
-            </tr>
-            <tr>
-                <td>2023/7/11</td>
-                <td class="album-col">A Midsummer NMIXX's Dream<br><span style="font-size: 0.8em; color: #888;">3rd シングル</span></td>
-                <td class="title-col" style="color: #ffd700;">Party O'Clock<br><span style="font-size: 0.85em;">👑 歴代最高記録</span></td>
-                <td><span style="color: #ffd700; font-weight: bold; font-size: 1.1em;">719,886枚</span></td>
-                <td><span style="color: #ffd700; font-weight: bold; font-size: 1.1em;">1,030,541枚</span></td>
-            </tr>
-            <tr>
-                <td>2024/1/15</td>
-                <td class="album-col">Fe3O4: BREAK<br><span style="font-size: 0.8em; color: #888;">2nd ミニアルバム</span></td>
-                <td class="title-col">DASH</td>
-                <td>127,908枚</td>
-                <td>618,550枚</td>
-            </tr>
-            <tr>
-                <td>2024/8/19</td>
-                <td class="album-col">Fe3O4: STICK OUT<br><span style="font-size: 0.8em; color: #888;">3rd ミニアルバム</span></td>
-                <td class="title-col">별별별 (See that?)</td>
-                <td>341,362枚</td>
-                <td>585,717枚</td>
-            </tr>
-            <tr>
-                <td>2025/3/17</td>
-                <td class="album-col">Fe3O4: FORWARD<br><span style="font-size: 0.8em; color: #888;">4th ミニアルバム</span></td>
-                <td class="title-col">KNOW ABOUT ME</td>
-                <td>435,914枚</td>
-                <td>702,876枚</td>
-            </tr>
-            <tr>
-                <td>2025/10/13</td>
-                <td class="album-col">Blue Valentine<br><span style="font-size: 0.8em; color: #888;">1st フルアルバム</span></td>
-                <td class="title-col">Blue Valentine<br><span style="font-size: 0.85em; color: #ff007f;">✨ 最新リリース</span></td>
-                <td><span style="color: #ff007f; font-weight: bold;">468,587枚</span></td>
-                <td><span style="color: #ff007f; font-weight: bold;">644,865枚</span></td>
-            </tr>
-        </table>
-
-        <div style="text-align: center;">
+        <div class="table-wrap">
+            <table>
+                <tr>
+                    <th>発売日</th>
+                    <th>アルバム名 (種類)</th>
+                    <th>タイトル曲</th>
+                    <th>初動枚数</th>
+                    <th>初週枚数</th>
+                </tr>
+                <tr>
+                    <td>2022/2/22</td>
+                    <td class="album-col">AD MARE<br><span style="font-size: 0.8em; color: #888;">1st シングル</span></td>
+                    <td class="title-col">O.O</td>
+                    <td>20,300枚</td>
+                    <td>227,399枚</td>
+                </tr>
+                <tr>
+                    <td>2022/9/19</td>
+                    <td class="album-col">ENTWURF<br><span style="font-size: 0.8em; color: #888;">2nd シングル</span></td>
+                    <td class="title-col">DICE</td>
+                    <td>250,661枚</td>
+                    <td>442,207枚</td>
+                </tr>
+                <tr>
+                    <td>2023/3/20</td>
+                    <td class="album-col">expérgo<br><span style="font-size: 0.8em; color: #888;">1st ミニアルバム</span></td>
+                    <td class="title-col">Love Me Like This</td>
+                    <td>405,580枚</td>
+                    <td>630,811枚</td>
+                </tr>
+                <tr>
+                    <td>2023/7/11</td>
+                    <td class="album-col">A Midsummer NMIXX's Dream<br><span style="font-size: 0.8em; color: #888;">3rd シングル</span></td>
+                    <td class="title-col" style="color: #ffd700;">Party O'Clock<br><span style="font-size: 0.85em;">👑 歴代最高記録</span></td>
+                    <td><span style="color: #ffd700; font-weight: bold; font-size: 1.1em;">719,886枚</span></td>
+                    <td><span style="color: #ffd700; font-weight: bold; font-size: 1.1em;">1,030,541枚</span></td>
+                </tr>
+                <tr>
+                    <td>2024/1/15</td>
+                    <td class="album-col">Fe3O4: BREAK<br><span style="font-size: 0.8em; color: #888;">2nd ミニアルバム</span></td>
+                    <td class="title-col">DASH</td>
+                    <td>127,908枚</td>
+                    <td>618,550枚</td>
+                </tr>
+                <tr>
+                    <td>2024/8/19</td>
+                    <td class="album-col">Fe3O4: STICK OUT<br><span style="font-size: 0.8em; color: #888;">3rd ミニアルバム</span></td>
+                    <td class="title-col">별별별 (See that?)</td>
+                    <td>341,362枚</td>
+                    <td>585,717枚</td>
+                </tr>
+                <tr>
+                    <td>2025/3/17</td>
+                    <td class="album-col">Fe3O4: FORWARD<br><span style="font-size: 0.8em; color: #888;">4th ミニアルバム</span></td>
+                    <td class="title-col">KNOW ABOUT ME</td>
+                    <td>435,914枚</td>
+                    <td>702,876枚</td>
+                </tr>
+                <tr>
+                    <td>2025/10/13</td>
+                    <td class="album-col">Blue Valentine<br><span style="font-size: 0.8em; color: #888;">1st フルアルバム</span></td>
+                    <td class="title-col">Blue Valentine<br><span style="font-size: 0.85em; color: #ff007f;">✨ 最新リリース</span></td>
+                    <td><span style="color: #ff007f; font-weight: bold;">468,587枚</span></td>
+                    <td><span style="color: #ff007f; font-weight: bold;">644,865枚</span></td>
+                </tr>
+            </table>
+        </div> <div style="text-align: center;">
             <a href="index.html" class="back-btn">← トップページに戻る</a>
         </div>
     </div>
