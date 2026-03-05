@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
     
     <style>
+        /* 基本設定 */
         body {
             font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
             background-color: #0d0d1a;
@@ -48,21 +49,20 @@
             padding: 50px 20px;
         }
 
-        /* ▼ 表をスマホで横スクロールさせるための枠組み ▼ */
+        /* ▼ PC用：横スクロールはさせず、綺麗に収める ▼ */
         .table-wrap {
             width: 100%;
-            overflow-x: auto; 
-            -webkit-overflow-scrolling: touch; 
             margin-bottom: 50px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
+        /* 記録を見やすくする「表」のデザイン（PC用） */
         table {
             width: 100%;
-            min-width: 900px; /* 列が多いのでPC幅を死守してスクロールさせる */
             border-collapse: collapse;
             background-color: #1a1a2e;
+            border-radius: 10px;
+            overflow: hidden; 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
         
         th, td {
@@ -128,7 +128,7 @@
             box-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
         }
 
-        /* ★★★ Melonページのスマホ対応コード ★★★ */
+        /* ★★★ スマホ画面 (768px以下) の時だけの特別ルール ★★★ */
         @media (max-width: 768px) {
             header {
                 padding: 30px 15px;
@@ -142,6 +142,17 @@
             }
             .container {
                 padding: 30px 15px; 
+            }
+            /* スマホの時だけ横スクロールを許可する */
+            .table-wrap {
+                overflow-x: auto; 
+                -webkit-overflow-scrolling: touch; 
+                border-radius: 10px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            }
+            table {
+                min-width: 900px; /* スマホの時だけ最低幅を確保 */
+                box-shadow: none; /* 影がダブるのを防ぐ */
             }
             th, td {
                 padding: 10px; 
@@ -198,7 +209,7 @@
                     <td>100位</td>
                     <td>6位</td>
                     <td>4位</td>
-                    <td><a href="#" target="_blank" class="youtube-btn">▶ Watch</a></td>
+                    <td><a href="https://youtu.be/EDnwWcFpObo?si=QqdsszriN8sT-E_z" target="_blank" class="youtube-btn">▶ Watch</a></td>
                 </tr>
                 <tr>
                     <td>Party O'Clock<br><span style="font-size: 0.8em; color: #888;">3rd シングル</span></td>
@@ -207,7 +218,7 @@
                     <td>123位</td>
                     <td>123位</td>
                     <td>なし</td>
-                    <td><a href="#" target="_blank" class="youtube-btn">▶ Watch</a></td>
+                    <td><a href="https://youtu.be/Rd2wppggYxo?si=ezlKqiR_TLYZNRIl" target="_blank" class="youtube-btn">▶ Watch</a></td>
                 </tr>
                 <tr>
                     <td>DASH<br><span style="font-size: 0.8em; color: #888;">2nd アルバム</span></td>
@@ -216,7 +227,7 @@
                     <td>101位</td>
                     <td>100位</td>
                     <td>87位</td>
-                    <td><a href="#" target="_blank" class="youtube-btn">▶ Watch</a></td>
+                    <td><a href="https://youtu.be/7UecFm_bSTU?si=I69m8Y2Z-9LxR0Sn" target="_blank" class="youtube-btn">▶ Watch</a></td>
                 </tr>
                 <tr>
                     <td>별별별 (See that?)<br><span style="font-size: 0.8em; color: #888;">3rd アルバム</span></td>
@@ -225,7 +236,7 @@
                     <td>78位</td>
                     <td>26位</td>
                     <td>25位</td>
-                    <td><a href="#" target="_blank" class="youtube-btn">▶ Watch</a></td>
+                    <td><a href="https://youtu.be/_Q8Jskeps9w?si=QtHo6Z4O9B__SLVw" target="_blank" class="youtube-btn">▶ Watch</a></td>
                 </tr>
                 <tr>
                     <td>KNOW ABOUT ME<br><span style="font-size: 0.8em; color: #888;">4th アルバム</span></td>
@@ -234,7 +245,7 @@
                     <td>114位</td>
                     <td>114位</td>
                     <td>76位</td>
-                    <td><a href="#" target="_blank" class="youtube-btn">▶ Watch</a></td>
+                    <td><a href="https://youtu.be/aFrQIJ5cbRc?si=Ll5gHrlkTEfQgJ1A" target="_blank" class="youtube-btn">▶ Watch</a></td>
                 </tr>
                 <tr>
                     <td>Blue Valentine<br><span style="font-size: 0.8em; color: #888;">1st フルアルバム</span></td>
@@ -243,7 +254,7 @@
                     <td>85位</td>
                     <td>1位<br><span style="font-size: 0.8em; color: #ff007f;">(30日間1位)</span></td>
                     <td>1位<br><span style="font-size: 0.8em; color: #ff007f;">(743時間1位)</span></td>
-                    <td><a href="#" target="_blank" class="youtube-btn">▶ Watch</a></td>
+                    <td><a href="https://youtu.be/EmeW6li6bbo?si=-PT4XHd7_hmS3SfM" target="_blank" class="youtube-btn">▶ Watch</a></td>
                 </tr>
             </table>
         </div> <div style="text-align: center;">
