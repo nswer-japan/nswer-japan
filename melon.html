@@ -44,18 +44,17 @@
         }
 
         .container {
-            max-width: 1050px; 
+            max-width: 1150px; /* 画像の列が増えた分、幅を少し広げました */
             margin: 0 auto;
             padding: 50px 20px;
         }
 
-        /* ▼ PC用：横スクロールはさせず、綺麗に収める ▼ */
+        /* PC用：横スクロールはさせず、綺麗に収める */
         .table-wrap {
             width: 100%;
             margin-bottom: 50px;
         }
 
-        /* 記録を見やすくする「表」のデザイン（PC用） */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -66,20 +65,34 @@
         }
         
         th, td {
-            padding: 15px 15px;
+            padding: 15px 10px;
             text-align: center; 
             border-bottom: 1px solid #33334d;
+            vertical-align: middle;
         }
         
         th {
             background-color: #2a2a4a;
             color: #b388ff;
             font-weight: 900;
-            font-size: 1.1em;
+            font-size: 1.05em;
             white-space: nowrap; 
         }
+
+        /* ▼ 追加：アルバム画像の列（PC用） ▼ */
+        .jacket-col {
+            width: 80px;
+        }
+        .jacket-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 5px;
+            object-fit: cover;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+        }
         
-        td:first-child {
+        /* タイトル曲の列をピンクにして強調 */
+        td.title-col {
             font-weight: 700;
             color: #ff007f; 
             text-align: left; 
@@ -128,7 +141,7 @@
             box-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
         }
 
-        /* ★★★ スマホ画面 (768px以下) の時だけの特別ルール ★★★ */
+        /* スマホ画面 (768px以下) の時だけの特別ルール */
         @media (max-width: 768px) {
             header {
                 padding: 30px 15px;
@@ -143,7 +156,6 @@
             .container {
                 padding: 30px 15px; 
             }
-            /* スマホの時だけ横スクロールを許可する */
             .table-wrap {
                 overflow-x: auto; 
                 -webkit-overflow-scrolling: touch; 
@@ -151,12 +163,19 @@
                 box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             }
             table {
-                min-width: 900px; /* スマホの時だけ最低幅を確保 */
-                box-shadow: none; /* 影がダブるのを防ぐ */
+                min-width: 1050px; /* 画像が増えた分、スマホ時のスクロール幅を少し広げました */
+                box-shadow: none; 
             }
             th, td {
-                padding: 10px; 
+                padding: 10px 8px; 
                 font-size: 0.9em; 
+            }
+            .jacket-col {
+                width: 70px;
+            }
+            .jacket-img {
+                width: 50px;
+                height: 50px;
             }
             .youtube-btn {
                 padding: 6px 10px;
@@ -176,6 +195,7 @@
         <div class="table-wrap">
             <table>
                 <tr>
+                    <th class="jacket-col">ジャケット</th>
                     <th>タイトル (種類)</th>
                     <th>初日 ユニークリスナー</th>
                     <th>ピーク ユニークリスナー</th>
@@ -185,7 +205,8 @@
                     <th>MV</th>
                 </tr>
                 <tr>
-                    <td>O.O<br><span style="font-size: 0.8em; color: #888;">デビューシングル</span></td>
+                    <td><img src="admare.jpg" alt="AD MARE" class="jacket-img"></td>
+                    <td class="title-col">O.O<br><span style="font-size: 0.8em; color: #888;">デビューシングル</span></td>
                     <td>34,731人</td>
                     <td>79,691人<br><span style="font-size: 0.8em; color: #888;">(2022/4/20)</span></td>
                     <td>162位</td>
@@ -194,7 +215,8 @@
                     <td><a href="https://www.youtube.com/watch?v=3GWscde8rM8" target="_blank" class="youtube-btn">▶ Watch</a></td>
                 </tr>
                 <tr>
-                    <td>DICE<br><span style="font-size: 0.8em; color: #888;">2nd シングル</span></td>
+                    <td><img src="entwurf.jpg" alt="ENTWURF" class="jacket-img"></td>
+                    <td class="title-col">DICE<br><span style="font-size: 0.8em; color: #888;">2nd シングル</span></td>
                     <td>58,561人</td>
                     <td>107,449人<br><span style="font-size: 0.8em; color: #888;">(2022/10/12)</span></td>
                     <td>111位</td>
@@ -203,58 +225,64 @@
                     <td><a href="https://www.youtube.com/watch?v=p1bjnyDqI9k" target="_blank" class="youtube-btn">▶ Watch</a></td>
                 </tr>
                 <tr>
-                    <td>Love Me Like This<br><span style="font-size: 0.8em; color: #888;">1st アルバム</span></td>
+                    <td><img src="expergo.jpg" alt="expérgo" class="jacket-img"></td>
+                    <td class="title-col">Love Me Like This<br><span style="font-size: 0.8em; color: #888;">1st アルバム</span></td>
                     <td>56,882人</td>
                     <td>234,293人<br><span style="font-size: 0.8em; color: #888;">(2023/4/16)</span></td>
                     <td>100位</td>
                     <td>6位</td>
                     <td>4位</td>
-                    <td><a href="https://youtu.be/EDnwWcFpObo?si=QqdsszriN8sT-E_z" target="_blank" class="youtube-btn">▶ Watch</a></td>
+                    <td><a href="#" target="_blank" class="youtube-btn">▶ Watch</a></td>
                 </tr>
                 <tr>
-                    <td>Party O'Clock<br><span style="font-size: 0.8em; color: #888;">3rd シングル</span></td>
+                    <td><img src="midsummer.jpg" alt="A Midsummer NMIXX's Dream" class="jacket-img"></td>
+                    <td class="title-col">Party O'Clock<br><span style="font-size: 0.8em; color: #888;">3rd シングル</span></td>
                     <td>44,412人</td>
                     <td>44,412人<br><span style="font-size: 0.8em; color: #888;">(2023/7/11)</span></td>
                     <td>123位</td>
                     <td>123位</td>
                     <td>なし</td>
-                    <td><a href="https://youtu.be/Rd2wppggYxo?si=ezlKqiR_TLYZNRIl" target="_blank" class="youtube-btn">▶ Watch</a></td>
+                    <td><a href="#" target="_blank" class="youtube-btn">▶ Watch</a></td>
                 </tr>
                 <tr>
-                    <td>DASH<br><span style="font-size: 0.8em; color: #888;">2nd アルバム</span></td>
+                    <td><img src="break.jpg" alt="Fe3O4: BREAK" class="jacket-img"></td>
+                    <td class="title-col">DASH<br><span style="font-size: 0.8em; color: #888;">2nd アルバム</span></td>
                     <td>41,580人</td>
                     <td>46,444人<br><span style="font-size: 0.8em; color: #888;">(2024/2/13)</span></td>
                     <td>101位</td>
                     <td>100位</td>
                     <td>87位</td>
-                    <td><a href="https://youtu.be/7UecFm_bSTU?si=I69m8Y2Z-9LxR0Sn" target="_blank" class="youtube-btn">▶ Watch</a></td>
+                    <td><a href="#" target="_blank" class="youtube-btn">▶ Watch</a></td>
                 </tr>
                 <tr>
-                    <td>별별별 (See that?)<br><span style="font-size: 0.8em; color: #888;">3rd アルバム</span></td>
+                    <td><img src="stickout.jpg" alt="Fe3O4: STICK OUT" class="jacket-img"></td>
+                    <td class="title-col">별별별 (See that?)<br><span style="font-size: 0.8em; color: #888;">3rd アルバム</span></td>
                     <td>55,636人</td>
                     <td>93,627人<br><span style="font-size: 0.8em; color: #888;">(2024/9/19)</span></td>
                     <td>78位</td>
                     <td>26位</td>
                     <td>25位</td>
-                    <td><a href="https://youtu.be/_Q8Jskeps9w?si=QtHo6Z4O9B__SLVw" target="_blank" class="youtube-btn">▶ Watch</a></td>
+                    <td><a href="#" target="_blank" class="youtube-btn">▶ Watch</a></td>
                 </tr>
                 <tr>
-                    <td>KNOW ABOUT ME<br><span style="font-size: 0.8em; color: #888;">4th アルバム</span></td>
+                    <td><img src="forward.jpg" alt="Fe3O4: FORWARD" class="jacket-img"></td>
+                    <td class="title-col">KNOW ABOUT ME<br><span style="font-size: 0.8em; color: #888;">4th アルバム</span></td>
                     <td>38,245人</td>
                     <td>38,245人<br><span style="font-size: 0.8em; color: #888;">(2025/3/17)</span></td>
                     <td>114位</td>
                     <td>114位</td>
                     <td>76位</td>
-                    <td><a href="https://youtu.be/aFrQIJ5cbRc?si=Ll5gHrlkTEfQgJ1A" target="_blank" class="youtube-btn">▶ Watch</a></td>
+                    <td><a href="#" target="_blank" class="youtube-btn">▶ Watch</a></td>
                 </tr>
                 <tr>
-                    <td>Blue Valentine<br><span style="font-size: 0.8em; color: #888;">1st フルアルバム</span></td>
+                    <td><img src="bluevalentine.jpg" alt="Blue Valentine" class="jacket-img"></td>
+                    <td class="title-col">Blue Valentine<br><span style="font-size: 0.8em; color: #888;">1st フルアルバム</span></td>
                     <td>46,799人</td>
                     <td>239,400人<br><span style="font-size: 0.8em; color: #888;">(2025/11/2)</span></td>
                     <td>85位</td>
                     <td>1位<br><span style="font-size: 0.8em; color: #ff007f;">(30日間1位)</span></td>
                     <td>1位<br><span style="font-size: 0.8em; color: #ff007f;">(743時間1位)</span></td>
-                    <td><a href="https://youtu.be/EmeW6li6bbo?si=-PT4XHd7_hmS3SfM" target="_blank" class="youtube-btn">▶ Watch</a></td>
+                    <td><a href="#" target="_blank" class="youtube-btn">▶ Watch</a></td>
                 </tr>
             </table>
         </div> <div style="text-align: center;">
