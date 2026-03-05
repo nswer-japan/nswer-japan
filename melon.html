@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melon チャート記録 | NSWER JAPAN</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 基本設定 */
+        body {
+            font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
+            background-color: #0d0d1a;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* サブページ用の小さなヘッダー */
+        header {
+            background-color: #1a1a2e;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 2px solid #ff007f;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #ff007f, #b388ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        header p {
+            margin-top: 10px;
+            color: #cccccc;
+            font-size: 1.1em;
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 1000px; /* 表が横に広いので少し幅を広げました */
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        /* 記録を見やすくする「表（テーブル）」のデザイン */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 50px;
+            background-color: #1a1a2e;
+            border-radius: 10px;
+            overflow: hidden; /* 角丸を効かせるため */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        th, td {
+            padding: 15px 20px;
+            text-align: center; /* 文字を中央揃えに */
+            border-bottom: 1px solid #33334d;
+        }
+        
+        /* 表のタイトル行 */
+        th {
+            background-color: #2a2a4a;
+            color: #b388ff;
+            font-weight: 900;
+            font-size: 1.1em;
+            white-space: nowrap; /* タイトル行で文字が改行されないように */
+        }
+        
+        /* 曲名の列だけ少し強調 */
+        td:first-child {
+            font-weight: 700;
+            color: #ff007f; /* ネオンピンク */
+            text-align: left; /* 曲名だけ左揃え */
+        }
+
+        /* マウスを乗せた行の色を少し変える（見やすくする工夫） */
+        tr:hover td {
+            background-color: #22223b;
+        }
+
+        /* トップへ戻るボタン */
+        .back-btn {
+            display: inline-block;
+            background-color: transparent;
+            border: 2px solid #b388ff;
+            color: #ffffff;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background-color: #ff007f;
+            border-color: #ff007f;
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Melon Chart Record</h1>
+        <p>韓国音源チャート大手MelonにおけるNMIXXの記録</p>
+    </header>
+
+    <div class="container">
+        <table>
+            <tr>
+                <th>タイトル (種類)</th>
+                <th>初日 ユニークリスナー</th>
+                <th>ピーク ユニークリスナー</th>
+                <th>初日 日間順位</th>
+                <th>ピーク 日間順位</th>
+                <th>TOP100 最高順位</th>
+            </tr>
+            <tr>
+                <td>O.O<br><span style="font-size: 0.8em; color: #888;">デビューシングル</span></td>
+                <td>34,731人</td>
+                <td>79,691人<br><span style="font-size: 0.8em; color: #888;">(2022/4/20)</span></td>
+                <td>162位</td>
+                <td>90位</td>
+                <td>65位</td>
+            </tr>
+            <tr>
+                <td>DICE<br><span style="font-size: 0.8em; color: #888;">2nd シングル</span></td>
+                <td>58,561人</td>
+                <td>107,449人<br><span style="font-size: 0.8em; color: #888;">(2022/10/12)</span></td>
+                <td>111位</td>
+                <td>50位</td>
+                <td>49位</td>
+            </tr>
+            <tr>
+                <td>Love Me Like This<br><span style="font-size: 0.8em; color: #888;">1st アルバム</span></td>
+                <td>56,882人</td>
+                <td>234,293人<br><span style="font-size: 0.8em; color: #888;">(2023/4/16)</span></td>
+                <td>100位</td>
+                <td>6位</td>
+                <td>4位</td>
+            </tr>
+            <tr>
+                <td>Party O'Clock<br><span style="font-size: 0.8em; color: #888;">3rd シングル</span></td>
+                <td>44,412人</td>
+                <td>44,412人<br><span style="font-size: 0.8em; color: #888;">(2023/7/11)</span></td>
+                <td>123位</td>
+                <td>123位</td>
+                <td>なし</td>
+            </tr>
+            <tr>
+                <td>DASH<br><span style="font-size: 0.8em; color: #888;">2nd アルバム</span></td>
+                <td>41,580人</td>
+                <td>46,444人<br><span style="font-size: 0.8em; color: #888;">(2024/2/13)</span></td>
+                <td>101位</td>
+                <td>100位</td>
+                <td>87位</td>
+            </tr>
+            <tr>
+                <td>별별별 (See that?)<br><span style="font-size: 0.8em; color: #888;">3rd アルバム</span></td>
+                <td>55,636人</td>
+                <td>93,627人<br><span style="font-size: 0.8em; color: #888;">(2024/9/19)</span></td>
+                <td>78位</td>
+                <td>26位</td>
+                <td>25位</td>
+            </tr>
+            <tr>
+                <td>KNOW ABOUT ME<br><span style="font-size: 0.8em; color: #888;">4th アルバム</span></td>
+                <td>38,245人</td>
+                <td>38,245人<br><span style="font-size: 0.8em; color: #888;">(2025/3/17)</span></td>
+                <td>114位</td>
+                <td>114位</td>
+                <td>76位</td>
+            </tr>
+        </table>
+
+        <div style="text-align: center;">
+            <a href="index.html" class="back-btn">← トップページに戻る</a>
+        </div>
+    </div>
+
+</body>
+</html>
