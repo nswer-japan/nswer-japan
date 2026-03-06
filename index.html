@@ -10,206 +10,297 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
     
     <style>
+        /* CSS変数（ダーク/ライト切替用） */
+        :root {
+            --bg-color: #f4f4f9;
+            --text-color: #333333;
+            --card-bg: #ffffff;
+            --header-bg: rgba(255, 255, 255, 0.95);
+            --border-color: #dddddd;
+            --primary-color: #ff007f;
+            --secondary-color: #b388ff;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0d0d1a;
+            --text-color: #ffffff;
+            --card-bg: #1a1a2e;
+            --header-bg: rgba(26, 26, 46, 0.95);
+            --border-color: #33334d;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
         body {
             font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
-            background-color: #0d0d1a;
-            color: #ffffff;
-            margin: 0;
-            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
         }
-
-        header {
-            background-image: url('header-image.jpg'); 
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-color: rgba(0, 0, 0, 0.2); 
-            background-blend-mode: overlay;
-            height: 380px; 
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end; 
-            align-items: flex-start; 
-            padding: 50px 40px; 
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-            position: relative;
-        }
-        
-        header h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-style: italic;
-            font-weight: 900;
-            margin: 0;
-            font-size: 4em; 
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #ffffff; 
-            text-shadow: 4px 4px 0px #ff007f, 6px 6px 15px rgba(0,0,0,0.9); 
-        }
-        header p {
-            font-family: 'Noto Sans JP', sans-serif;
-            margin-top: 15px;
-            font-size: 1.2em;
-            color: #ffffff;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            text-shadow: 2px 2px 8px rgba(0,0,0,1); 
-        }
+        a { text-decoration: none; color: inherit; }
 
         .container {
-            max-width: 1000px;
+            width: 90%;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 40px 0;
         }
 
-        .section-title {
-            font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
-            font-size: 2.2em;
+        /* ▼▼▼ 共通ヘッダー（全ページで使えるナビゲーション） ▼▼▼ */
+        header {
+            background-color: var(--header-bg);
+            border-bottom: 2px solid var(--primary-color);
+            position: sticky; /* スクロールしても上部に追従する魔法 */
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px); /* 背景を少しぼかすオシャレ効果 */
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5em;
             font-weight: 900;
-            letter-spacing: 2px;
-            background: linear-gradient(135deg, #ff007f, #b388ff); 
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            border-bottom: 3px solid #ff007f; 
-            padding-bottom: 12px;
-            margin-bottom: 40px;
-            display: inline-block;
         }
 
-        .about-box {
-            background-color: #1a1a2e; 
-            padding: 35px;
-            border-radius: 10px; 
-            border-left: 6px solid #b388ff; 
-            margin-bottom: 70px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.4); 
+        /* PC用 横並びメニュー */
+        .nav-links {
+            display: none; /* スマホでは隠す */
+            list-style: none;
+            gap: 25px;
         }
-        .about-box p {
-            margin: 0;
+
+        .nav-links a {
+            font-weight: 700;
+            font-size: 0.95em;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* 右上のボタン群 */
+        .nav-tools {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 2px solid var(--secondary-color);
+            color: var(--text-color);
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.8em;
+        }
+
+        .hamburger {
+            display: block; /* スマホでは表示 */
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.8em;
+            cursor: pointer;
+            z-index: 1001; /* メニューより上に表示 */
+        }
+
+        /* スマホ用 横スライドメニュー */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%; /* 初期状態は画面の右外に隠しておく */
+            width: 250px;
+            height: 100vh;
+            background-color: var(--card-bg);
+            border-left: 2px solid var(--primary-color);
+            box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+            transition: right 0.4s ease; /* スッ…と滑らかに出る魔法 */
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            padding: 80px 20px 20px 20px; /* 上にヘッダー分の余白をあける */
+        }
+
+        .mobile-menu.active {
+            right: 0; /* クラスがついたら画面内に入ってくる */
+        }
+
+        .mobile-menu a {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 700;
             font-size: 1.1em;
-            color: #cccccc; 
-            font-weight: 400; 
+            color: var(--text-color);
+            transition: color 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--primary-color);
+        }
+
+        /* PC画面向け (768px以上) */
+        @media (min-width: 768px) {
+            .hamburger { display: none; } /* PCではハンバーガーボタンを消す */
+            .nav-links { display: flex; } /* PCでは横並びメニューを表示 */
+            .mobile-menu { display: none; } /* PCではスライドメニューを無効化 */
+        }
+
+        /* ==========================================
+           コンテンツデザイン (index.html用)
+        ========================================== */
+        .section-title {
+            font-size: 1.8em;
+            font-weight: 900;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 10px;
         }
 
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px; 
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 50px;
         }
 
         .card {
-            font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
-            background-color: #0d0d1a; 
-            border: 2px solid #b388ff; 
-            border-radius: 10px; 
-            padding: 35px 25px;
-            text-decoration: none;
-            color: #ffffff; 
-            text-align: center;
-            font-weight: 700;
-            font-size: 1.2em;
-            letter-spacing: 1.5px;
-            transition: all 0.4s ease; 
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            position: relative;
-            overflow: hidden; 
-        }
-
-        .card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #ff007f, #7b1fa2); 
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: 0;
-        }
-
-        .card span {
-            position: relative;
-            z-index: 1;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
         }
 
         .card:hover {
-            transform: translateY(-8px) scale(1.02); 
-            border-color: #ff007f; 
-            box-shadow: 0 10px 30px rgba(255, 0, 127, 0.6), 0 10px 50px rgba(123, 31, 162, 0.4); 
-        }
-        
-        .card:hover::before {
-            opacity: 1; 
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(255, 0, 127, 0.3);
+            border-color: var(--primary-color);
         }
 
-        /* ★★★ トップページのスマホ対応コード ★★★ */
-        @media (max-width: 768px) {
-            header {
-                height: 280px; /* 画像の高さを少し抑える */
-                padding: 30px 20px;
-            }
-            header h1 {
-                font-size: 2.2em; /* 文字をスマホ画面に収める */
-                letter-spacing: 1px;
-                text-shadow: 3px 3px 0px #ff007f, 4px 4px 10px rgba(0,0,0,0.9);
-            }
-            header p {
-                font-size: 0.9em;
-            }
-            .container {
-                padding: 40px 15px;
-            }
-            .section-title {
-                font-size: 1.8em;
-                margin-bottom: 25px;
-            }
-            .about-box {
-                padding: 25px 20px;
-                margin-bottom: 50px;
-            }
-            .card-grid {
-                grid-template-columns: 1fr; /* リンクボタンを縦1列にする */
-                gap: 20px;
-            }
-            .card {
-                padding: 25px 20px;
-                min-height: 80px;
-                font-size: 1.1em;
-            }
+        .card h3 { color: var(--primary-color); margin-bottom: 10px; }
+
+        @media (min-width: 768px) {
+            .card-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+            .section-title { font-size: 2.2em; }
         }
     </style>
 </head>
-<body>
+<body data-theme="dark">
 
     <header>
-        <h1>NSWER JAPAN</h1>
-        <p>NMIXXを応援する日本NSWERのためのファンサイト</p>
+        <div class="nav-container">
+            <a href="index.html" class="logo">NSWER JAPAN</a>
+            
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="wins.html">音楽番組1位</a></li>
+                <li><a href="hanteo.html">ハントチャート</a></li>
+                <li><a href="melon.html">Melon</a></li>
+            </ul>
+
+            <div class="nav-tools">
+                <button class="theme-toggle" id="themeToggle">🌙 / ☀️</button>
+                <button class="hamburger" id="hamburger">☰</button>
+            </div>
+        </div>
     </header>
 
+    <nav class="mobile-menu" id="mobileMenu">
+        <a href="index.html">🏠 HOME</a>
+        <a href="wins.html">🏆 音楽番組1位 まとめ</a>
+        <a href="hanteo.html">💿 ハントチャート記録</a>
+        <a href="melon.html">🎧 Melonチャート記録</a>
+    </nav>
     <div class="container">
-        <h2 class="section-title">ABOUT</h2>
-        <div class="about-box">
-            <p>このサイトは、KPOP女性アイドルグループのNMIXXを応援する日本NSWER向けのサイトです。<br>
-            音楽番組での1位獲得に向けた投票方法や、各種チャートの記録などをまとめています。</p>
-        </div>
+        <section id="news">
+            <h2 class="section-title">NEWS</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>2026.03.05</h3>
+                    <p>NSWER JAPAN サイトをリニューアルオープンしました！</p>
+                </div>
+                <div class="card">
+                    <h3>Blue Valentine</h3>
+                    <p>音楽番組10冠達成！応援ありがとうございました。</p>
+                </div>
+            </div>
+        </section>
 
-        <h2 class="section-title">RECORD & GUIDE</h2>
-        <div class="card-grid">
-            <a href="melon.html" class="card"><span>Melon チャート記録 まとめ</span></a>
-            <a href="hanteo.html" class="card"><span>ハントチャート記録 まとめ</span></a>
-            <a href="wins.html" class="card"><span>音楽番組１位 まとめ</span></a>
-            <a href="#" class="card"><span>NMIXX応援必須アプリ 一覧</span></a>
-            <a href="#" class="card"><span>音楽番組について</span></a>
-            <a href="#" class="card"><span>YouTube再生回数記録</span></a>
-            <a href="#" class="card"><span>授賞式 まとめ</span></a>
-        </div>
+        <section id="support">
+            <h2 class="section-title">TODAY'S SUPPORT</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>SHOW CHAMPION 投票</h3>
+                    <p>IDOLCHAMPアプリでの事前投票が開催中です。毎日のポイントを忘れずに集めましょう！</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="chart">
+            <h2 class="section-title">RECORD & CHART</h2>
+            <div class="card-grid">
+                <a href="wins.html" class="card">
+                    <h3>🏆 音楽番組 1位まとめ</h3>
+                    <p>Blue Valentine 10冠や感動のアンコール動画一覧。</p>
+                </a>
+                <a href="hanteo.html" class="card">
+                    <h3>💿 ハントチャート記録</h3>
+                    <p>歴代最高のParty O'Clockから最新作までの売上記録。</p>
+                </a>
+                <a href="melon.html" class="card">
+                    <h3>🎧 Melon チャート記録</h3>
+                    <p>韓国音源サイトでのユニークリスナーと順位の推移。</p>
+                </a>
+            </div>
+        </section>
     </div>
 
+    <script>
+        // ダークモード切替
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const body = document.body;
+
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                body.setAttribute('data-theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+            }
+        });
+
+        // スマホ用ハンバーガーメニューの開閉
+        const hamburgerBtn = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburgerBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active'); // メニューを出し入れする
+            
+            // アイコンを ☰ と ✕ で切り替える
+            if(mobileMenu.classList.contains('active')) {
+                hamburgerBtn.textContent = '✕';
+            } else {
+                hamburgerBtn.textContent = '☰';
+            }
+        });
+    </script>
 </body>
 </html>
