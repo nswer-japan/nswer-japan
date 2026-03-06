@@ -400,35 +400,46 @@
             color: var(--primary-color);
         }
 
-        .social-icons {
+        .icon-label-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .social-link {
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 18px;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 10px;
+            border-radius: 14px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s, border-color 0.3s, color 0.3s;
+        }
+
+        .social-link i {
             font-size: 28px;
         }
 
-        .social-icons a {
-            width: 52px;
-            height: 52px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid var(--border-color);
-            color: var(--text-color);
-            transition: transform 0.3s, color 0.3s, border-color 0.3s;
+        .social-link span {
+            font-size: 0.85em;
+            font-weight: 700;
+            line-height: 1.4;
         }
 
-        .social-icons a:hover {
+        .social-link:hover {
             color: var(--primary-color);
             border-color: var(--primary-color);
-            transform: scale(1.12);
+            transform: translateY(-3px);
         }
 
         @media (min-width: 768px) {
             .social-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .icon-label-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
         }
@@ -568,48 +579,58 @@
 
                 <div class="social-group">
                     <h3>NMIXX Official</h3>
-                    <div class="social-icons">
-                        <a href="https://x.com/NMIXX_official?s=20" target="_blank" rel="noopener noreferrer" aria-label="NMIXX Official X">
+                    <div class="icon-label-grid">
+                        <a href="https://x.com/NMIXX_official?s=20" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="NMIXX Official X">
                             <i class="fa-brands fa-x-twitter"></i>
+                            <span>Official X</span>
                         </a>
-                        <a href="https://x.com/WE_NMIXX?s=20" target="_blank" rel="noopener noreferrer" aria-label="WE NMIXX X">
+                        <a href="https://x.com/WE_NMIXX?s=20" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="WE NMIXX X">
                             <i class="fa-brands fa-x-twitter"></i>
+                            <span>WE NMIXX</span>
                         </a>
-                        <a href="https://x.com/JYPJAPAN_NMIXX?s=20" target="_blank" rel="noopener noreferrer" aria-label="NMIXX Japan Official X">
+                        <a href="https://x.com/JYPJAPAN_NMIXX?s=20" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="NMIXX Japan Official X">
                             <i class="fa-brands fa-x-twitter"></i>
+                            <span>Japan X</span>
                         </a>
-                        <a href="https://www.instagram.com/nmixx_official/" target="_blank" rel="noopener noreferrer" aria-label="NMIXX Official Instagram">
+                        <a href="https://www.instagram.com/nmixx_official/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="NMIXX Official Instagram">
                             <i class="fa-brands fa-instagram"></i>
+                            <span>Instagram</span>
                         </a>
-                        <a href="https://www.tiktok.com/@nmixx_official" target="_blank" rel="noopener noreferrer" aria-label="NMIXX Official TikTok">
+                        <a href="https://www.tiktok.com/@nmixx_official" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="NMIXX Official TikTok">
                             <i class="fa-brands fa-tiktok"></i>
+                            <span>TikTok</span>
                         </a>
                     </div>
                 </div>
 
                 <div class="social-group">
                     <h3>Fanclub</h3>
-                    <div class="social-icons">
-                        <a href="https://nswerjapan.com/s/222/?ima=2215" target="_blank" rel="noopener noreferrer" aria-label="NSWER JAPAN Fanclub">
+                    <div class="icon-label-grid">
+                        <a href="https://nswerjapan.com/s/222/?ima=2215" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="NSWER JAPAN Fanclub">
                             <i class="fa-solid fa-users"></i>
+                            <span>Fanclub</span>
                         </a>
-                        <a href="https://m.nswerjapan.com/s/222m/?ima=2227" target="_blank" rel="noopener noreferrer" aria-label="NSWER JAPAN Mobile Fanclub">
+                        <a href="https://m.nswerjapan.com/s/222m/?ima=2227" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="NSWER JAPAN Mobile Fanclub">
                             <i class="fa-solid fa-mobile-screen-button"></i>
+                            <span>Mobile FC</span>
                         </a>
                     </div>
                 </div>
 
                 <div class="social-group">
                     <h3>NSWER JAPAN</h3>
-                    <div class="social-icons">
-                        <a href="https://x.com/nswer_japan?s=21&t=cefbantZvkczleeWudhJ6Q" target="_blank" rel="noopener noreferrer" aria-label="NSWER JAPAN X">
+                    <div class="icon-label-grid">
+                        <a href="https://x.com/nswer_japan?s=21&t=cefbantZvkczleeWudhJ6Q" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="NSWER JAPAN X">
                             <i class="fa-brands fa-x-twitter"></i>
+                            <span>X</span>
                         </a>
-                        <a href="https://www.instagram.com/nswer_japan?igsh=MWJ4OHMwY29lMWYyeA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="NSWER JAPAN Instagram">
+                        <a href="https://www.instagram.com/nswer_japan?igsh=MWJ4OHMwY29lMWYyeA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="NSWER JAPAN Instagram">
                             <i class="fa-brands fa-instagram"></i>
+                            <span>Instagram</span>
                         </a>
-                        <a href="https://www.tiktok.com/@nswer.japan?_r=1&_t=ZS-94SsnUb8NTW" target="_blank" rel="noopener noreferrer" aria-label="NSWER JAPAN TikTok">
+                        <a href="https://www.tiktok.com/@nswer.japan?_r=1&_t=ZS-94SsnUb8NTW" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="NSWER JAPAN TikTok">
                             <i class="fa-brands fa-tiktok"></i>
+                            <span>TikTok</span>
                         </a>
                     </div>
                 </div>
@@ -628,11 +649,7 @@
 
         themeToggleBtn.addEventListener('click', () => {
             const currentTheme = body.getAttribute('data-theme');
-            if (currentTheme === 'dark') {
-                body.setAttribute('data-theme', 'light');
-            } else {
-                body.setAttribute('data-theme', 'dark');
-            }
+            body.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark');
         });
 
         const hamburgerBtn = document.getElementById('hamburger');
