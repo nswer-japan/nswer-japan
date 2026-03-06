@@ -4,46 +4,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>音楽番組1位 まとめ | NSWER JAPAN</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
-    
+
     <style>
-        /* ▼▼▼ 追加：ダーク/ライト切替とメニュー用の基本設定 ▼▼▼ */
         :root {
-            --bg-color: #f4f4f9;
-            --text-color: #333333;
-            --card-bg: #ffffff;
-            --header-bg: rgba(255, 255, 255, 0.95);
-            --border-color: #dddddd;
-            --primary-color: #ff007f;
-            --secondary-color: #b388ff;
+            --bg: #0d0d1a;
+            --card: #1a1a2e;
+            --card-2: #22223b;
+            --text: #ffffff;
+            --line: #33334d;
+            --pink: #ff007f;
+            --purple: #b388ff;
         }
 
-        [data-theme="dark"] {
-            --bg-color: #0d0d1a;
-            --text-color: #ffffff;
-            --card-bg: #1a1a2e;
-            --header-bg: rgba(26, 26, 46, 0.95);
-            --border-color: #33334d;
+        * {
+            box-sizing: border-box;
         }
-
-        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
             line-height: 1.6;
-            transition: background-color 0.3s, color 0.3s;
         }
-        a { text-decoration: none; color: inherit; }
 
-        /* ▼▼▼ 追加：全ページ共通ヘッダー ▼▼▼ */
-        header {
-            background-color: var(--header-bg);
-            border-bottom: 2px solid var(--primary-color);
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* 共通ヘッダー */
+        .site-header {
+            background-color: #1a1a2e;
+            border-bottom: 2px solid var(--pink);
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -64,7 +62,7 @@
             font-size: 1.5em;
             font-weight: 900;
             letter-spacing: 1px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(135deg, var(--pink), var(--purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -73,256 +71,354 @@
             display: none;
             list-style: none;
             gap: 25px;
+            margin: 0;
+            padding: 0;
         }
 
-        .nav-links a { font-weight: 700; font-size: 0.95em; transition: color 0.3s; }
-        .nav-links a:hover { color: var(--primary-color); }
+        .nav-links a {
+            font-weight: 700;
+            font-size: 0.95em;
+            color: var(--text);
+            transition: color 0.3s;
+        }
 
-        .nav-tools { display: flex; align-items: center; gap: 15px; }
-
-        .theme-toggle {
-            background: none; border: 2px solid var(--secondary-color); color: var(--text-color);
-            padding: 5px 10px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.8em;
+        .nav-links a:hover,
+        .nav-links a.active-link {
+            color: var(--pink);
         }
 
         .hamburger {
-            display: block; background: none; border: none; color: var(--text-color);
-            font-size: 1.8em; cursor: pointer; z-index: 1001;
+            display: block;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.8em;
+            cursor: pointer;
+            z-index: 1001;
         }
 
-        /* スマホ用 スライドメニュー */
         .mobile-menu {
-            position: fixed; top: 0; right: -100%; width: 250px; height: 100vh;
-            background-color: var(--card-bg); border-left: 2px solid var(--primary-color);
-            box-shadow: -5px 0 15px rgba(0,0,0,0.5); transition: right 0.4s ease; z-index: 999;
-            display: flex; flex-direction: column; padding: 80px 20px 20px 20px;
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 250px;
+            height: 100vh;
+            background-color: var(--card);
+            border-left: 2px solid var(--pink);
+            box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+            transition: right 0.4s ease;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            padding: 80px 20px 20px 20px;
         }
 
-        .mobile-menu.active { right: 0; }
-        .mobile-menu a { padding: 15px 0; border-bottom: 1px solid var(--border-color); font-weight: 700; font-size: 1.1em; transition: color 0.3s; }
-        .mobile-menu a:hover { color: var(--primary-color); }
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu a {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--line);
+            font-weight: 700;
+            font-size: 1.05em;
+            color: var(--text);
+        }
+
+        .mobile-menu a:hover {
+            color: var(--pink);
+        }
 
         @media (min-width: 768px) {
-            .hamburger { display: none; }
-            .nav-links { display: flex; }
-            .mobile-menu { display: none; }
+            .hamburger {
+                display: none;
+            }
+
+            .nav-links {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: none;
+            }
         }
 
-        /* ▼▼▼ ここから元々のwins.htmlのデザイン（変更なし） ▼▼▼ */
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 50px 20px;
-        }
-
-        /* ヘッダー下のタイトル用に追加 */
-        .page-title {
-            font-size: 2.2em;
-            font-weight: 900;
+        /* ページヘッダー */
+        .page-header {
+            background-color: var(--card);
+            padding: 40px 20px;
             text-align: center;
-            margin-bottom: 40px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-bottom: 2px solid var(--pink);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        .page-header h1 {
+            font-size: 2.2em;
+            margin: 0;
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, var(--pink), var(--purple));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .win-card {
-            background-color: var(--card-bg);
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 50px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .song-info {
-            margin-bottom: 25px;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 15px;
-        }
-
-        .album-name {
-            font-size: 0.9em;
-            color: var(--secondary-color);
+        .page-header p {
+            margin-top: 10px;
+            color: #cccccc;
+            font-size: 1em;
             font-weight: 700;
-            display: block;
-            margin-bottom: 5px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 50px 20px;
+        }
+
+        .year-section {
+            margin-bottom: 60px;
+        }
+
+        .year-title {
+            font-size: 2em;
+            border-left: 5px solid var(--pink);
+            padding-left: 15px;
+            margin-bottom: 30px;
+            color: var(--purple);
+        }
+
+        .win-card {
+            background-color: var(--card);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 1px solid var(--line);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
         .song-title {
-            font-size: 1.8em;
+            font-size: 1.5em;
             font-weight: 900;
-            color: var(--primary-color);
+            color: var(--pink);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
         }
 
-        .win-count {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 2px 12px;
-            border-radius: 20px;
-            font-size: 0.6em;
-            vertical-align: middle;
-            margin-left: 10px;
+        .win-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
         }
 
-        .win-list { list-style: none; padding: 0; margin-bottom: 25px; }
-        .win-item { display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border-color); }
-        .prog-icon { width: 24px; height: 24px; margin-right: 12px; border-radius: 4px; object-fit: cover; }
-        .win-date { width: 100px; font-weight: 700; color: #888; }
-
-        .triple-crown {
-            margin-left: auto; color: #ffd700; font-weight: 900; font-size: 0.85em;
-            text-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+        .win-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #2a2a4a;
+            font-size: 0.95em;
         }
 
         .video-container {
-            position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;
-            border-radius: 10px; margin-top: 20px; border: 1px solid var(--border-color);
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-top: 15px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.35);
         }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+        .video-container iframe {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .page-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 50px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            background-color: transparent;
+            border: 2px solid var(--purple);
+            color: var(--text);
+            padding: 14px 24px;
+            border-radius: 10px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            background-color: var(--pink);
+            border-color: var(--pink);
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
+        }
 
         @media (max-width: 768px) {
-            .win-date { width: 80px; font-size: 0.9em; }
-            .triple-crown { font-size: 0.75em; }
+            .page-header h1 {
+                font-size: 1.6em;
+                letter-spacing: 1px;
+            }
+
+            .page-header p {
+                font-size: 0.9em;
+            }
+
+            .year-title {
+                font-size: 1.5em;
+            }
+
+            .song-title {
+                font-size: 1.2em;
+            }
+
+            .container {
+                padding: 30px 15px;
+            }
+
+            .page-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .back-btn {
+                width: 100%;
+                max-width: 260px;
+                text-align: center;
+            }
         }
     </style>
 </head>
-<body data-theme="dark">
+<body>
 
-    <header>
+    <header class="site-header">
         <div class="nav-container">
             <a href="index.html" class="logo">NSWER JAPAN</a>
-            
+
             <ul class="nav-links">
                 <li><a href="index.html">HOME</a></li>
-                <li><a href="wins.html">音楽番組1位</a></li>
+                <li><a href="music.html">MUSIC</a></li>
+                <li><a href="wins.html" class="active-link">音楽番組1位</a></li>
                 <li><a href="hanteo.html">ハントチャート</a></li>
                 <li><a href="melon.html">Melon</a></li>
             </ul>
 
-            <div class="nav-tools">
-                <button class="theme-toggle" id="themeToggle">🌙 / ☀️</button>
-                <button class="hamburger" id="hamburger">☰</button>
-            </div>
+            <button class="hamburger" id="hamburger">☰</button>
         </div>
     </header>
 
     <nav class="mobile-menu" id="mobileMenu">
         <a href="index.html">🏠 HOME</a>
+        <a href="music.html">🎵 MUSIC</a>
         <a href="wins.html">🏆 音楽番組1位 まとめ</a>
         <a href="hanteo.html">💿 ハントチャート記録</a>
         <a href="melon.html">🎧 Melonチャート記録</a>
     </nav>
 
+    <section class="page-header">
+        <h1>Music Show Wins</h1>
+        <p>NMIXXの音楽番組1位記録まとめ</p>
+    </section>
+
     <div class="container">
-        <h1 class="page-title">Music Show Wins</h1>
 
-        <div class="win-card">
-            <div class="song-info">
-                <span class="album-name">1st Full Album "Blue Valentine"</span>
-                <div class="song-title">Blue Valentine <span class="win-count">10冠</span></div>
+        <div class="year-section">
+            <h2 class="year-title">2025 - 2026</h2>
+
+            <div class="win-card">
+                <div class="song-title">👑 Blue Valentine (10冠)</div>
+                <ul class="win-list">
+                    <li>10月22日: SHOW CHAMPION</li>
+                    <li>10月23日: M COUNTDOWN</li>
+                    <li>10月24日: Music Bank</li>
+                    <li>10月25日: ショー！音楽中心</li>
+                    <li>10月26日: 人気歌謡</li>
+                    <li>11月9日: 人気歌謡 (2回目)</li>
+                    <li>...他 合計10冠 (2026年1月2日 Music Bank含む)</li>
+                </ul>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/rKg9I4mVLVc" title="Blue Valentine Encore" frameborder="0" allowfullscreen></iframe>
+                </div>
             </div>
-            <ul class="win-list">
-                <li class="win-item"><img src="icon-showchamp.png" class="prog-icon"><span class="win-date">10/22</span> SHOW CHAMPION</li>
-                <li class="win-item"><img src="icon-mcount.png" class="prog-icon"><span class="win-date">10/23</span> M COUNTDOWN</li>
-                <li class="win-item"><img src="icon-musicbank.png" class="prog-icon"><span class="win-date">10/24</span> ミュージックバンク</li>
-                <li class="win-item"><img src="icon-musiccore.png" class="prog-icon"><span class="win-date">10/25</span> ショー！音楽の中心</li>
-                <li class="win-item"><img src="icon-inkigayo.png" class="prog-icon"><span class="win-date">10/26</span> 人気歌謡</li>
-                <li class="win-item"><img src="icon-inkigayo.png" class="prog-icon"><span class="win-date">11/9</span> 人気歌謡</li>
-                <li class="win-item"><img src="icon-musiccore.png" class="prog-icon"><span class="win-date">11/15</span> ショー！音楽の中心</li>
-                <li class="win-item"><img src="icon-inkigayo.png" class="prog-icon"><span class="win-date">11/16</span> 人気歌謡 <span class="triple-crown">👑 トリプルクラウン</span></li>
-                <li class="win-item"><img src="icon-musiccore.png" class="prog-icon"><span class="win-date">11/22</span> ショー！音楽の中心 <span class="triple-crown">👑 トリプルクラウン</span></li>
-                <li class="win-item"><img src="icon-musicbank.png" class="prog-icon"><span class="win-date">1/2</span> ミュージックバンク</li>
-            </ul>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/rKg9I4mVLVc" frameborder="0" allowfullscreen></iframe>
+
+            <div class="win-card">
+                <div class="song-title">KNOW ABOUT ME (3冠)</div>
+                <ul class="win-list">
+                    <li>3月26日: SHOW CHAMPION</li>
+                    <li>3月28日: Music Bank</li>
+                    <li>3月30日: 人気歌謡</li>
+                </ul>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/0rp54oXvJ4o" title="KNOW ABOUT ME Encore" frameborder="0" allowfullscreen></iframe>
+                </div>
             </div>
         </div>
 
-        <div class="win-card">
-            <div class="song-info">
-                <span class="album-name">4th Mini Album "Fe3O4: FORWARD"</span>
-                <div class="song-title">KNOW ABOUT ME <span class="win-count">3冠</span></div>
+        <div class="year-section">
+            <h2 class="year-title">2024</h2>
+
+            <div class="win-card">
+                <div class="song-title">DASH (4冠)</div>
+                <ul class="win-list">
+                    <li>1月24日: SHOW CHAMPION</li>
+                    <li>1月25日: M COUNTDOWN</li>
+                    <li>1月26日: Music Bank</li>
+                    <li>1月28日: 人気歌謡</li>
+                </ul>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/hoHy38Jjkvg" title="DASH Encore" frameborder="0" allowfullscreen></iframe>
+                </div>
             </div>
-            <ul class="win-list">
-                <li class="win-item"><img src="icon-showchamp.png" class="prog-icon"><span class="win-date">3/26</span> SHOW CHAMPION</li>
-                <li class="win-item"><img src="icon-musicbank.png" class="prog-icon"><span class="win-date">3/28</span> ミュージックバンク</li>
-                <li class="win-item"><img src="icon-inkigayo.png" class="prog-icon"><span class="win-date">3/30</span> 人気歌謡</li>
-            </ul>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/7S-_t3QEaDU" frameborder="0" allowfullscreen></iframe>
+
+            <div class="win-card">
+                <div class="song-title">별별별 (See that?) (3冠)</div>
+                <ul class="win-list">
+                    <li>8月29日: M COUNTDOWN</li>
+                    <li>8月30日: Music Bank</li>
+                    <li>9月1日: 人気歌謡</li>
+                </ul>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/NCQ89aLx54Y" title="See that? Encore" frameborder="0" allowfullscreen></iframe>
+                </div>
             </div>
         </div>
 
-        <div class="win-card">
-            <div class="song-info">
-                <span class="album-name">3rd Mini Album "Fe3O4: STICK OUT"</span>
-                <div class="song-title">별별별 (See that?) <span class="win-count">3冠</span></div>
-            </div>
-            <ul class="win-list">
-                <li class="win-item"><img src="icon-mcount.png" class="prog-icon"><span class="win-date">8/29</span> M COUNTDOWN</li>
-                <li class="win-item"><img src="icon-musicbank.png" class="prog-icon"><span class="win-date">8/30</span> ミュージックバンク</li>
-                <li class="win-item"><img src="icon-inkigayo.png" class="prog-icon"><span class="win-date">9/1</span> 人気歌謡</li>
-            </ul>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/tpcbbZRNiVc" frameborder="0" allowfullscreen></iframe>
+        <div class="year-section">
+            <h2 class="year-title">2023</h2>
+            <div class="win-card">
+                <div class="song-title">Love Me Like This (1冠 - 初1位!)</div>
+                <ul class="win-list">
+                    <li>3月29日: SHOW CHAMPION</li>
+                </ul>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/O8zBPFYgz04" title="Love Me Like This Encore" frameborder="0" allowfullscreen></iframe>
+                </div>
             </div>
         </div>
 
-        <div class="win-card">
-            <div class="song-info">
-                <span class="album-name">2nd Mini Album "Fe3O4: BREAK"</span>
-                <div class="song-title">DASH <span class="win-count">4冠</span></div>
-            </div>
-            <ul class="win-list">
-                <li class="win-item"><img src="icon-showchamp.png" class="prog-icon"><span class="win-date">1/24</span> SHOW CHAMPION</li>
-                <li class="win-item"><img src="icon-mcount.png" class="prog-icon"><span class="win-date">1/25</span> M COUNTDOWN</li>
-                <li class="win-item"><img src="icon-musicbank.png" class="prog-icon"><span class="win-date">1/26</span> ミュージックバンク</li>
-                <li class="win-item"><img src="icon-inkigayo.png" class="prog-icon"><span class="win-date">1/28</span> 人気歌謡</li>
-            </ul>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/hoHy38Jjkvg" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </div>
-
-        <div class="win-card">
-            <div class="song-info">
-                <span class="album-name">1st Mini Album "expérgo"</span>
-                <div class="song-title">Love Me Like This <span class="win-count">1冠</span></div>
-            </div>
-            <ul class="win-list">
-                <li class="win-item"><img src="icon-showchamp.png" class="prog-icon"><span class="win-date">3/29</span> SHOW CHAMPION</li>
-            </ul>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/O8zBPFYgz04" frameborder="0" allowfullscreen></iframe>
-            </div>
+        <div class="page-links">
+            <a href="melon.html" class="back-btn">← Melonチャート</a>
+            <a href="index.html" class="back-btn">HOME</a>
+            <a href="hanteo.html" class="back-btn">ハントチャート →</a>
         </div>
     </div>
 
     <script>
-        const themeToggleBtn = document.getElementById('themeToggle');
-        const body = document.body;
-
-        themeToggleBtn.addEventListener('click', () => {
-            const currentTheme = body.getAttribute('data-theme');
-            if (currentTheme === 'dark') {
-                body.setAttribute('data-theme', 'light');
-            } else {
-                body.setAttribute('data-theme', 'dark');
-            }
-        });
-
         const hamburgerBtn = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobileMenu');
 
         hamburgerBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('active');
-            if(mobileMenu.classList.contains('active')) {
-                hamburgerBtn.textContent = '✕';
-            } else {
-                hamburgerBtn.textContent = '☰';
-            }
+            hamburgerBtn.textContent = mobileMenu.classList.contains('active') ? '✕' : '☰';
         });
     </script>
+
 </body>
 </html>
