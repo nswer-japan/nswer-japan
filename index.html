@@ -154,7 +154,7 @@
             padding: 15px 0;
             border-bottom: 1px solid var(--border-color);
             font-weight: 700;
-            font-size: 1.1em;
+            font-size: 1.05em;
             color: var(--text-color);
             transition: color 0.3s;
         }
@@ -209,7 +209,6 @@
             .section-title { font-size: 2.2em; }
         }
 
-        /* HERO */
         .hero {
             display: grid;
             grid-template-columns: 1fr;
@@ -334,7 +333,6 @@
             }
         }
 
-        /* SUPPORT GUIDE */
         .support-guide {
             margin-bottom: 50px;
         }
@@ -377,7 +375,6 @@
             }
         }
 
-        /* FOLLOW LINKS */
         .follow-section {
             margin-top: 60px;
         }
@@ -452,6 +449,7 @@
 
             <ul class="nav-links">
                 <li><a href="index.html">HOME</a></li>
+                <li><a href="music.html">MUSIC</a></li>
                 <li><a href="wins.html">音楽番組1位</a></li>
                 <li><a href="hanteo.html">ハントチャート</a></li>
                 <li><a href="melon.html">Melon</a></li>
@@ -466,6 +464,7 @@
 
     <nav class="mobile-menu" id="mobileMenu">
         <a href="index.html">🏠 HOME</a>
+        <a href="music.html">🎵 MUSIC</a>
         <a href="wins.html">🏆 音楽番組1位 まとめ</a>
         <a href="hanteo.html">💿 ハントチャート記録</a>
         <a href="melon.html">🎧 Melonチャート記録</a>
@@ -526,11 +525,11 @@
         <section class="support-guide">
             <h2 class="section-title">SUPPORT GUIDE</h2>
             <div class="guide-grid">
-                <div class="guide-card">
+                <a href="music.html" class="guide-card">
                     <i class="fa-solid fa-circle-play"></i>
                     <h3>Streaming</h3>
-                    <p>MV再生や音源ストリーミングなど、今できる応援を確認しましょう。</p>
-                </div>
+                    <p>MV再生や音源ストリーミング、配信サイトの情報をまとめています。</p>
+                </a>
                 <div class="guide-card">
                     <i class="fa-solid fa-square-poll-vertical"></i>
                     <h3>Voting</h3>
@@ -641,12 +640,7 @@
 
         hamburgerBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('active');
-
-            if (mobileMenu.classList.contains('active')) {
-                hamburgerBtn.textContent = '✕';
-            } else {
-                hamburgerBtn.textContent = '☰';
-            }
+            hamburgerBtn.textContent = mobileMenu.classList.contains('active') ? '✕' : '☰';
         });
     </script>
 </body>
