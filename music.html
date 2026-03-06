@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music | NSWER JAPAN</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #f4f4f9;
+            --text-color: #333333;
+            --card-bg: #ffffff;
+            --header-bg: rgba(255, 255, 255, 0.95);
+            --border-color: #dddddd;
+            --primary-color: #ff007f;
+            --secondary-color: #b388ff;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #0d0d1a;
+            --text-color: #ffffff;
+            --card-bg: #1a1a2e;
+            --header-bg: rgba(26, 26, 46, 0.95);
+            --border-color: #33334d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            border-bottom: 2px solid var(--primary-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: 900;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: none;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            font-weight: 700;
+            font-size: 0.95em;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-tools {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 2px solid var(--secondary-color);
+            color: var(--text-color);
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.8em;
+        }
+
+        .hamburger {
+            display: block;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.8em;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 250px;
+            height: 100vh;
+            background-color: var(--card-bg);
+            border-left: 2px solid var(--primary-color);
+            box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+            transition: right 0.4s ease;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            padding: 80px 20px 20px 20px;
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu a {
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 700;
+            font-size: 1.05em;
+            color: var(--text-color);
+        }
+
+        @media (min-width: 768px) {
+            .hamburger { display: none; }
+            .nav-links { display: flex; }
+            .mobile-menu { display: none; }
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            font-weight: 900;
+            margin-bottom: 20px;
+            border-left: 5px solid var(--primary-color);
+            padding-left: 10px;
+        }
+
+        .album-hero {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            align-items: center;
+            margin-bottom: 40px;
+            padding: 24px;
+            background: linear-gradient(135deg, rgba(255, 0, 127, 0.12), rgba(179, 136, 255, 0.12));
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+        }
+
+        .album-cover img {
+            width: 100%;
+            max-width: 380px;
+            display: block;
+            margin: 0 auto;
+            border-radius: 18px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+        }
+
+        .album-info h1 {
+            font-size: 2.4em;
+            line-height: 1.1;
+            margin-bottom: 12px;
+        }
+
+        .album-info p {
+            opacity: 0.95;
+            margin-bottom: 18px;
+        }
+
+        .platform-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .platform-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 18px;
+            border-radius: 999px;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            font-weight: 700;
+            transition: transform 0.3s, border-color 0.3s, color 0.3s;
+        }
+
+        .platform-btn:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 22px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            margin-bottom: 28px;
+        }
+
+        .track-list {
+            list-style: none;
+            display: grid;
+            gap: 12px;
+        }
+
+        .track-list li {
+            padding: 14px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            background: rgba(255,255,255,0.03);
+            font-weight: 700;
+        }
+
+        .track-number {
+            color: var(--primary-color);
+            margin-right: 8px;
+        }
+
+        .mv-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .mv-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 18px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .history-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .history-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+        }
+
+        .history-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(255, 0, 127, 0.3);
+            border-color: var(--primary-color);
+        }
+
+        .history-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .history-card .meta {
+            font-size: 0.9em;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+
+        @media (min-width: 768px) {
+            .album-hero {
+                grid-template-columns: 0.9fr 1.1fr;
+                padding: 32px;
+            }
+
+            .album-info h1 {
+                font-size: 3em;
+            }
+
+            .history-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body data-theme="dark">
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">NSWER JAPAN</a>
+
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="music.html">MUSIC</a></li>
+                <li><a href="wins.html">音楽番組1位</a></li>
+                <li><a href="hanteo.html">ハントチャート</a></li>
+                <li><a href="melon.html">Melon</a></li>
+            </ul>
+
+            <div class="nav-tools">
+                <button class="theme-toggle" id="themeToggle">🌙 / ☀️</button>
+                <button class="hamburger" id="hamburger">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <nav class="mobile-menu" id="mobileMenu">
+        <a href="index.html">🏠 HOME</a>
+        <a href="music.html">🎵 MUSIC</a>
+        <a href="wins.html">🏆 音楽番組1位 まとめ</a>
+        <a href="hanteo.html">💿 ハントチャート記録</a>
+        <a href="melon.html">🎧 Melonチャート記録</a>
+    </nav>
+
+    <div class="container">
+
+        <section class="album-hero">
+            <div class="album-cover">
+                <img src="images/bluevalentine.jpg" alt="NMIXX Blue Valentine Album">
+            </div>
+
+            <div class="album-info">
+                <p class="section-title" style="margin-bottom:16px;">LATEST ALBUM</p>
+                <h1>Blue Valentine</h1>
+                <p>
+                    NMIXXの1st Full Album「Blue Valentine」。<br>
+                    収録曲と配信サイトをまとめています。
+                </p>
+
+                <!-- ここに配信URLを入れる -->
+                <div class="platform-links">
+                    <a href="YOUR_SPOTIFY_URL" class="platform-btn" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-spotify"></i> Spotify</a>
+                    <a href="YOUR_APPLE_MUSIC_URL" class="platform-btn" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-apple"></i> Apple Music</a>
+                    <a href="YOUR_LINE_MUSIC_URL" class="platform-btn" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-music"></i> LINE MUSIC</a>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">TRACK LIST</h2>
+            <div class="card">
+                <ol class="track-list">
+                    <li><span class="track-number">01.</span> Blue Valentine</li>
+                    <li><span class="track-number">02.</span> SPINNIN'ON IT</li>
+                    <li><span class="track-number">03.</span> Phoenix</li>
+                    <li><span class="track-number">04.</span> Reality Hurts</li>
+                    <li><span class="track-number">05.</span> RICO</li>
+                    <li><span class="track-number">06.</span> Game Face</li>
+                    <li><span class="track-number">07.</span> PODIUM</li>
+                    <li><span class="track-number">08.</span> Crush On You</li>
+                    <li><span class="track-number">09.</span> ADORE U</li>
+                    <li><span class="track-number">10.</span> Shape Of Love</li>
+                    <li><span class="track-number">11.</span> O.O Part1(Baila)</li>
+                    <li><span class="track-number">12.</span> O.O Part2(Superhero)</li>
+                </ol>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">WATCH & LISTEN</h2>
+            <div class="card">
+                <!-- ここにMV系URLを入れる -->
+                <div class="mv-links">
+                    <a href="YOUR_MV_URL" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i> MV</a>
+                    <a href="YOUR_PERFORMANCE_VIDEO_URL" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i> Performance Video</a>
+                    <a href="YOUR_HIGHLIGHT_MEDLEY_URL" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i> Highlight Medley</a>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2 class="section-title">DISCOGRAPHY</h2>
+            <div class="history-grid">
+                <div class="history-card">
+                    <h3>AD MARE</h3>
+                    <p class="meta">1st Single · 2022.02.22</p>
+                    <p>占 (TANK) / O.O</p>
+                </div>
+
+                <div class="history-card">
+                    <h3>ENTWURF</h3>
+                    <p class="meta">2nd Single · 2022.09.19</p>
+                    <p>DICE / COOL (Your rainbow)</p>
+                </div>
+
+                <div class="history-card">
+                    <h3>Funky Glitter Christmas</h3>
+                    <p class="meta">Intermixxion Single · 2022.11.23</p>
+                    <p>Funky Glitter Christmas</p>
+                </div>
+
+                <div class="history-card">
+                    <h3>expérgo</h3>
+                    <p class="meta">1st Mini Album · 2023.03.20</p>
+                    <p>Young, Dumb, Stupid / Love Me Like This / PAXXWORD / Just Did It / My Gosh / HOME</p>
+                </div>
+
+                <div class="history-card">
+                    <h3>A Midsummer NMIXX's Dream</h3>
+                    <p class="meta">3rd Single · 2023.07.11</p>
+                    <p>Party O'Clock / Roller Coaster</p>
+                </div>
+
+                <div class="history-card">
+                    <h3>Fe3O4: BREAK</h3>
+                    <p class="meta">2nd Mini Album · 2024.01.15</p>
+                    <p>DASH / Soñar (Breaker) / Run For Roses / BOOM / Passionfruit / XOXO / Break The Wall</p>
+                </div>
+
+                <div class="history-card">
+                    <h3>Fe3O4: STICK OUT</h3>
+                    <p class="meta">3rd Mini Album · 2024.08.19</p>
+                    <p>作品情報まとめを今後追加予定</p>
+                </div>
+
+                <div class="history-card">
+                    <h3>Fe3O4: FORWORD</h3>
+                    <p class="meta">4th Mini Album · 2025.03.17</p>
+                    <p>作品情報まとめを今後追加予定</p>
+                </div>
+
+                <div class="history-card">
+                    <h3>Blue Valentine</h3>
+                    <p class="meta">1st Full Album · 2025.10.13</p>
+                    <p>最新アルバム。収録曲・配信リンクを掲載中</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const body = document.body;
+
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            body.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark');
+        });
+
+        const hamburgerBtn = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        hamburgerBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            hamburgerBtn.textContent = mobileMenu.classList.contains('active') ? '✕' : '☰';
+        });
+    </script>
+</body>
+</html>
