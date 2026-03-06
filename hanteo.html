@@ -4,178 +4,98 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ハントチャート記録 | NSWER JAPAN</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
     
     <style>
-        /* 基本設定 */
-        body {
-            font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
-            background-color: #0d0d1a;
-            color: #ffffff;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
+        /* 全ページ共通設定 */
+        :root {
+            --bg-color: #f4f4f9; --text-color: #333333; --card-bg: #ffffff;
+            --header-bg: rgba(255, 255, 255, 0.95); --border-color: #dddddd;
+            --primary-color: #ff007f; --secondary-color: #b388ff;
+        }
+        [data-theme="dark"] {
+            --bg-color: #0d0d1a; --text-color: #ffffff; --card-bg: #1a1a2e;
+            --header-bg: rgba(26, 26, 46, 0.95); --border-color: #33334d;
         }
 
-        /* サブページ用のヘッダー */
-        header {
-            background-color: #1a1a2e;
-            padding: 40px 20px;
-            text-align: center;
-            border-bottom: 2px solid #ff007f;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Montserrat', 'Noto Sans JP', sans-serif; background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; transition: background-color 0.3s, color 0.3s; }
+        a { text-decoration: none; color: inherit; }
+
+        /* ナビゲーション */
+        header { background-color: var(--header-bg); border-bottom: 2px solid var(--primary-color); position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.3); backdrop-filter: blur(5px); }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; padding: 15px 20px; max-width: 1200px; margin: 0 auto; }
+        .logo { font-size: 1.5em; font-weight: 900; letter-spacing: 1px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-links { display: none; list-style: none; gap: 25px; }
+        .nav-links a { font-weight: 700; font-size: 0.95em; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--primary-color); }
+        .nav-tools { display: flex; align-items: center; gap: 15px; }
+        .theme-toggle { background: none; border: 2px solid var(--secondary-color); color: var(--text-color); padding: 5px 10px; border-radius: 5px; cursor: pointer; font-weight: bold; font-size: 0.8em; }
+        .hamburger { display: block; background: none; border: none; color: var(--text-color); font-size: 1.8em; cursor: pointer; z-index: 1001; }
+
+        /* スライドメニュー */
+        .mobile-menu { position: fixed; top: 0; right: -100%; width: 250px; height: 100vh; background-color: var(--card-bg); border-left: 2px solid var(--primary-color); box-shadow: -5px 0 15px rgba(0,0,0,0.5); transition: right 0.4s ease; z-index: 999; display: flex; flex-direction: column; padding: 80px 20px 20px 20px; }
+        .mobile-menu.active { right: 0; }
+        .mobile-menu a { padding: 15px 0; border-bottom: 1px solid var(--border-color); font-weight: 700; font-size: 1.1em; transition: color 0.3s; }
+        .mobile-menu a:hover { color: var(--primary-color); }
+
+        @media (min-width: 768px) { .hamburger { display: none; } .nav-links { display: flex; } .mobile-menu { display: none; } }
+
+        /* コンテンツ・表の設定 */
+        .container { max-width: 1200px; margin: 0 auto; padding: 50px 20px; }
+        .page-title { font-size: 2.2em; font-weight: 900; text-align: center; margin-bottom: 10px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .page-desc { text-align: center; margin-bottom: 40px; font-weight: 700; color: var(--text-color); opacity: 0.8; }
+
+        .table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 50px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); border: 1px solid var(--border-color); }
+        table { width: 100%; min-width: 950px; border-collapse: collapse; background-color: var(--card-bg); }
+        th, td { padding: 15px 10px; text-align: center; border-bottom: 1px solid var(--border-color); vertical-align: middle; }
+        th { background-color: var(--bg-color); color: var(--primary-color); font-weight: 900; font-size: 1.05em; white-space: nowrap; }
         
-        header h1 {
-            font-size: 2.5em;
-            margin: 0;
-            font-weight: 900;
-            letter-spacing: 2px;
-            background: linear-gradient(135deg, #ff007f, #b388ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        header p {
-            margin-top: 10px;
-            color: #cccccc;
-            font-size: 1.1em;
-            font-weight: 700;
-        }
+        .jacket-col { width: 80px; }
+        .jacket-img { width: 60px; height: 60px; border-radius: 5px; object-fit: cover; box-shadow: 0 2px 8px rgba(0,0,0,0.2); }
+        td.album-col { text-align: left; font-weight: bold; color: var(--text-color); }
+        td.title-col { font-weight: 900; color: var(--primary-color); }
+        tr:hover td { background-color: var(--bg-color); }
 
-        .container {
-            max-width: 1200px; /* 画像列が増えたのでさらに幅を広げました */
-            margin: 0 auto;
-            padding: 50px 20px;
-        }
-
-        /* PC用：横スクロールはさせず、綺麗に収める */
-        .table-wrap {
-            width: 100%;
-            margin-bottom: 50px;
-        }
-
-        /* 記録を見やすくする「表」のデザイン（PC用） */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background-color: #1a1a2e;
-            border-radius: 10px;
-            overflow: hidden; 
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-        
-        th, td {
-            padding: 15px 10px; /* 隙間を少し詰めました */
-            text-align: center; 
-            border-bottom: 1px solid #33334d;
-            vertical-align: middle; /* 画像と文字を中央寄せに */
-        }
-        
-        th {
-            background-color: #2a2a4a;
-            color: #b388ff;
-            font-weight: 900;
-            font-size: 1.05em;
-            white-space: nowrap; 
-        }
-
-        /* ▼ 追加：アルバム画像の列（PC用） ▼ */
-        .jacket-col {
-            width: 80px; /* 画像の列の幅を固定 */
-        }
-        .jacket-img {
-            width: 60px; /* 画像自体の大きさを固定 */
-            height: 60px;
-            border-radius: 5px; /* 角を少し丸く */
-            object-fit: cover; /* 正方形に綺麗に収める */
-            box-shadow: 0 2px 8px rgba(0,0,0,0.5);
-        }
-
-        td.album-col {
-            text-align: left;
-            font-weight: bold;
-            color: #ffffff;
-        }
-
-        td.title-col {
-            font-weight: 900;
-            color: #ff007f;
-        }
-
-        tr:hover td {
-            background-color: #22223b;
-        }
-
-        /* トップへ戻るボタン */
-        .back-btn {
-            display: inline-block;
-            background-color: transparent;
-            border: 2px solid #b388ff;
-            color: #ffffff;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: 700;
-            transition: all 0.3s ease;
-        }
-        
-        .back-btn:hover {
-            background-color: #ff007f;
-            border-color: #ff007f;
-            box-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
-        }
-
-        /* スマホ画面 (768px以下) の時だけの特別ルール */
         @media (max-width: 768px) {
-            header {
-                padding: 30px 15px;
-            }
-            header h1 {
-                font-size: 1.8em; 
-                letter-spacing: 1px;
-            }
-            header p {
-                font-size: 0.85em; 
-            }
-            .container {
-                padding: 30px 15px; 
-            }
-            /* スマホの時だけ横スクロールを許可する */
-            .table-wrap {
-                overflow-x: auto; 
-                -webkit-overflow-scrolling: touch; 
-                border-radius: 10px;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            }
-            table {
-                min-width: 950px; /* 画像が増えたので最低幅を広げました */
-                box-shadow: none; 
-            }
-            th, td {
-                padding: 10px 8px; 
-                font-size: 0.9em; 
-            }
-            /* スマホ時、画像列の幅を少し広く */
-            .jacket-col {
-                width: 70px;
-            }
-            .jacket-img {
-                width: 50px;
-                height: 50px;
-            }
+            th, td { padding: 10px 8px; font-size: 0.9em; }
+            .jacket-col { width: 70px; }
+            .jacket-img { width: 50px; height: 50px; }
         }
     </style>
 </head>
-<body>
+<body data-theme="dark">
 
     <header>
-        <h1>Hanteo Chart Record</h1>
-        <p>韓国のアルバム販売量集計「ハントチャート」におけるNMIXXの記録</p>
+        <div class="nav-container">
+            <a href="index.html" class="logo">NSWER JAPAN</a>
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="wins.html">音楽番組1位</a></li>
+                <li><a href="hanteo.html">ハントチャート</a></li>
+                <li><a href="melon.html">Melon</a></li>
+            </ul>
+            <div class="nav-tools">
+                <button class="theme-toggle" id="themeToggle">🌙 / ☀️</button>
+                <button class="hamburger" id="hamburger">☰</button>
+            </div>
+        </div>
     </header>
 
+    <nav class="mobile-menu" id="mobileMenu">
+        <a href="index.html">🏠 HOME</a>
+        <a href="wins.html">🏆 音楽番組1位 まとめ</a>
+        <a href="hanteo.html">💿 ハントチャート記録</a>
+        <a href="melon.html">🎧 Melonチャート記録</a>
+    </nav>
+
     <div class="container">
+        <h1 class="page-title">Hanteo Chart Record</h1>
+        <p class="page-desc">韓国のアルバム販売量集計「ハントチャート」におけるNMIXXの記録</p>
+
         <div class="table-wrap">
             <table>
                 <tr>
@@ -252,11 +172,24 @@
                 </tr>
             </table>
         </div>
-
-        <div style="text-align: center;">
-            <a href="index.html" class="back-btn">← トップページに戻る</a>
-        </div>
     </div>
 
+    <script>
+        const themeToggleBtn = document.getElementById('themeToggle');
+        const body = document.body;
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            if (currentTheme === 'dark') body.setAttribute('data-theme', 'light');
+            else body.setAttribute('data-theme', 'dark');
+        });
+
+        const hamburgerBtn = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        hamburgerBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            if(mobileMenu.classList.contains('active')) hamburgerBtn.textContent = '✕';
+            else hamburgerBtn.textContent = '☰';
+        });
+    </script>
 </body>
 </html>
