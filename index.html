@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NSWER JAPAN | NMIXX Fan Site</title>
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <style>
-        /* CSS変数（ダーク/ライト切替用） */
         :root {
             --bg-color: #f4f4f9;
             --text-color: #333333;
@@ -29,7 +29,15 @@
             --border-color: #33334d;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
@@ -38,7 +46,11 @@
             line-height: 1.6;
             transition: background-color 0.3s, color 0.3s;
         }
-        a { text-decoration: none; color: inherit; }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
 
         .container {
             width: 90%;
@@ -47,15 +59,14 @@
             padding: 40px 0;
         }
 
-        /* ▼▼▼ 共通ヘッダー（全ページで使えるナビゲーション） ▼▼▼ */
         header {
             background-color: var(--header-bg);
             border-bottom: 2px solid var(--primary-color);
-            position: sticky; /* スクロールしても上部に追従する魔法 */
+            position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            backdrop-filter: blur(5px); /* 背景を少しぼかすオシャレ効果 */
+            backdrop-filter: blur(5px);
         }
 
         .nav-container {
@@ -76,9 +87,8 @@
             -webkit-text-fill-color: transparent;
         }
 
-        /* PC用 横並びメニュー */
         .nav-links {
-            display: none; /* スマホでは隠す */
+            display: none;
             list-style: none;
             gap: 25px;
         }
@@ -93,7 +103,6 @@
             color: var(--primary-color);
         }
 
-        /* 右上のボタン群 */
         .nav-tools {
             display: flex;
             align-items: center;
@@ -112,34 +121,33 @@
         }
 
         .hamburger {
-            display: block; /* スマホでは表示 */
+            display: block;
             background: none;
             border: none;
             color: var(--text-color);
             font-size: 1.8em;
             cursor: pointer;
-            z-index: 1001; /* メニューより上に表示 */
+            z-index: 1001;
         }
 
-        /* スマホ用 横スライドメニュー */
         .mobile-menu {
             position: fixed;
             top: 0;
-            right: -100%; /* 初期状態は画面の右外に隠しておく */
+            right: -100%;
             width: 250px;
             height: 100vh;
             background-color: var(--card-bg);
             border-left: 2px solid var(--primary-color);
             box-shadow: -5px 0 15px rgba(0,0,0,0.5);
-            transition: right 0.4s ease; /* スッ…と滑らかに出る魔法 */
+            transition: right 0.4s ease;
             z-index: 999;
             display: flex;
             flex-direction: column;
-            padding: 80px 20px 20px 20px; /* 上にヘッダー分の余白をあける */
+            padding: 80px 20px 20px 20px;
         }
 
         .mobile-menu.active {
-            right: 0; /* クラスがついたら画面内に入ってくる */
+            right: 0;
         }
 
         .mobile-menu a {
@@ -155,16 +163,12 @@
             color: var(--primary-color);
         }
 
-        /* PC画面向け (768px以上) */
         @media (min-width: 768px) {
-            .hamburger { display: none; } /* PCではハンバーガーボタンを消す */
-            .nav-links { display: flex; } /* PCでは横並びメニューを表示 */
-            .mobile-menu { display: none; } /* PCではスライドメニューを無効化 */
+            .hamburger { display: none; }
+            .nav-links { display: flex; }
+            .mobile-menu { display: none; }
         }
 
-        /* ==========================================
-           コンテンツデザイン (index.html用)
-        ========================================== */
         .section-title {
             font-size: 1.8em;
             font-weight: 900;
@@ -183,9 +187,9 @@
         .card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 10px;
+            border-radius: 14px;
             padding: 20px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
             box-shadow: 0 4px 6px rgba(0,0,0,0.2);
         }
 
@@ -195,11 +199,248 @@
             border-color: var(--primary-color);
         }
 
-        .card h3 { color: var(--primary-color); margin-bottom: 10px; }
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
 
         @media (min-width: 768px) {
             .card-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
             .section-title { font-size: 2.2em; }
+        }
+
+        /* HERO */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            align-items: center;
+            margin-bottom: 50px;
+            padding: 24px;
+            background: linear-gradient(135deg, rgba(255, 0, 127, 0.12), rgba(179, 136, 255, 0.12));
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.18);
+        }
+
+        .hero-text {
+            order: 2;
+        }
+
+        .hero-kicker {
+            display: inline-block;
+            margin-bottom: 10px;
+            padding: 6px 12px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid var(--border-color);
+            color: var(--secondary-color);
+            font-size: 0.8em;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+        }
+
+        .hero h1 {
+            font-size: 2.3em;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 14px;
+        }
+
+        .hero-description {
+            font-size: 1em;
+            color: var(--text-color);
+            opacity: 0.95;
+            margin-bottom: 20px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 20px;
+            border-radius: 999px;
+            font-weight: 700;
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            box-shadow: 0 6px 14px rgba(255, 0, 127, 0.25);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+        }
+
+        .hero-image {
+            order: 1;
+        }
+
+        .hero-image-wrap {
+            position: relative;
+            max-width: 420px;
+            margin: 0 auto;
+        }
+
+        .hero-image img {
+            width: 100%;
+            display: block;
+            border-radius: 18px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+        }
+
+        .image-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #111;
+            padding: 8px 12px;
+            border-radius: 999px;
+            font-size: 0.8em;
+            font-weight: 700;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        @media (min-width: 768px) {
+            .hero {
+                grid-template-columns: 1.1fr 0.9fr;
+                gap: 36px;
+                padding: 32px;
+            }
+
+            .hero-text {
+                order: 1;
+            }
+
+            .hero-image {
+                order: 2;
+            }
+
+            .hero h1 {
+                font-size: 3em;
+            }
+        }
+
+        /* SUPPORT GUIDE */
+        .support-guide {
+            margin-bottom: 50px;
+        }
+
+        .guide-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .guide-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 22px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(255, 0, 127, 0.3);
+            border-color: var(--primary-color);
+        }
+
+        .guide-card i {
+            font-size: 1.6em;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+        }
+
+        .guide-card h3 {
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        @media (min-width: 768px) {
+            .guide-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* FOLLOW LINKS */
+        .follow-section {
+            margin-top: 60px;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .social-group {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 24px 16px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+        }
+
+        .social-group h3 {
+            margin-bottom: 14px;
+            color: var(--primary-color);
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 18px;
+            font-size: 28px;
+        }
+
+        .social-icons a {
+            width: 52px;
+            height: 52px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+            transition: transform 0.3s, color 0.3s, border-color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+            transform: scale(1.12);
+        }
+
+        @media (min-width: 768px) {
+            .social-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0 10px;
+            opacity: 0.8;
+            font-size: 0.95em;
         }
     </style>
 </head>
@@ -208,7 +449,7 @@
     <header>
         <div class="nav-container">
             <a href="index.html" class="logo">NSWER JAPAN</a>
-            
+
             <ul class="nav-links">
                 <li><a href="index.html">HOME</a></li>
                 <li><a href="wins.html">音楽番組1位</a></li>
@@ -229,7 +470,32 @@
         <a href="hanteo.html">💿 ハントチャート記録</a>
         <a href="melon.html">🎧 Melonチャート記録</a>
     </nav>
+
     <div class="container">
+
+        <section class="hero">
+            <div class="hero-text">
+                <p class="hero-kicker">LATEST RELEASE</p>
+                <h1>Blue Valentine</h1>
+                <p class="hero-description">
+                    最新アルバム「Blue Valentine」とともに、<br>
+                    日本からの応援をもっと大きく。
+                </p>
+
+                <div class="hero-buttons">
+                    <a href="#support" class="btn btn-primary">応援はこちら</a>
+                    <a href="#news" class="btn btn-secondary">最新情報を見る</a>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <div class="hero-image-wrap">
+                    <span class="image-badge">Latest Album</span>
+                    <img src="images/bluevalentine.jpg" alt="NMIXX Blue Valentine Album">
+                </div>
+            </div>
+        </section>
+
         <section id="news">
             <h2 class="section-title">NEWS</h2>
             <div class="card-grid">
@@ -248,8 +514,32 @@
             <h2 class="section-title">TODAY'S SUPPORT</h2>
             <div class="card-grid">
                 <div class="card">
-                    <h3>　公式X＆FC、FCモバイル開設！！　</h3>
-                    <p>　ついにNMIXXの公式X、FCが始まりました！！フォローしましょう！　</p>
+                    <h3>公式X＆FC、FCモバイル開設！！</h3>
+                    <p>
+                        ついにNMIXXの公式X、ファンクラブ、モバイルファンクラブがスタートしました！<br>
+                        ぜひフォロー＆チェックしましょう！
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="support-guide">
+            <h2 class="section-title">SUPPORT GUIDE</h2>
+            <div class="guide-grid">
+                <div class="guide-card">
+                    <i class="fa-solid fa-circle-play"></i>
+                    <h3>Streaming</h3>
+                    <p>MV再生や音源ストリーミングなど、今できる応援を確認しましょう。</p>
+                </div>
+                <div class="guide-card">
+                    <i class="fa-solid fa-square-poll-vertical"></i>
+                    <h3>Voting</h3>
+                    <p>音楽番組や各種アプリ投票の情報をまとめて、応援をもっとわかりやすく。</p>
+                </div>
+                <div class="guide-card">
+                    <i class="fa-solid fa-heart"></i>
+                    <h3>Support Together</h3>
+                    <p>日本のNSWERみんなで、できることを一つずつ重ねていきましょう。</p>
                 </div>
             </div>
         </section>
@@ -271,10 +561,69 @@
                 </a>
             </div>
         </section>
+
+        <section class="follow-section">
+            <h2 class="section-title">FOLLOW & OFFICIAL LINKS</h2>
+
+            <div class="social-grid">
+
+                <div class="social-group">
+                    <h3>NMIXX Official</h3>
+                    <div class="social-icons">
+                        <a href="https://x.com/NMIXX_official?s=20" target="_blank" rel="noopener noreferrer" aria-label="NMIXX Official X">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+                        <a href="https://x.com/WE_NMIXX?s=20" target="_blank" rel="noopener noreferrer" aria-label="WE NMIXX X">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+                        <a href="https://x.com/JYPJAPAN_NMIXX?s=20" target="_blank" rel="noopener noreferrer" aria-label="NMIXX Japan Official X">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+                        <a href="https://www.instagram.com/nmixx_official/" target="_blank" rel="noopener noreferrer" aria-label="NMIXX Official Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@nmixx_official" target="_blank" rel="noopener noreferrer" aria-label="NMIXX Official TikTok">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="social-group">
+                    <h3>Fanclub</h3>
+                    <div class="social-icons">
+                        <a href="https://nswerjapan.com/s/222/?ima=2215" target="_blank" rel="noopener noreferrer" aria-label="NSWER JAPAN Fanclub">
+                            <i class="fa-solid fa-users"></i>
+                        </a>
+                        <a href="https://m.nswerjapan.com/s/222m/?ima=2227" target="_blank" rel="noopener noreferrer" aria-label="NSWER JAPAN Mobile Fanclub">
+                            <i class="fa-solid fa-mobile-screen-button"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="social-group">
+                    <h3>NSWER JAPAN</h3>
+                    <div class="social-icons">
+                        <a href="https://x.com/nswer_japan?s=21&t=cefbantZvkczleeWudhJ6Q" target="_blank" rel="noopener noreferrer" aria-label="NSWER JAPAN X">
+                            <i class="fa-brands fa-x-twitter"></i>
+                        </a>
+                        <a href="https://www.instagram.com/nswer_japan?igsh=MWJ4OHMwY29lMWYyeA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="NSWER JAPAN Instagram">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://www.tiktok.com/@nswer.japan?_r=1&_t=ZS-94SsnUb8NTW" target="_blank" rel="noopener noreferrer" aria-label="NSWER JAPAN TikTok">
+                            <i class="fa-brands fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <footer>
+            <p>NSWER JAPAN | NMIXX Fan Site</p>
+        </footer>
     </div>
 
     <script>
-        // ダークモード切替
         const themeToggleBtn = document.getElementById('themeToggle');
         const body = document.body;
 
@@ -287,15 +636,13 @@
             }
         });
 
-        // スマホ用ハンバーガーメニューの開閉
         const hamburgerBtn = document.getElementById('hamburger');
         const mobileMenu = document.getElementById('mobileMenu');
 
         hamburgerBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active'); // メニューを出し入れする
-            
-            // アイコンを ☰ と ✕ で切り替える
-            if(mobileMenu.classList.contains('active')) {
+            mobileMenu.classList.toggle('active');
+
+            if (mobileMenu.classList.contains('active')) {
                 hamburgerBtn.textContent = '✕';
             } else {
                 hamburgerBtn.textContent = '☰';
@@ -304,4 +651,3 @@
     </script>
 </body>
 </html>
-
