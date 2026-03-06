@@ -18,6 +18,7 @@
             --line: #33334d;
             --pink: #ff007f;
             --purple: #b388ff;
+            --gold: #ffd700;
         }
 
         * {
@@ -207,6 +208,29 @@
             flex-wrap: wrap;
         }
 
+        .title-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 0.75em;
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: 0.02em;
+        }
+
+        .badge-gold {
+            background: rgba(255, 215, 0, 0.14);
+            color: var(--gold);
+            border: 1px solid rgba(255, 215, 0, 0.55);
+        }
+
+        .badge-pink {
+            background: rgba(255, 0, 127, 0.12);
+            color: #ff7abf;
+            border: 1px solid rgba(255, 0, 127, 0.45);
+        }
+
         .win-list {
             list-style: none;
             padding: 0;
@@ -214,9 +238,22 @@
         }
 
         .win-list li {
-            padding: 8px 0;
+            padding: 10px 0;
             border-bottom: 1px solid #2a2a4a;
-            font-size: 0.95em;
+            font-size: 0.96em;
+        }
+
+        .crown-tag {
+            display: inline-block;
+            margin-left: 8px;
+            padding: 3px 8px;
+            border-radius: 999px;
+            background: rgba(255, 215, 0, 0.12);
+            color: var(--gold);
+            border: 1px solid rgba(255, 215, 0, 0.45);
+            font-size: 0.75em;
+            font-weight: 900;
+            vertical-align: middle;
         }
 
         .video-container {
@@ -333,15 +370,21 @@
             <h2 class="year-title">2025 - 2026</h2>
 
             <div class="win-card">
-                <div class="song-title">👑 Blue Valentine (10冠)</div>
+                <div class="song-title">
+                    👑 Blue Valentine (10冠)
+                    <span class="title-badge badge-gold">TRIPLE CROWN ×2</span>
+                </div>
                 <ul class="win-list">
                     <li>10月22日: SHOW CHAMPION</li>
                     <li>10月23日: M COUNTDOWN</li>
                     <li>10月24日: Music Bank</li>
-                    <li>10月25日: ショー！音楽中心</li>
-                    <li>10月26日: 人気歌謡</li>
-                    <li>11月9日: 人気歌謡 (2回目)</li>
-                    <li>...他 合計10冠 (2026年1月2日 Music Bank含む)</li>
+                    <li>10月25日: ショー！音楽中心 <span class="crown-tag">トリプルクラウン対象</span></li>
+                    <li>10月26日: 人気歌謡 <span class="crown-tag">トリプルクラウン対象</span></li>
+                    <li>11月9日: 人気歌謡 <span class="crown-tag">トリプルクラウン対象</span></li>
+                    <li>11月15日: ショー！音楽中心 <span class="crown-tag">トリプルクラウン対象</span></li>
+                    <li>11月16日: 人気歌謡 <span class="crown-tag">トリプルクラウン達成</span></li>
+                    <li>11月22日: ショー！音楽中心 <span class="crown-tag">トリプルクラウン達成</span></li>
+                    <li>2026年1月2日: Music Bank</li>
                 </ul>
                 <div class="video-container">
                     <iframe src="https://www.youtube.com/embed/rKg9I4mVLVc" title="Blue Valentine Encore" frameborder="0" allowfullscreen></iframe>
@@ -393,7 +436,10 @@
         <div class="year-section">
             <h2 class="year-title">2023</h2>
             <div class="win-card">
-                <div class="song-title">Love Me Like This (1冠 - 初1位!)</div>
+                <div class="song-title">
+                    Love Me Like This (1冠 - 初1位!)
+                    <span class="title-badge badge-pink">FIRST WIN</span>
+                </div>
                 <ul class="win-list">
                     <li>3月29日: SHOW CHAMPION</li>
                 </ul>
