@@ -13,7 +13,6 @@
 :root{
 --bg:#0d0d1a;
 --card:#1a1a2e;
---card-2:#22223b;
 --text:#ffffff;
 --line:#33334d;
 --pink:#ff007f;
@@ -39,7 +38,7 @@ text-decoration:none;
 color:inherit;
 }
 
-/* ヘッダー */
+/* 共通ヘッダー */
 .site-header{
 background:#1a1a2e;
 border-bottom:2px solid var(--pink);
@@ -168,7 +167,7 @@ margin:0 auto;
 padding:40px 20px 50px;
 }
 
-/* サマリー */
+/* TOTAL */
 .summary-grid{
 display:grid;
 grid-template-columns:1fr;
@@ -177,17 +176,12 @@ margin-bottom:45px;
 }
 
 .summary-card{
-background:linear-gradient(135deg, rgba(255,0,127,0.10), rgba(179,136,255,0.10));
-border:1px solid var(--line);
+background:linear-gradient(135deg, rgba(255,215,0,0.08), rgba(255,0,127,0.08));
+border:1px solid rgba(255,215,0,0.35);
 border-radius:16px;
 padding:22px;
 box-shadow:0 6px 16px rgba(0,0,0,0.25);
 text-align:center;
-}
-
-.summary-card.total{
-border:1px solid rgba(255,215,0,0.35);
-background:linear-gradient(135deg, rgba(255,215,0,0.08), rgba(255,0,127,0.08));
 }
 
 .summary-label{
@@ -201,12 +195,9 @@ opacity:0.9;
 .summary-number{
 display:block;
 margin-top:8px;
-font-size:2.2em;
+font-size:1.9em;
 font-weight:900;
 line-height:1;
-}
-
-.summary-number.gold{
 color:var(--gold);
 }
 
@@ -215,12 +206,6 @@ display:block;
 margin-top:8px;
 font-size:0.9em;
 color:#cfcfe0;
-}
-
-@media (min-width:768px){
-.summary-grid{
-grid-template-columns:1.1fr repeat(4, 1fr);
-}
 }
 
 /* セクション */
@@ -297,6 +282,10 @@ color:var(--gold);
 font-weight:900;
 }
 
+.triple-line{
+white-space:normal;
+}
+
 .triple-badge{
 background:rgba(255,215,0,0.15);
 border:1px solid var(--gold);
@@ -304,8 +293,14 @@ padding:2px 8px;
 border-radius:20px;
 font-size:0.75em;
 margin-left:8px;
+display:inline-block;
+white-space:nowrap;
+vertical-align:middle;
+color:var(--gold);
+font-weight:900;
 }
 
+/* 動画 */
 .video-container{
 position:relative;
 padding-bottom:56.25%;
@@ -323,6 +318,7 @@ width:100%;
 height:100%;
 }
 
+/* 下部リンク */
 .page-links{
 display:flex;
 flex-wrap:wrap;
@@ -371,7 +367,7 @@ font-size:1.2em;
 }
 
 .summary-number{
-font-size:1.9em;
+font-size:1.75em;
 }
 
 .page-links{
@@ -421,34 +417,10 @@ text-align:center;
 <div class="container">
 
     <div class="summary-grid">
-        <div class="summary-card total">
+        <div class="summary-card">
             <span class="summary-label">TOTAL WINS</span>
-            <span class="summary-number gold">21</span>
-            <span class="summary-sub">現在このページに掲載中の総1位数</span>
-        </div>
-
-        <div class="summary-card">
-            <span class="summary-label">Blue Valentine</span>
-            <span class="summary-number">10</span>
-            <span class="summary-sub">WINS</span>
-        </div>
-
-        <div class="summary-card">
-            <span class="summary-label">KNOW ABOUT ME</span>
-            <span class="summary-number">3</span>
-            <span class="summary-sub">WINS</span>
-        </div>
-
-        <div class="summary-card">
-            <span class="summary-label">DASH</span>
-            <span class="summary-number">4</span>
-            <span class="summary-sub">WINS</span>
-        </div>
-
-        <div class="summary-card">
-            <span class="summary-label">See that?</span>
-            <span class="summary-number">3</span>
-            <span class="summary-sub">WINS</span>
+            <span class="summary-number">21</span>
+            <span class="summary-sub">NMIXX Music Show Wins</span>
         </div>
     </div>
 
@@ -469,16 +441,8 @@ text-align:center;
                 <li>10月26日: 人気歌謡</li>
                 <li>11月9日: 人気歌謡</li>
                 <li>11月15日: ショー！音楽中心</li>
-                <li>
-                    11月16日:
-                    <span class="triple">👑 人気歌謡</span>
-                    <span class="triple-badge">トリプルクラウン達成</span>
-                </li>
-                <li>
-                    11月22日:
-                    <span class="triple">👑 ショー！音楽中心</span>
-                    <span class="triple-badge">トリプルクラウン達成</span>
-                </li>
+                <li class="triple-line">11月16日: <span class="triple">👑 人気歌謡</span><span class="triple-badge">トリプルクラウン達成</span></li>
+                <li class="triple-line">11月22日: <span class="triple">👑 ショー！音楽中心</span><span class="triple-badge">トリプルクラウン達成</span></li>
                 <li>2026年1月2日: Music Bank</li>
             </ul>
 
