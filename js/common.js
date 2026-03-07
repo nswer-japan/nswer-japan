@@ -1,0 +1,1 @@
+document.addEventListener('DOMContentLoaded',()=>{const h=document.getElementById('hamburger');const m=document.getElementById('mobileMenu');if(h&&m){h.addEventListener('click',()=>{m.classList.toggle('active');h.textContent=m.classList.contains('active')?'✕':'☰';});}});
