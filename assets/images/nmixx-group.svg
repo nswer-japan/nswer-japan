@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="720" viewBox="0 0 1280 720">
-<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff4ca8"/><stop offset="100%" stop-color="#59b8ff"/></linearGradient></defs>
-<rect width="1280" height="720" rx="60" fill="#0b1020"/>
-<rect x="50" y="50" width="1180" height="620" rx="42" fill="url(#g)" opacity="0.95"/>
-<circle cx="1062" cy="129" r="86" fill="rgba(255,255,255,.16)"/>
-<circle cx="230" cy="561" r="57" fill="rgba(255,255,255,.12)"/>
-<text x="50%" y="47%" text-anchor="middle" font-family="Montserrat, Arial" font-size="64" font-weight="900" fill="#ffffff">NMIXX</text>
-<text x="50%" y="56%" text-anchor="middle" font-family="Noto Sans JP, Arial" font-size="25" font-weight="700" fill="#f1f4ff">group photo placeholder</text>
-</svg>
