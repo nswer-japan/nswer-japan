@@ -1,508 +1,69 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ハントチャート記録 | NSWER JAPAN</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
-
-    <style>
-        :root {
-            --bg-color: #f4f4f9;
-            --text-color: #333333;
-            --card-bg: #ffffff;
-            --header-bg: rgba(255, 255, 255, 0.95);
-            --border-color: #dddddd;
-            --primary-color: #ff007f;
-            --secondary-color: #b388ff;
-            --muted-color: #777777;
-        }
-
-        [data-theme="dark"] {
-            --bg-color: #0d0d1a;
-            --text-color: #ffffff;
-            --card-bg: #1a1a2e;
-            --header-bg: rgba(26, 26, 46, 0.95);
-            --border-color: #33334d;
-            --muted-color: #9a9aaa;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        header {
-            background-color: var(--header-bg);
-            border-bottom: 2px solid var(--primary-color);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            backdrop-filter: blur(5px);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            font-size: 1.5em;
-            font-weight: 900;
-            letter-spacing: 1px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-links {
-            display: none;
-            list-style: none;
-            gap: 25px;
-        }
-
-        .nav-links a {
-            font-weight: 700;
-            font-size: 0.95em;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active-link {
-            color: var(--primary-color);
-        }
-
-        .nav-tools {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .theme-toggle {
-            background: none;
-            border: 2px solid var(--secondary-color);
-            color: var(--text-color);
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 0.8em;
-        }
-
-        .hamburger {
-            display: block;
-            background: none;
-            border: none;
-            color: var(--text-color);
-            font-size: 1.8em;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 250px;
-            height: 100vh;
-            background-color: var(--card-bg);
-            border-left: 2px solid var(--primary-color);
-            box-shadow: -5px 0 15px rgba(0,0,0,0.5);
-            transition: right 0.4s ease;
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            padding: 80px 20px 20px 20px;
-        }
-
-        .mobile-menu.active {
-            right: 0;
-        }
-
-        .mobile-menu a {
-            padding: 15px 0;
-            border-bottom: 1px solid var(--border-color);
-            font-weight: 700;
-            font-size: 1.05em;
-            color: var(--text-color);
-        }
-
-        .mobile-menu a:hover {
-            color: var(--primary-color);
-        }
-
-        @media (min-width: 768px) {
-            .hamburger { display: none; }
-            .nav-links { display: flex; }
-            .mobile-menu { display: none; }
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px 50px;
-        }
-
-        .page-title {
-            font-size: 2.3em;
-            font-weight: 900;
-            text-align: center;
-            margin-bottom: 10px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .page-desc {
-            text-align: center;
-            margin-bottom: 35px;
-            font-weight: 700;
-            color: var(--text-color);
-            opacity: 0.8;
-        }
-
-        .table-wrap {
-            width: 100%;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
-            margin-bottom: 40px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
-            border: 1px solid var(--border-color);
-            background-color: var(--card-bg);
-        }
-
-        table {
-            width: 100%;
-            min-width: 950px;
-            border-collapse: collapse;
-            background-color: var(--card-bg);
-        }
-
-        th, td {
-            padding: 15px 10px;
-            text-align: center;
-            border-bottom: 1px solid var(--border-color);
-            vertical-align: middle;
-        }
-
-        th {
-            background-color: var(--bg-color);
-            color: var(--primary-color);
-            font-weight: 900;
-            font-size: 1.02em;
-            white-space: nowrap;
-            line-height: 1.4;
-        }
-
-        tbody tr:nth-child(even) td {
-            background-color: rgba(255,255,255,0.02);
-        }
-
-        tr:hover td {
-            background-color: var(--bg-color);
-        }
-
-        .jacket-col {
-            width: 80px;
-        }
-
-        .jacket-img {
-            width: 60px;
-            height: 60px;
-            border-radius: 6px;
-            object-fit: cover;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.25);
-        }
-
-        .album-col {
-            text-align: left;
-            font-weight: 700;
-            color: var(--text-color);
-            min-width: 210px;
-            line-height: 1.45;
-        }
-
-        .album-sub {
-            display: block;
-            font-size: 0.8em;
-            color: var(--muted-color);
-            font-weight: 700;
-            margin-top: 2px;
-        }
-
-        .title-col {
-            font-weight: 900;
-            color: var(--primary-color);
-            line-height: 1.4;
-            min-width: 140px;
-        }
-
-        .record-highlight {
-            color: #ffd700;
-            font-weight: bold;
-            font-size: 1.1em;
-        }
-
-        .record-note {
-            display: block;
-            font-size: 0.85em;
-            margin-top: 2px;
-            color: #ffd700;
-        }
-
-        .latest-note {
-            display: block;
-            font-size: 0.85em;
-            margin-top: 2px;
-            color: var(--primary-color);
-        }
-
-        .num {
-            font-variant-numeric: tabular-nums;
-            white-space: nowrap;
-            font-weight: 700;
-        }
-
-        .page-links {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 10px;
-        }
-
-        .back-btn {
-            display: inline-block;
-            background-color: transparent;
-            border: 2px solid var(--secondary-color);
-            color: var(--text-color);
-            padding: 14px 24px;
-            border-radius: 10px;
-            font-weight: 700;
-            transition: all 0.3s ease;
-        }
-
-        .back-btn:hover {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-            box-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 28px 14px 40px;
-            }
-
-            .page-title {
-                font-size: 1.8em;
-            }
-
-            .page-desc {
-                font-size: 0.92em;
-                margin-bottom: 28px;
-            }
-
-            th, td {
-                padding: 10px 8px;
-                font-size: 0.9em;
-            }
-
-            .jacket-col {
-                width: 70px;
-            }
-
-            .jacket-img {
-                width: 50px;
-                height: 50px;
-            }
-
-            .album-col {
-                min-width: 190px;
-            }
-
-            .page-links {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .back-btn {
-                width: 100%;
-                max-width: 260px;
-                text-align: center;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ハントチャート記録 | NSWER JAPAN</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body data-theme="dark">
-
-    <header>
-        <div class="nav-container">
-            <a href="index.html" class="logo">NSWER JAPAN</a>
-
-            <ul class="nav-links">
-                <li><a href="index.html">HOME</a></li>
-                <li><a href="music.html">MUSIC</a></li>
-                <li><a href="wins.html">音楽番組1位</a></li>
-                <li><a href="hanteo.html" class="active-link">ハントチャート</a></li>
-                <li><a href="melon.html">Melon</a></li>
-            </ul>
-
-            <div class="nav-tools">
-                <button class="theme-toggle" id="themeToggle">🌙 / ☀️</button>
-                <button class="hamburger" id="hamburger">☰</button>
-            </div>
-        </div>
-    </header>
-
-    <nav class="mobile-menu" id="mobileMenu">
-        <a href="index.html">🏠 HOME</a>
-        <a href="music.html">🎵 MUSIC</a>
-        <a href="wins.html">🏆 音楽番組1位 まとめ</a>
-        <a href="hanteo.html">💿 ハントチャート記録</a>
-        <a href="melon.html">🎧 Melonチャート記録</a>
+<body>
+<header class="site-header">
+  <div class="navbar">
+    <a href="index.html" class="logo">NSWER JAPAN</a>
+    <nav class="nav-links">
+      <a href="index.html">ホーム</a>
+      <div class="dropdown"><span class="dropdown-toggle">NMIXXについて</span><div class="dropdown-menu"><a href="about.html">NMIXXについて</a><a href="about-fanbase.html">NSWER JAPANについて</a></div></div>
+      <div class="dropdown"><span class="dropdown-toggle">音楽</span><div class="dropdown-menu"><a href="music.html">ディスコグラフィ</a></div></div>
+      <div class="dropdown"><span class="dropdown-toggle">応援ガイド</span><div class="dropdown-menu"><a href="support.html">応援ガイド</a><a href="apps.html">応援アプリ一覧</a><a href="vote-guide.html">投票券の集め方</a><a href="schedule.html">スケジュール</a><a href="fan-project.html">ファンプロジェクト</a></div></div>
+      <div class="dropdown"><span class="dropdown-toggle" style="color:var(--pink)">記録</span><div class="dropdown-menu"><a href="wins.html">音楽番組1位 獲得数</a><a href="hanteo.html">ハントチャート</a><a href="melon.html">Melonチャート</a></div></div>
+      <div class="dropdown"><span class="dropdown-toggle">リンク</span><div class="dropdown-menu"><a href="links.html">公式リンク</a><a href="contact.html">お問い合わせ</a></div></div>
     </nav>
-
-    <div class="container">
-        <h1 class="page-title">Hanteo Chart Record</h1>
-        <p class="page-desc">韓国のアルバム販売量集計「ハントチャート」におけるNMIXXの記録</p>
-
-        <div class="table-wrap">
-            <table>
-                <thead>
-                    <tr>
-                        <th>発売日</th>
-                        <th class="jacket-col">ジャケット</th>
-                        <th>アルバム名 (種類)</th>
-                        <th>タイトル曲</th>
-                        <th>初動枚数</th>
-                        <th>初週枚数</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><span class="num">2022/2/22</span></td>
-                        <td><img src="admare.jpg" alt="AD MARE" class="jacket-img"></td>
-                        <td class="album-col">AD MARE<span class="album-sub">1st シングル</span></td>
-                        <td class="title-col">O.O</td>
-                        <td><span class="num">20,300枚</span></td>
-                        <td><span class="num">227,399枚</span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="num">2022/9/19</span></td>
-                        <td><img src="entwurf.jpg" alt="ENTWURF" class="jacket-img"></td>
-                        <td class="album-col">ENTWURF<span class="album-sub">2nd シングル</span></td>
-                        <td class="title-col">DICE</td>
-                        <td><span class="num">250,661枚</span></td>
-                        <td><span class="num">442,207枚</span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="num">2023/3/20</span></td>
-                        <td><img src="expergo.jpg" alt="expérgo" class="jacket-img"></td>
-                        <td class="album-col">expérgo<span class="album-sub">1st ミニアルバム</span></td>
-                        <td class="title-col">Love Me Like This</td>
-                        <td><span class="num">405,580枚</span></td>
-                        <td><span class="num">630,811枚</span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="num">2023/7/11</span></td>
-                        <td><img src="midsummer.jpg" alt="A Midsummer NMIXX's Dream" class="jacket-img"></td>
-                        <td class="album-col">A Midsummer NMIXX's Dream<span class="album-sub">3rd シングル</span></td>
-                        <td class="title-col">
-                            Party O'Clock
-                            <span class="record-note">👑 歴代最高記録</span>
-                        </td>
-                        <td><span class="record-highlight">719,886枚</span></td>
-                        <td><span class="record-highlight">1,030,541枚</span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="num">2024/1/15</span></td>
-                        <td><img src="break.jpg" alt="Fe3O4: BREAK" class="jacket-img"></td>
-                        <td class="album-col">Fe3O4: BREAK<span class="album-sub">2nd ミニアルバム</span></td>
-                        <td class="title-col">DASH</td>
-                        <td><span class="num">127,908枚</span></td>
-                        <td><span class="num">618,550枚</span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="num">2024/8/19</span></td>
-                        <td><img src="stickout.jpg" alt="Fe3O4: STICK OUT" class="jacket-img"></td>
-                        <td class="album-col">Fe3O4: STICK OUT<span class="album-sub">3rd ミニアルバム</span></td>
-                        <td class="title-col">별별별 (See that?)</td>
-                        <td><span class="num">341,362枚</span></td>
-                        <td><span class="num">585,717枚</span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="num">2025/3/17</span></td>
-                        <td><img src="forward.jpg" alt="Fe3O4: FORWARD" class="jacket-img"></td>
-                        <td class="album-col">Fe3O4: FORWARD<span class="album-sub">4th ミニアルバム</span></td>
-                        <td class="title-col">KNOW ABOUT ME</td>
-                        <td><span class="num">435,914枚</span></td>
-                        <td><span class="num">702,876枚</span></td>
-                    </tr>
-                    <tr>
-                        <td><span class="num">2025/10/13</span></td>
-                        <td><img src="bluevalentine.jpg" alt="Blue Valentine" class="jacket-img"></td>
-                        <td class="album-col">Blue Valentine<span class="album-sub">1st フルアルバム</span></td>
-                        <td class="title-col">
-                            Blue Valentine
-                            <span class="latest-note">✨ 最新リリース</span>
-                        </td>
-                        <td><span class="num" style="color: var(--primary-color); font-weight: 900;">468,587枚</span></td>
-                        <td><span class="num" style="color: var(--primary-color); font-weight: 900;">644,865枚</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="page-links">
-            <a href="wins.html" class="back-btn">← 音楽番組1位</a>
-            <a href="index.html" class="back-btn">HOME</a>
-            <a href="melon.html" class="back-btn">Melon →</a>
-        </div>
-    </div>
-
-    <script>
-        const themeToggleBtn = document.getElementById('themeToggle');
-        const body = document.body;
-
-        themeToggleBtn.addEventListener('click', () => {
-            const currentTheme = body.getAttribute('data-theme');
-            if (currentTheme === 'dark') {
-                body.setAttribute('data-theme', 'light');
-            } else {
-                body.setAttribute('data-theme', 'dark');
-            }
-        });
-
-        const hamburgerBtn = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-
-        hamburgerBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-            hamburgerBtn.textContent = mobileMenu.classList.contains('active') ? '✕' : '☰';
-        });
-    </script>
+    <div class="hamburger" id="hamburger">☰</div>
+  </div>
+</header>
+<nav class="mobile-menu" id="mobileMenu">
+  <a href="index.html">ホーム</a>
+  <details class="mobile-group"><summary>NMIXXについて</summary><div class="mobile-submenu"><a href="about.html">NMIXXについて</a><a href="about-fanbase.html">NSWER JAPANについて</a></div></details>
+  <details class="mobile-group"><summary>音楽</summary><div class="mobile-submenu"><a href="music.html">ディスコグラフィ</a></div></details>
+  <details class="mobile-group"><summary>応援ガイド</summary><div class="mobile-submenu"><a href="support.html">応援ガイド</a><a href="apps.html">応援アプリ一覧</a><a href="vote-guide.html">投票券の集め方</a><a href="schedule.html">スケジュール</a><a href="fan-project.html">ファンプロジェクト</a></div></details>
+  <details class="mobile-group" open><summary>記録</summary><div class="mobile-submenu"><a href="wins.html">音楽番組1位 獲得数</a><a href="hanteo.html">ハントチャート</a><a href="melon.html">Melonチャート</a></div></details>
+  <details class="mobile-group"><summary>リンク</summary><div class="mobile-submenu"><a href="links.html">公式リンク</a><a href="contact.html">お問い合わせ</a></div></details>
+</nav>
+<main class="container">
+  <section class="page-header">
+    <h1>ハントチャート記録</h1>
+    <p>韓国のアルバム販売量集計「ハントチャート」におけるNMIXXの記録</p>
+  </section>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>発売日</th>
+          <th class="jacket-col">ジャケット</th>
+          <th>アルバム名 (種類)</th>
+          <th>タイトル曲</th>
+          <th>初動枚数</th>
+          <th>初週枚数</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td><span class="num">2022/2/22</span></td><td><img src="admare.jpg" alt="AD MARE" class="jacket-img"></td><td class="album-col">AD MARE<span class="album-sub">1st シングル</span></td><td class="title-col">O.O</td><td><span class="num">20,300枚</span></td><td><span class="num">227,399枚</span></td></tr>
+        <tr><td><span class="num">2022/9/19</span></td><td><img src="entwurf.jpg" alt="ENTWURF" class="jacket-img"></td><td class="album-col">ENTWURF<span class="album-sub">2nd シングル</span></td><td class="title-col">DICE</td><td><span class="num">250,661枚</span></td><td><span class="num">442,207枚</span></td></tr>
+        <tr><td><span class="num">2023/3/20</span></td><td><img src="expergo.jpg" alt="expérgo" class="jacket-img"></td><td class="album-col">expérgo<span class="album-sub">1st ミニアルバム</span></td><td class="title-col">Love Me Like This</td><td><span class="num">405,580枚</span></td><td><span class="num">630,811枚</span></td></tr>
+        <tr><td><span class="num">2023/7/11</span></td><td><img src="midsummer.jpg" alt="A Midsummer NMIXX's Dream" class="jacket-img"></td><td class="album-col">A Midsummer NMIXX's Dream<span class="album-sub">3rd シングル</span></td><td class="title-col">Party O'Clock<span class="record-note">👑 歴代最高記録</span></td><td><span class="record-highlight">719,886枚</span></td><td><span class="record-highlight">1,030,541枚</span></td></tr>
+        <tr><td><span class="num">2024/1/15</span></td><td><img src="break.jpg" alt="Fe3O4: BREAK" class="jacket-img"></td><td class="album-col">Fe3O4: BREAK<span class="album-sub">2nd ミニアルバム</span></td><td class="title-col">DASH</td><td><span class="num">127,908枚</span></td><td><span class="num">618,550枚</span></td></tr>
+        <tr><td><span class="num">2024/8/19</span></td><td><img src="stickout.jpg" alt="Fe3O4: STICK OUT" class="jacket-img"></td><td class="album-col">Fe3O4: STICK OUT<span class="album-sub">3rd ミニアルバム</span></td><td class="title-col">별별별 (See that?)</td><td><span class="num">341,362枚</span></td><td><span class="num">585,717枚</span></td></tr>
+        <tr><td><span class="num">2025/3/17</span></td><td><img src="forward.jpg" alt="Fe3O4: FORWARD" class="jacket-img"></td><td class="album-col">Fe3O4: FORWARD<span class="album-sub">4th ミニアルバム</span></td><td class="title-col">KNOW ABOUT ME</td><td><span class="num">435,914枚</span></td><td><span class="num">702,876枚</span></td></tr>
+        <tr><td><span class="num">2025/10/13</span></td><td><img src="bluevalentine.jpg" alt="Blue Valentine" class="jacket-img"></td><td class="album-col">Blue Valentine<span class="album-sub">1st フルアルバム</span></td><td class="title-col">Blue Valentine<span class="latest-note">✨ 最新リリース</span></td><td><span class="num" style="color:var(--pink);font-weight:900;">468,587枚</span></td><td><span class="num" style="color:var(--pink);font-weight:900;">644,865枚</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <footer><div>NSWER JAPAN</div><div>NMIXX Japanese Fanbase</div></footer>
+</main>
+<script src="assets/js/site.js"></script>
 </body>
 </html>
