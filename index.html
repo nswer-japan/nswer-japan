@@ -1,770 +1,757 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NSWER JAPAN | NMIXX Fan Site</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-    <style>
-        :root {
-            --bg-color: #f4f4f9;
-            --text-color: #333333;
-            --card-bg: #ffffff;
-            --header-bg: rgba(255, 255, 255, 0.95);
-            --border-color: #dddddd;
-            --primary-color: #ff007f;
-            --secondary-color: #b388ff;
-            --muted-color: #666666;
-        }
-
-        [data-theme="dark"] {
-            --bg-color: #0d0d1a;
-            --text-color: #ffffff;
-            --card-bg: #1a1a2e;
-            --header-bg: rgba(26, 26, 46, 0.95);
-            --border-color: #33334d;
-            --muted-color: #a7a7b8;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 0 60px;
-        }
-
-        /* Header */
-        header {
-            background-color: var(--header-bg);
-            border-bottom: 2px solid var(--primary-color);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.25);
-            backdrop-filter: blur(5px);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .logo {
-            font-size: 1.5em;
-            font-weight: 900;
-            letter-spacing: 1px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .nav-links {
-            display: none;
-            list-style: none;
-            gap: 22px;
-        }
-
-        .nav-links a {
-            font-weight: 700;
-            font-size: 0.95em;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active-link {
-            color: var(--primary-color);
-        }
-
-        .nav-tools {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .theme-toggle {
-            background: none;
-            border: 2px solid var(--secondary-color);
-            color: var(--text-color);
-            padding: 5px 10px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 0.8em;
-        }
-
-        .hamburger {
-            display: block;
-            background: none;
-            border: none;
-            color: var(--text-color);
-            font-size: 1.8em;
-            cursor: pointer;
-        }
-
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 260px;
-            height: 100vh;
-            background-color: var(--card-bg);
-            border-left: 2px solid var(--primary-color);
-            box-shadow: -5px 0 15px rgba(0,0,0,0.4);
-            transition: right 0.4s ease;
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            padding: 80px 20px 20px;
-        }
-
-        .mobile-menu.active {
-            right: 0;
-        }
-
-        .mobile-menu a {
-            padding: 15px 0;
-            border-bottom: 1px solid var(--border-color);
-            font-weight: 700;
-            font-size: 1.03em;
-        }
-
-        .mobile-menu a:hover {
-            color: var(--primary-color);
-        }
-
-        @media (min-width: 900px) {
-            .hamburger { display: none; }
-            .nav-links { display: flex; }
-            .mobile-menu { display: none; }
-        }
-
-        /* Generic */
-        .section {
-            margin-bottom: 55px;
-        }
-
-        .section-title {
-            font-size: 1.8em;
-            font-weight: 900;
-            margin-bottom: 20px;
-            border-left: 5px solid var(--primary-color);
-            padding-left: 12px;
-        }
-
-        .card-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        .card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 22px;
-            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-        }
-
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 18px rgba(255, 0, 127, 0.18);
-            border-color: var(--primary-color);
-        }
-
-        .card h3 {
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-
-        .muted {
-            color: var(--muted-color);
-        }
-
-        @media (min-width: 768px) {
-            .card-grid.two { grid-template-columns: repeat(2, 1fr); }
-            .card-grid.three { grid-template-columns: repeat(3, 1fr); }
-            .card-grid.four { grid-template-columns: repeat(4, 1fr); }
-            .section-title { font-size: 2.1em; }
-        }
-
-        /* Hero */
-        .hero {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 24px;
-            align-items: center;
-            margin-bottom: 55px;
-            padding: 24px;
-            background: linear-gradient(135deg, rgba(255, 0, 127, 0.12), rgba(179, 136, 255, 0.12));
-            border: 1px solid var(--border-color);
-            border-radius: 22px;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.18);
-        }
-
-        .hero-kicker {
-            display: inline-block;
-            margin-bottom: 10px;
-            padding: 6px 12px;
-            border-radius: 999px;
-            border: 1px solid var(--border-color);
-            color: var(--secondary-color);
-            font-size: 0.8em;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-        }
-
-        .hero h1 {
-            font-size: 2.3em;
-            line-height: 1.1;
-            margin-bottom: 14px;
-            font-weight: 900;
-        }
-
-        .hero-description {
-            margin-bottom: 18px;
-            opacity: 0.95;
-        }
-
-        .hero-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 20px;
-            border-radius: 999px;
-            font-weight: 700;
-            transition: transform 0.3s, opacity 0.3s;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: #fff;
-        }
-
-        .btn-secondary {
-            background: transparent;
-            border: 1px solid var(--border-color);
-        }
-
-        .hero-image-wrap {
-            position: relative;
-            max-width: 420px;
-            margin: 0 auto;
-        }
-
-        .hero-image-wrap img {
-            width: 100%;
-            display: block;
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.25);
-        }
-
-        .image-badge {
-            position: absolute;
-            top: 14px;
-            left: 14px;
-            background: rgba(255,255,255,0.9);
-            color: #111;
-            padding: 8px 12px;
-            border-radius: 999px;
-            font-size: 0.8em;
-            font-weight: 700;
-        }
-
-        @media (min-width: 850px) {
-            .hero {
-                grid-template-columns: 1.1fr 0.9fr;
-                padding: 32px;
-            }
-
-            .hero h1 {
-                font-size: 3em;
-            }
-        }
-
-        /* Stats */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 18px;
-        }
-
-        .stat-card {
-            background: linear-gradient(135deg, rgba(255,215,0,0.08), rgba(255,0,127,0.08));
-            border: 1px solid rgba(255,215,0,0.35);
-            border-radius: 16px;
-            padding: 22px;
-            text-align: center;
-        }
-
-        .stat-label {
-            font-size: 0.9em;
-            letter-spacing: 0.08em;
-            font-weight: 800;
-            color: #d8d8e6;
-        }
-
-        .stat-number {
-            display: block;
-            margin-top: 8px;
-            font-size: 1.9em;
-            font-weight: 900;
-            color: #ffd700;
-        }
-
-        .stat-sub {
-            margin-top: 8px;
-            font-size: 0.92em;
-            color: #cfcfe0;
-        }
-
-        /* Quick links */
-        .quick-link {
-            display: block;
-            text-align: center;
-            font-weight: 800;
-        }
-
-        .quick-link i {
-            font-size: 1.8em;
-            color: var(--primary-color);
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        /* Schedule */
-        .schedule-list {
-            list-style: none;
-        }
-
-        .schedule-list li {
-            padding: 12px 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .schedule-date {
-            font-weight: 900;
-            color: var(--primary-color);
-            margin-right: 10px;
-        }
-
-        /* Social */
-        .social-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 22px;
-        }
-
-        .social-group {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 22px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-        }
-
-        .social-group h3 {
-            color: var(--primary-color);
-            margin-bottom: 14px;
-        }
-
-        .icon-label-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 14px;
-        }
-
-        .social-link {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            padding: 14px 10px;
-            border-radius: 14px;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid var(--border-color);
-            transition: transform 0.3s, border-color 0.3s, color 0.3s;
-            text-align: center;
-        }
-
-        .social-link:hover {
-            color: var(--primary-color);
-            border-color: var(--primary-color);
-            transform: translateY(-3px);
-        }
-
-        .social-link i {
-            font-size: 28px;
-        }
-
-        .social-link span {
-            font-size: 0.84em;
-            font-weight: 700;
-            line-height: 1.35;
-        }
-
-        @media (min-width: 768px) {
-            .stats-grid { grid-template-columns: repeat(3, 1fr); }
-            .social-grid { grid-template-columns: repeat(3, 1fr); }
-            .icon-label-grid { grid-template-columns: repeat(3, 1fr); }
-        }
-
-        footer {
-            text-align: center;
-            padding: 10px 0 0;
-            opacity: 0.8;
-            font-size: 0.95em;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NSWER JAPAN | NMIXX Japanese Fanbase</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+:root{
+    --bg:#0d0d1a;
+    --card:#1a1a2e;
+    --border:#33334d;
+    --text:#ffffff;
+    --muted:#b8b8c7;
+    --pink:#ff007f;
+    --purple:#b388ff;
+    --gold:#ffd700;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    font-family:'Montserrat','Noto Sans JP',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.7;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+.container{
+    width:90%;
+    max-width:1100px;
+    margin:auto;
+    padding:56px 0 72px;
+}
+
+/* Header */
+header{
+    background:rgba(26,26,46,0.95);
+    border-bottom:2px solid var(--pink);
+    position:sticky;
+    top:0;
+    z-index:1000;
+    backdrop-filter:blur(6px);
+    box-shadow:0 4px 14px rgba(0,0,0,0.28);
+}
+
+.nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 20px;
+    max-width:1100px;
+    margin:auto;
+}
+
+.logo{
+    font-weight:900;
+    font-size:1.4em;
+    letter-spacing:.02em;
+    background:linear-gradient(135deg,var(--pink),var(--purple));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.nav-links{
+    display:none;
+    align-items:center;
+    gap:24px;
+}
+
+.nav-links > a,
+.dropdown-toggle{
+    font-weight:700;
+    font-size:.92em;
+    opacity:.95;
+    transition:color .25s ease, opacity .25s ease;
+    cursor:pointer;
+}
+
+.nav-links > a:hover,
+.dropdown-toggle:hover{
+    color:var(--pink);
+    opacity:1;
+}
+
+.dropdown{
+    position:relative;
+}
+
+.dropdown-toggle{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+}
+
+.dropdown-toggle::after{
+    content:"⌄";
+    font-size:.8em;
+    transform:translateY(-1px);
+    color:var(--muted);
+}
+
+.dropdown-menu{
+    position:absolute;
+    top:calc(100% + 14px);
+    left:0;
+    min-width:220px;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:8px;
+    box-shadow:0 14px 28px rgba(0,0,0,0.35);
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(6px);
+    transition:opacity .22s ease, transform .22s ease, visibility .22s ease;
+}
+
+.dropdown:hover .dropdown-menu{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+.dropdown-menu a{
+    display:block;
+    padding:11px 12px;
+    border-radius:10px;
+    font-size:.88em;
+    font-weight:700;
+    color:var(--text);
+    transition:background .2s ease, color .2s ease;
+}
+
+.dropdown-menu a:hover{
+    background:rgba(255,255,255,0.04);
+    color:var(--pink);
+}
+
+.hamburger{
+    font-size:1.65em;
+    cursor:pointer;
+    user-select:none;
+}
+
+.mobile-menu{
+    position:fixed;
+    top:0;
+    right:-100%;
+    width:270px;
+    height:100%;
+    background:var(--card);
+    border-left:2px solid var(--pink);
+    box-shadow:-8px 0 24px rgba(0,0,0,0.4);
+    transition:right .3s ease;
+    padding:84px 20px 24px;
+    z-index:999;
+    overflow-y:auto;
+}
+
+.mobile-menu.active{
+    right:0;
+}
+
+.mobile-menu a{
+    display:block;
+    padding:13px 0;
+    border-bottom:1px solid var(--border);
+    font-weight:700;
+}
+
+.mobile-group{
+    border-bottom:1px solid var(--border);
+    padding:4px 0;
+}
+
+.mobile-group summary{
+    list-style:none;
+    cursor:pointer;
+    padding:13px 0;
+    font-weight:700;
+}
+
+.mobile-group summary::-webkit-details-marker{
+    display:none;
+}
+
+.mobile-submenu{
+    padding:0 0 10px 12px;
+}
+
+.mobile-submenu a{
+    border-bottom:none;
+    padding:9px 0;
+    color:var(--muted);
+    font-size:.95em;
+}
+
+@media (min-width: 960px){
+    .nav-links{display:flex;}
+    .hamburger{display:none;}
+    .mobile-menu{display:none;}
+}
+
+/* Generic sections */
+.section{
+    margin-bottom:64px;
+}
+
+.section-title{
+    font-size:1.55em;
+    font-weight:900;
+    border-left:5px solid var(--pink);
+    padding-left:12px;
+    margin:0 0 22px;
+}
+
+/* Hero */
+.hero{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:28px;
+    align-items:center;
+    background:linear-gradient(135deg, rgba(255,0,127,0.10), rgba(179,136,255,0.10));
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:26px;
+    box-shadow:0 10px 28px rgba(0,0,0,0.22);
+}
+
+.hero-image{
+    max-width:340px;
+    margin:0 auto;
+}
+
+.hero-image img{
+    border-radius:18px;
+    box-shadow:0 14px 28px rgba(0,0,0,0.45);
+}
+
+.hero-kicker{
+    display:inline-block;
+    margin-bottom:10px;
+    padding:6px 12px;
+    border:1px solid var(--border);
+    border-radius:999px;
+    font-size:.78em;
+    font-weight:700;
+    color:var(--purple);
+    letter-spacing:.08em;
+}
+
+.hero h1{
+    margin:0 0 10px;
+    font-size:2.35em;
+    line-height:1.08;
+}
+
+.hero p{
+    margin:0;
+    color:var(--muted);
+    font-size:1em;
+}
+
+@media (min-width: 860px){
+    .hero{
+        grid-template-columns:1.05fr .95fr;
+        padding:34px;
+    }
+
+    .hero h1{
+        font-size:3em;
+    }
+
+    .hero-image{
+        max-width:380px;
+    }
+}
+
+/* News */
+.news-list{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    overflow:hidden;
+}
+
+.news-item{
+    padding:18px 20px;
+    border-bottom:1px solid var(--border);
+}
+
+.news-item:last-child{
+    border-bottom:none;
+}
+
+.news-date{
+    display:block;
+    font-size:.8em;
+    font-weight:700;
+    color:var(--muted);
+    margin-bottom:4px;
+    letter-spacing:.04em;
+}
+
+.news-title{
+    font-size:1.02em;
+    font-weight:800;
+    line-height:1.55;
+}
+
+.news-label{
+    display:inline-block;
+    margin-right:8px;
+    padding:2px 8px;
+    border-radius:999px;
+    font-size:.72em;
+    font-weight:900;
+    vertical-align:middle;
+    border:1px solid var(--border);
+    color:var(--pink);
+    background:rgba(255,0,127,0.08);
+}
+
+/* Total wins */
+.total-card{
+    background:linear-gradient(135deg, rgba(255,215,0,0.08), rgba(255,0,127,0.08));
+    border:1px solid rgba(255,215,0,0.35);
+    border-radius:18px;
+    padding:28px 22px;
+    text-align:center;
+    box-shadow:0 10px 24px rgba(0,0,0,0.2);
+}
+
+.total-card .label{
+    display:block;
+    font-size:.9em;
+    font-weight:800;
+    color:#ddd8c6;
+    letter-spacing:.08em;
+}
+
+.total-card .number{
+    display:block;
+    margin-top:10px;
+    font-size:3em;
+    line-height:1;
+    font-weight:900;
+    color:var(--gold);
+}
+
+.total-card .sub{
+    display:block;
+    margin-top:10px;
+    color:var(--muted);
+    font-size:.92em;
+}
+
+/* Update / Status */
+.single-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:22px;
+}
+
+.update-date{
+    display:block;
+    font-size:.8em;
+    font-weight:700;
+    color:var(--muted);
+    margin-bottom:6px;
+}
+
+.update-text{
+    font-weight:800;
+}
+
+.status-list{
+    margin:12px 0 0 18px;
+    padding:0;
+}
+
+.status-list li{
+    margin:6px 0;
+}
+
+/* Links */
+.links-grid{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:20px;
+}
+
+.link-group{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:22px;
+}
+
+.link-group h3{
+    margin:0 0 14px;
+    color:var(--pink);
+    font-size:1.05em;
+}
+
+.link-items{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:12px;
+}
+
+.link-card{
+    background:rgba(255,255,255,0.03);
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:14px 10px;
+    text-align:center;
+    transition:transform .25s ease, border-color .25s ease, color .25s ease;
+}
+
+.link-card:hover{
+    transform:translateY(-3px);
+    border-color:var(--pink);
+    color:var(--pink);
+}
+
+.link-card i{
+    display:block;
+    font-size:1.35em;
+    margin-bottom:7px;
+}
+
+.link-card span{
+    font-size:.84em;
+    font-weight:700;
+    line-height:1.35;
+}
+
+@media (min-width: 860px){
+    .links-grid{
+        grid-template-columns:repeat(3, 1fr);
+    }
+
+    .link-items{
+        grid-template-columns:repeat(2, 1fr);
+    }
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    margin-top:70px;
+    color:var(--muted);
+    font-size:.92em;
+}
+</style>
 </head>
-<body data-theme="dark">
 
-    <header>
-        <div class="nav-container">
-            <a href="index.html" class="logo">NSWER JAPAN</a>
+<body>
 
-            <ul class="nav-links">
-                <li><a href="index.html" class="active-link">HOME</a></li>
-                <li><a href="about.html">ABOUT NMIXX</a></li>
-                <li><a href="music.html">MUSIC</a></li>
-                <li><a href="support.html">SUPPORT GUIDE</a></li>
-                <li><a href="schedule.html">SCHEDULE</a></li>
-                <li><a href="wins.html">WINS</a></li>
-                <li><a href="hanteo.html">HANTEO</a></li>
-                <li><a href="melon.html">MELON</a></li>
-            </ul>
+<header>
+    <div class="nav">
+        <a href="index.html" class="logo">NSWER JAPAN</a>
 
-            <div class="nav-tools">
-                <button class="theme-toggle" id="themeToggle">🌙 / ☀️</button>
-                <button class="hamburger" id="hamburger">☰</button>
+        <nav class="nav-links">
+            <a href="index.html">ホーム</a>
+
+            <div class="dropdown">
+                <span class="dropdown-toggle">NMIXXについて</span>
+                <div class="dropdown-menu">
+                    <a href="about.html">NMIXXについて</a>
+                    <a href="about-fanbase.html">NSWER JAPANについて</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <span class="dropdown-toggle">音楽</span>
+                <div class="dropdown-menu">
+                    <a href="music.html">ディスコグラフィ</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <span class="dropdown-toggle">応援ガイド</span>
+                <div class="dropdown-menu">
+                    <a href="support.html">応援ガイド</a>
+                    <a href="apps.html">応援アプリ一覧</a>
+                    <a href="vote-guide.html">投票券の集め方</a>
+                    <a href="schedule.html">スケジュール</a>
+                    <a href="fan-project.html">ファンプロジェクト</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <span class="dropdown-toggle">記録</span>
+                <div class="dropdown-menu">
+                    <a href="wins.html">音楽番組1位 獲得数</a>
+                    <a href="hanteo.html">ハントチャート</a>
+                    <a href="melon.html">Melonチャート</a>
+                </div>
+            </div>
+
+            <div class="dropdown">
+                <span class="dropdown-toggle">リンク</span>
+                <div class="dropdown-menu">
+                    <a href="links.html">公式リンク</a>
+                    <a href="contact.html">お問い合わせ</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="hamburger" id="hamburger">☰</div>
+    </div>
+</header>
+
+<nav class="mobile-menu" id="mobileMenu">
+    <a href="index.html">ホーム</a>
+
+    <details class="mobile-group">
+        <summary>NMIXXについて</summary>
+        <div class="mobile-submenu">
+            <a href="about.html">NMIXXについて</a>
+            <a href="about-fanbase.html">NSWER JAPANについて</a>
+        </div>
+    </details>
+
+    <details class="mobile-group">
+        <summary>音楽</summary>
+        <div class="mobile-submenu">
+            <a href="music.html">ディスコグラフィ</a>
+        </div>
+    </details>
+
+    <details class="mobile-group">
+        <summary>応援ガイド</summary>
+        <div class="mobile-submenu">
+            <a href="support.html">応援ガイド</a>
+            <a href="apps.html">応援アプリ一覧</a>
+            <a href="vote-guide.html">投票券の集め方</a>
+            <a href="schedule.html">スケジュール</a>
+            <a href="fan-project.html">ファンプロジェクト</a>
+        </div>
+    </details>
+
+    <details class="mobile-group">
+        <summary>記録</summary>
+        <div class="mobile-submenu">
+            <a href="wins.html">音楽番組1位 獲得数</a>
+            <a href="hanteo.html">ハントチャート</a>
+            <a href="melon.html">Melonチャート</a>
+        </div>
+    </details>
+
+    <details class="mobile-group">
+        <summary>リンク</summary>
+        <div class="mobile-submenu">
+            <a href="links.html">公式リンク</a>
+            <a href="contact.html">お問い合わせ</a>
+        </div>
+    </details>
+</nav>
+
+<div class="container">
+
+    <section class="hero section">
+        <div>
+            <span class="hero-kicker">最新アルバム</span>
+            <h1>Blue Valentine</h1>
+            <p>NMIXX 最新アルバム</p>
+        </div>
+
+        <div class="hero-image">
+            <img src="images/bluevalentine.jpg" alt="Blue Valentine">
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">最新情報</h2>
+
+        <div class="news-list">
+            <div class="news-item">
+                <span class="news-date">2026.03.04</span>
+                <div class="news-title">
+                    <span class="news-label">公演</span>
+                    NMIXX JAPAN CONCERT 発表 / 京王アリーナ東京 / 2026.08.08 - 08.09
+                </div>
+            </div>
+
+            <div class="news-item">
+                <span class="news-date">2026.03.04</span>
+                <div class="news-title">
+                    <span class="news-label">公式</span>
+                    NMIXX 日本公式X / ファンクラブ開設
+                </div>
+            </div>
+
+            <div class="news-item">
+                <span class="news-date">2026.02.26</span>
+                <div class="news-title">
+                    <span class="news-label">新曲</span>
+                    “TIC TIC (Feat. Pabllo Vittar)” リリース
+                </div>
+            </div>
+
+            <div class="news-item">
+                <span class="news-date">2025</span>
+                <div class="news-title">
+                    <span class="news-label">記録</span>
+                    Blue Valentine 音楽番組10冠達成
+                </div>
             </div>
         </div>
-    </header>
+    </section>
 
-    <nav class="mobile-menu" id="mobileMenu">
-        <a href="index.html">🏠 HOME</a>
-        <a href="about.html">👥 ABOUT NMIXX</a>
-        <a href="music.html">🎵 MUSIC</a>
-        <a href="support.html">🗳 SUPPORT GUIDE</a>
-        <a href="schedule.html">🗓 SCHEDULE</a>
-        <a href="wins.html">🏆 WINS</a>
-        <a href="hanteo.html">💿 HANTEO</a>
-        <a href="melon.html">🎧 MELON</a>
-        <a href="about-fanbase.html">💗 ABOUT NSWER JAPAN</a>
-    </nav>
+    <section class="section">
+        <div class="total-card">
+            <span class="label">TOTAL MUSIC SHOW WINS</span>
+            <span class="number">21 WINS</span>
+            <span class="sub">NMIXX Music Show Wins</span>
+        </div>
+    </section>
 
-    <div class="container">
+    <section class="section">
+        <h2 class="section-title">更新履歴</h2>
 
-        <section class="hero">
-            <div>
-                <p class="hero-kicker">LATEST RELEASE</p>
-                <h1>Blue Valentine</h1>
-                <p class="hero-description">
-                    最新アルバム「Blue Valentine」とともに、<br>
-                    日本からの応援をもっと大きく。
-                </p>
+        <div class="single-card">
+            <span class="update-date">2026.03.07</span>
+            <div class="update-text">NSWER JAPAN Fanbase Site OPEN</div>
+        </div>
+    </section>
 
-                <div class="hero-buttons">
-                    <a href="#support-today" class="btn btn-primary">今日の応援を見る</a>
-                    <a href="music.html" class="btn btn-secondary">音源・収録曲を見る</a>
+    <section class="section">
+        <h2 class="section-title">現在の状況</h2>
+
+        <div class="single-card">
+            <div>現在NMIXXは活動期間ではありません。</div>
+            <ul class="status-list">
+                <li>公式SNSをチェックする</li>
+                <li>MV / 音源を再生する</li>
+                <li>次の活動に向けて投票券を集める</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">公式リンク</h2>
+
+        <div class="links-grid">
+            <div class="link-group">
+                <h3>NMIXX Official</h3>
+                <div class="link-items">
+                    <a class="link-card" href="https://x.com/NMIXX_official?s=20" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-x-twitter"></i>
+                        <span>Official X</span>
+                    </a>
+
+                    <a class="link-card" href="https://x.com/WE_NMIXX?s=20" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-x-twitter"></i>
+                        <span>WE NMIXX</span>
+                    </a>
+
+                    <a class="link-card" href="https://x.com/JYPJAPAN_NMIXX?s=20" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-x-twitter"></i>
+                        <span>Japan X</span>
+                    </a>
+
+                    <a class="link-card" href="https://www.instagram.com/nmixx_official/" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-instagram"></i>
+                        <span>Instagram</span>
+                    </a>
+
+                    <a class="link-card" href="https://www.tiktok.com/@nmixx_official" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-tiktok"></i>
+                        <span>TikTok</span>
+                    </a>
                 </div>
             </div>
 
-            <div class="hero-image-wrap">
-                <span class="image-badge">Latest Album</span>
-                <img src="images/bluevalentine.jpg" alt="NMIXX Blue Valentine Album">
-            </div>
-        </section>
+            <div class="link-group">
+                <h3>Fanclub</h3>
+                <div class="link-items">
+                    <a class="link-card" href="https://nswerjapan.com/s/222/?ima=2215" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-solid fa-users"></i>
+                        <span>Fanclub</span>
+                    </a>
 
-        <section class="section">
-            <h2 class="section-title">LATEST NOTICE</h2>
-            <div class="card-grid two">
-                <div class="card">
-                    <h3>公式X＆FC、FCモバイル開設！！</h3>
-                    <p>
-                        ついにNMIXXの公式X、ファンクラブ、モバイルファンクラブがスタートしました。  
-                        ぜひフォロー＆チェックしましょう！
-                    </p>
-                </div>
-                <div class="card">
-                    <h3>Blue Valentine 音楽番組10冠達成！</h3>
-                    <p>
-                        最新アルバム「Blue Valentine」が音楽番組10冠を達成。  
-                        詳しい記録は WINS / HANTEO / MELON ページで確認できます。
-                    </p>
+                    <a class="link-card" href="https://m.nswerjapan.com/s/222m/?ima=2227" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                        <span>Mobile FC</span>
+                    </a>
                 </div>
             </div>
-        </section>
 
-        <section class="section">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <span class="stat-label">TOTAL WINS</span>
-                    <span class="stat-number">21</span>
-                    <span class="stat-sub">NMIXX Music Show Wins</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-label">LATEST ALBUM</span>
-                    <span class="stat-number">10</span>
-                    <span class="stat-sub">Blue Valentine Wins</span>
-                </div>
-                <div class="stat-card">
-                    <span class="stat-label">FANBASE</span>
-                    <span class="stat-number">JP</span>
-                    <span class="stat-sub">Support from Japan</span>
-                </div>
-            </div>
-        </section>
+            <div class="link-group">
+                <h3>NSWER JAPAN</h3>
+                <div class="link-items">
+                    <a class="link-card" href="https://x.com/nswer_japan" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-x-twitter"></i>
+                        <span>X</span>
+                    </a>
 
-        <section class="section" id="support-today">
-            <h2 class="section-title">TODAY'S SUPPORT</h2>
-            <div class="card-grid three">
-                <div class="card">
-                    <h3>公式アカウントをチェック</h3>
-                    <p>公式X、日本公式X、FC、FCモバイルを確認して最新情報を追いましょう。</p>
-                </div>
-                <div class="card">
-                    <h3>Blue Valentineを再生</h3>
-                    <p>Spotify、Apple Music、LINE MUSICで最新アルバムを聴いて応援しましょう。</p>
-                </div>
-                <div class="card">
-                    <h3>投票・応援準備</h3>
-                    <p>Support Guideで投票アプリや音楽番組の仕組みを確認して、できる応援を一つずつ。</p>
+                    <a class="link-card" href="https://www.instagram.com/nswer_japan?igsh=MWJ4OHMwY29lMWYyeA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-instagram"></i>
+                        <span>Instagram</span>
+                    </a>
+
+                    <a class="link-card" href="https://www.tiktok.com/@nswer.japan?_r=1&_t=ZS-94SsnUb8NTW" target="_blank" rel="noopener noreferrer">
+                        <i class="fa-brands fa-tiktok"></i>
+                        <span>TikTok</span>
+                    </a>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="section">
-            <h2 class="section-title">QUICK LINKS</h2>
-            <div class="card-grid four">
-                <a href="about.html" class="card quick-link">
-                    <i class="fa-solid fa-users"></i>
-                    ABOUT NMIXX
-                </a>
-                <a href="music.html" class="card quick-link">
-                    <i class="fa-solid fa-music"></i>
-                    MUSIC
-                </a>
-                <a href="support.html" class="card quick-link">
-                    <i class="fa-solid fa-square-poll-vertical"></i>
-                    SUPPORT GUIDE
-                </a>
-                <a href="schedule.html" class="card quick-link">
-                    <i class="fa-solid fa-calendar-days"></i>
-                    SCHEDULE
-                </a>
-                <a href="wins.html" class="card quick-link">
-                    <i class="fa-solid fa-trophy"></i>
-                    WINS
-                </a>
-                <a href="hanteo.html" class="card quick-link">
-                    <i class="fa-solid fa-compact-disc"></i>
-                    HANTEO
-                </a>
-                <a href="melon.html" class="card quick-link">
-                    <i class="fa-solid fa-chart-line"></i>
-                    MELON
-                </a>
-                <a href="about-fanbase.html" class="card quick-link">
-                    <i class="fa-solid fa-heart"></i>
-                    NSWER JAPAN
-                </a>
-            </div>
-        </section>
+    <footer>
+        <div>NSWER JAPAN</div>
+        <div>NMIXX Japanese Fanbase</div>
+    </footer>
 
-        <section class="section">
-            <h2 class="section-title">ABOUT NMIXX</h2>
-            <div class="card-grid two">
-                <a href="about.html" class="card">
-                    <h3>NMIXXとは？</h3>
-                    <p>
-                        NMIXXはJYP Entertainment所属のK-POPガールズグループ。  
-                        メンバー、代表曲、ディスコグラフィなどをまとめています。
-                    </p>
-                </a>
-                <a href="music.html" class="card">
-                    <h3>ディスコグラフィを見る</h3>
-                    <p>
-                        最新アルバム「Blue Valentine」をはじめ、歴代作品や収録曲、配信リンクを掲載しています。
-                    </p>
-                </a>
-            </div>
-        </section>
+</div>
 
-        <section class="section">
-            <h2 class="section-title">RECORD HIGHLIGHTS</h2>
-            <div class="card-grid three">
-                <a href="wins.html" class="card">
-                    <h3>Music Show Wins</h3>
-                    <p>Blue Valentine 10冠を含む、NMIXXの音楽番組1位記録まとめ。</p>
-                </a>
-                <a href="hanteo.html" class="card">
-                    <h3>Hanteo Record</h3>
-                    <p>アルバム初動・初週売上を中心に、ハントチャートでの記録を掲載。</p>
-                </a>
-                <a href="melon.html" class="card">
-                    <h3>Melon Record</h3>
-                    <p>ユニークリスナー、日間順位、TOP100最高順位などの音源記録まとめ。</p>
-                </a>
-            </div>
-        </section>
+<script>
+const hamburger = document.getElementById("hamburger");
+const mobileMenu = document.getElementById("mobileMenu");
+hamburger.addEventListener("click", () => {
+    mobileMenu.classList.toggle("active");
+    hamburger.textContent = mobileMenu.classList.contains("active") ? "✕" : "☰";
+});
+</script>
 
-        <section class="section">
-            <h2 class="section-title">SUPPORT GUIDE</h2>
-            <div class="card-grid three">
-                <a href="support.html" class="card">
-                    <h3>音楽番組で1位になる仕組み</h3>
-                    <p>事前投票、音源、音盤、動画、放送点数などの基本をわかりやすく整理。</p>
-                </a>
-                <a href="support.html" class="card">
-                    <h3>投票アプリ一覧</h3>
-                    <p>番組ごとに使うアプリや、何を集めるのか、初心者向けにまとめるページ。</p>
-                </a>
-                <a href="support.html" class="card">
-                    <h3>投票券の集め方</h3>
-                    <p>ログイン、広告視聴、ミッションなど、毎日できる応援の積み重ね方。</p>
-                </a>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2 class="section-title">SCHEDULE</h2>
-            <div class="card">
-                <ul class="schedule-list">
-                    <li><span class="schedule-date">NOW</span> Blue Valentine 活動期間・応援継続中</li>
-                    <li><span class="schedule-date">UPCOMING</span> 日本活動・出演情報・コンサート情報を追加予定</li>
-                    <li><span class="schedule-date">PROJECT</span> デビュー記念・日本公演に向けた応援企画準備中</li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="section">
-            <h2 class="section-title">FOLLOW & OFFICIAL LINKS</h2>
-
-            <div class="social-grid">
-
-                <div class="social-group">
-                    <h3>NMIXX Official</h3>
-                    <div class="icon-label-grid">
-                        <a href="https://x.com/NMIXX_official?s=20" target="_blank" rel="noopener noreferrer" class="social-link">
-                            <i class="fa-brands fa-x-twitter"></i>
-                            <span>Official X</span>
-                        </a>
-                        <a href="https://x.com/WE_NMIXX?s=20" target="_blank" rel="noopener noreferrer" class="social-link">
-                            <i class="fa-brands fa-x-twitter"></i>
-                            <span>WE NMIXX</span>
-                        </a>
-                        <a href="https://x.com/JYPJAPAN_NMIXX?s=20" target="_blank" rel="noopener noreferrer" class="social-link">
-                            <i class="fa-brands fa-x-twitter"></i>
-                            <span>Japan X</span>
-                        </a>
-                        <a href="https://www.instagram.com/nmixx_official/" target="_blank" rel="noopener noreferrer" class="social-link">
-                            <i class="fa-brands fa-instagram"></i>
-                            <span>Instagram</span>
-                        </a>
-                        <a href="https://www.tiktok.com/@nmixx_official" target="_blank" rel="noopener noreferrer" class="social-link">
-                            <i class="fa-brands fa-tiktok"></i>
-                            <span>TikTok</span>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="social-group">
-                    <h3>Fanclub</h3>
-                    <div class="icon-label-grid">
-                        <a href="https://nswerjapan.com/s/222/?ima=2215" target="_blank" rel="noopener noreferrer" class="social-link">
-                            <i class="fa-solid fa-users"></i>
-                            <span>Fanclub</span>
-                        </a>
-                        <a href="https://m.nswerjapan.com/s/222m/?ima=2227" target="_blank" rel="noopener noreferrer" class="social-link">
-                            <i class="fa-solid fa-mobile-screen-button"></i>
-                            <span>Mobile FC</span>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="social-group">
-                    <h3>NSWER JAPAN</h3>
-                    <div class="icon-label-grid">
-                        <a href="https://x.com/nswer_japan?s=21&t=cefbantZvkczleeWudhJ6Q" target="_blank" rel="noopener noreferrer" class="social-link">
-                            <i class="fa-brands fa-x-twitter"></i>
-                            <span>X</span>
-                        </a>
-                        <a href="https://www.instagram.com/nswer_japan?igsh=MWJ4OHMwY29lMWYyeA%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" class="social-link">
-                            <i class="fa-brands fa-instagram"></i>
-                            <span>Instagram</span>
-                        </a>
-                        <a href="https://www.tiktok.com/@nswer.japan?_r=1&_t=ZS-94SsnUb8NTW" target="_blank" rel="noopener noreferrer" class="social-link">
-                            <i class="fa-brands fa-tiktok"></i>
-                            <span>TikTok</span>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <footer>
-            <p>NSWER JAPAN | NMIXX Fan Site</p>
-        </footer>
-    </div>
-
-    <script>
-        const themeToggleBtn = document.getElementById('themeToggle');
-        const body = document.body;
-
-        themeToggleBtn.addEventListener('click', () => {
-            const currentTheme = body.getAttribute('data-theme');
-            body.setAttribute('data-theme', currentTheme === 'dark' ? 'light' : 'dark');
-        });
-
-        const hamburgerBtn = document.getElementById('hamburger');
-        const mobileMenu = document.getElementById('mobileMenu');
-
-        hamburgerBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-            hamburgerBtn.textContent = mobileMenu.classList.contains('active') ? '✕' : '☰';
-        });
-    </script>
 </body>
 </html>
