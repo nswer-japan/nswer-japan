@@ -1,89 +1,251 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>YouTubeガイド | NSWER JAPAN</title>
-<link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YouTubeガイド | NSWER JAPAN</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    .youtube-guides {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    .youtube-guide-image {
+      width: 100%;
+      display: block;
+      border-radius: 16px;
+    }
+
+    .guide-note {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      line-height: 1.8;
+    }
+
+    @media (max-width: 768px) {
+      .youtube-guides {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">NSWER JAPAN</a>
 
-<header class="site-header">
-<div class="header-inner">
+      <nav class="desktop-nav">
+        <a href="index.html">ホーム</a>
 
-<a href="index.html" class="site-logo">NSWER JAPAN</a>
+        <div class="nav-group">
+          <span>NMIXXについて</span>
+          <div class="dropdown">
+            <a href="about-nmixx.html">NMIXXについて</a>
+            <a href="about-nswer-japan.html">NSWER JAPANについて</a>
+          </div>
+        </div>
 
-<nav class="desktop-nav">
-<a href="index.html">ホーム</a>
-<a href="music.html">ディスコグラフィ</a>
-<a href="streaming.html">ストリーミング</a>
-<a href="vote.html">投票</a>
-<a href="record.html">記録</a>
-</nav>
+        <div class="nav-group">
+          <span>音楽</span>
+          <div class="dropdown">
+            <a href="music.html">ディスコグラフィ</a>
+            <a href="mv-list.html">MV一覧</a>
+          </div>
+        </div>
 
-<button class="menu-toggle" id="menuToggle">☰</button>
+        <div class="nav-group">
+          <span>音楽番組</span>
+          <div class="dropdown">
+            <a href="showchampion.html">Show Champion</a>
+            <a href="mcountdown.html">M Countdown</a>
+            <a href="musicbank.html">Music Bank</a>
+            <a href="musiccore.html">Music Core</a>
+            <a href="inkigayo.html">Inkigayo</a>
+          </div>
+        </div>
 
-</div>
+        <div class="nav-group">
+          <span>ストリーミング</span>
+          <div class="dropdown">
+            <a href="streaming.html">ストリーミングガイド</a>
+            <a href="youtube-guide.html">YouTube</a>
+            <a href="spotify-guide.html">Spotify</a>
+            <a href="applemusic-guide.html">Apple Music</a>
+            <a href="stationhead-guide.html">Stationhead</a>
+            <a href="tiktok-guide.html">TikTok</a>
+            <a href="duckad-guide.html">DuckAd</a>
+          </div>
+        </div>
 
-<nav class="mobile-nav" id="mobileNav">
-<a href="index.html">ホーム</a>
-<a href="music.html">ディスコグラフィ</a>
-<a href="streaming.html">ストリーミング</a>
-<a href="vote.html">投票</a>
-<a href="record.html">記録</a>
-</nav>
-</header>
+        <div class="nav-group">
+          <span>記録</span>
+          <div class="dropdown">
+            <a href="wins.html">音楽番組1位 獲得数</a>
+            <a href="hanteo.html">ハントチャート</a>
+            <a href="melon.html">Melonチャート</a>
+          </div>
+        </div>
 
-<main class="container">
+        <div class="nav-group">
+          <span>投票</span>
+          <div class="dropdown">
+            <a href="support-guide.html">応援ガイド</a>
+            <a href="vote-quick-guide.html">投票早見表</a>
+            <a href="apps.html">応援アプリ一覧</a>
+            <a href="collect-votes.html">投票券の集め方</a>
+            <a href="schedule.html">スケジュール</a>
+          </div>
+        </div>
 
-<h1>YouTubeストリーミングガイド</h1>
+        <div class="nav-group">
+          <span>リンク</span>
+          <div class="dropdown">
+            <a href="links.html">公式リンク</a>
+            <a href="contact.html">お問い合わせ</a>
+            <a href="fanproject.html">ファンプロジェクト</a>
+          </div>
+        </div>
+      </nav>
 
-<p>
-YouTubeでMVを再生して応援しましょう。
-</p>
+      <button class="menu-toggle" id="menuToggle" aria-label="メニューを開く">☰</button>
+    </div>
 
-<div class="youtube-guides">
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="index.html">ホーム</a>
 
-<img
-src="assets/images/streaming/nmixx-youtube-streaming-settings.png"
-class="youtube-guide-image"
->
+      <div class="mobile-section">
+        <span>NMIXXについて</span>
+        <a href="about-nmixx.html">NMIXXについて</a>
+        <a href="about-nswer-japan.html">NSWER JAPANについて</a>
+      </div>
 
-<img
-src="assets/images/streaming/nmixx-youtube-streaming-guide.png"
-class="youtube-guide-image"
->
+      <div class="mobile-section">
+        <span>音楽</span>
+        <a href="music.html">ディスコグラフィ</a>
+        <a href="mv-list.html">MV一覧</a>
+      </div>
 
-</div>
+      <div class="mobile-section">
+        <span>音楽番組</span>
+        <a href="showchampion.html">Show Champion</a>
+        <a href="mcountdown.html">M Countdown</a>
+        <a href="musicbank.html">Music Bank</a>
+        <a href="musiccore.html">Music Core</a>
+        <a href="inkigayo.html">Inkigayo</a>
+      </div>
 
-<h2>ストリーミングルール</h2>
+      <div class="mobile-section">
+        <span>ストリーミング</span>
+        <a href="streaming.html">ストリーミングガイド</a>
+        <a href="youtube-guide.html">YouTube</a>
+        <a href="spotify-guide.html">Spotify</a>
+        <a href="applemusic-guide.html">Apple Music</a>
+        <a href="stationhead-guide.html">Stationhead</a>
+        <a href="tiktok-guide.html">TikTok</a>
+        <a href="duckad-guide.html">DuckAd</a>
+      </div>
 
-<ul>
+      <div class="mobile-section">
+        <span>記録</span>
+        <a href="wins.html">音楽番組1位 獲得数</a>
+        <a href="hanteo.html">ハントチャート</a>
+        <a href="melon.html">Melonチャート</a>
+      </div>
 
-<li>MVを最初から最後まで再生</li>
-<li>画質720p以上</li>
-<li>音量50%以上</li>
-<li>自動ループは使わない</li>
-<li>いいね / コメント / 共有推奨</li>
-<li>連続リロードはしない</li>
+      <div class="mobile-section">
+        <span>投票</span>
+        <a href="support-guide.html">応援ガイド</a>
+        <a href="vote-quick-guide.html">投票早見表</a>
+        <a href="apps.html">応援アプリ一覧</a>
+        <a href="collect-votes.html">投票券の集め方</a>
+        <a href="schedule.html">スケジュール</a>
+      </div>
 
-</ul>
+      <div class="mobile-section">
+        <span>リンク</span>
+        <a href="links.html">公式リンク</a>
+        <a href="contact.html">お問い合わせ</a>
+        <a href="fanproject.html">ファンプロジェクト</a>
+      </div>
+    </nav>
+  </header>
 
-</main>
+  <main class="container guide-page">
+    <h1>YouTubeガイド</h1>
 
-<footer class="site-footer">
-<p>© NSWER JAPAN FANBASE</p>
-</footer>
+    <p>
+      YouTubeでNMIXXのMVを視聴して応援するための基本ルールです。
+    </p>
 
-<script>
-const menuToggle = document.getElementById("menuToggle");
-const mobileNav = document.getElementById("mobileNav");
+    <h3>YouTubeでできる応援</h3>
+    <ul>
+      <li>MV再生回数の応援</li>
+      <li>音楽番組スコアへの貢献</li>
+      <li>カムバック期間の拡散</li>
+    </ul>
 
-menuToggle.addEventListener("click", () => {
-mobileNav.classList.toggle("open");
-});
-</script>
+    <h3>ストリーミングルール</h3>
+    <ol>
+      <li>MVを最初から最後までフル再生する</li>
+      <li>画質は720p以上にする</li>
+      <li>音量は50%以上にする</li>
+      <li>自動ループは使わない</li>
+      <li>いいね / コメント / 共有も推奨</li>
+      <li>連続リロードはしない</li>
+    </ol>
 
+    <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">YouTubeを開く</a>
+    <a href="streaming.html">ストリーミングガイドへ</a>
+
+    <div class="youtube-guides">
+      <img
+        src="assets/images/streaming/nmixx-youtube-streaming-settings.png"
+        alt="YouTubeストリーミング設定画像"
+        class="youtube-guide-image"
+      />
+      <img
+        src="assets/images/streaming/nmixx-youtube-streaming-guide.png"
+        alt="YouTubeストリーミングガイド画像"
+        class="youtube-guide-image"
+      />
+    </div>
+
+    <p>推奨設定と再生方法をまとめたガイド画像です。</p>
+
+    <h3>ポイント</h3>
+    <ul>
+      <li>プレイリスト再生の活用は Premium ユーザー向け</li>
+      <li>ログイン状態での視聴は最初だけ / Premium ユーザー向け</li>
+      <li>無理なく継続して再生する</li>
+    </ul>
+
+    <h2>関連ページ</h2>
+    <p>
+      <a href="spotify-guide.html">Spotifyガイド</a>
+      <a href="applemusic-guide.html">Apple Musicガイド</a>
+      <a href="stationhead-guide.html">Stationheadガイド</a>
+    </p>
+  </main>
+
+  <footer class="site-footer">
+    <p>NSWER JAPAN FANBASE</p>
+    <p>このサイトはNMIXXを応援するためのファンサイトです。</p>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const mobileNav = document.getElementById("mobileNav");
+
+    if (menuToggle && mobileNav) {
+      menuToggle.addEventListener("click", () => {
+        mobileNav.classList.toggle("open");
+      });
+    }
+  </script>
 </body>
 </html>
