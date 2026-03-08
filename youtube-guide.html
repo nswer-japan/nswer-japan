@@ -1,99 +1,104 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YouTube ストリーミングガイド | NMIXX JAPAN FANBASE</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    .youtube-page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 16px 60px;
+    }
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    .youtube-title {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
 
-<title>YouTube Streaming Guide</title>
+    .youtube-subtitle {
+      line-height: 1.7;
+      opacity: 0.9;
+      margin-bottom: 24px;
+    }
 
-<link rel="stylesheet" href="assets/css/style.css">
+    .youtube-guides {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
 
+    .youtube-guide-image {
+      width: 100%;
+      border-radius: 16px;
+      display: block;
+    }
+
+    .youtube-section-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      margin: 24px 0 12px;
+    }
+
+    .youtube-rules {
+      margin: 0;
+      padding-left: 20px;
+      line-height: 1.8;
+    }
+
+    .youtube-note {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      line-height: 1.8;
+    }
+
+    @media (max-width: 768px) {
+      .youtube-guides {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <main class="youtube-page">
+    <h1 class="youtube-title">YouTube ストリーミングガイド</h1>
+    <p class="youtube-subtitle">
+      YouTubeでNMIXXのMVを視聴して応援しましょう。<br />
+      下の2枚は「推奨設定」と「再生方法」です。
+    </p>
 
-<header>
+    <div class="youtube-guides">
+      <img
+        src="assets/images/streaming/nmixx-youtube-setting.png"
+        alt="YouTube 推奨設定"
+        class="youtube-guide-image"
+      />
+      <img
+        src="assets/images/streaming/nmixx-youtube-howto.png"
+        alt="YouTube 再生方法"
+        class="youtube-guide-image"
+      />
+    </div>
 
-<div class="logo">
-NSWER JAPAN SUPPORT
-</div>
+    <h2 class="youtube-section-title">ストリーミングルール</h2>
+    <ul class="youtube-rules">
+      <li>MVを最初から最後までフル再生</li>
+      <li>画質は720p以上</li>
+      <li>音量は50%以上</li>
+      <li>自動ループは使わない</li>
+      <li>いいね / コメント / 共有も推奨</li>
+      <li>連続リロードはしない</li>
+    </ul>
 
-<nav class="nav">
-
-<a href="index.html">HOME</a>
-
-<a href="support.html">応援方法</a>
-
-<a href="streaming.html">ストリーミングガイド</a>
-
-<a href="vote.html">投票</a>
-
-<a href="record.html">記録</a>
-
-</nav>
-
-</header>
-
-
-<main class="container">
-
-<h1>YouTube ストリーミングガイド</h1>
-
-<p class="guide-text">
-YouTubeでMVを再生することで、音楽番組のスコアに貢献できます。
-</p>
-
-
-<h2>推奨設定</h2>
-
-<img
-src="assets/images/streaming/nmixx-youtube-streaming-settings.png"
-class="guide-image"
->
-
-
-<h2>再生方法</h2>
-
-<img
-src="assets/images/streaming/nmixx-youtube-streaming-guide.png"
-class="guide-image"
->
-
-
-<h2>ストリーミングルール</h2>
-
-<ul class="guide-list">
-
-<li>MVを最初から最後までフル再生</li>
-
-<li>画質720p以上</li>
-
-<li>音量50%以上</li>
-
-<li>自動ループは使わない</li>
-
-<li>プレイリスト再生（Premiumユーザー推奨）</li>
-
-<li>いいね / コメント / シェアも推奨</li>
-
-<li>連続リロードはしない</li>
-
-</ul>
-
-
-</main>
-
-
-<footer>
-
-<p>
-© NSWER JAPAN
-</p>
-
-</footer>
-
-
+    <div class="youtube-note">
+      ※ プレイリスト再生の活用は Premium ユーザー向けです。<br />
+      ※ ログイン状態での視聴も最初だけ / Premium ユーザー向けの案内にしてください。
+    </div>
+  </main>
 </body>
 </html>
