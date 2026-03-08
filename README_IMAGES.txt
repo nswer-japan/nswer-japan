@@ -32,3 +32,10 @@ mcountdown-score.png
 musicbank-score.png
 musiccore-score.png
 inkigayo-score.png
+
+
+追加で配置するストリーミング画像
+- images/streaming/nmixx-youtube-streaming-guide.png
+- images/streaming/nmixx-spotify-streaming-guide.png
+- images/streaming/nmixx-applemusic-streaming-guide.png
+- images/streaming/nmixx-stationhead-guide.png
