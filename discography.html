@@ -88,6 +88,77 @@
       color: #ff4d4d;
     }
 
+    /* header */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      background: rgba(15, 15, 18, 0.9);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .site-logo {
+      font-size: 1rem;
+      font-weight: 800;
+      text-decoration: none;
+      color: inherit;
+      letter-spacing: 0.02em;
+    }
+
+    .desktop-nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .desktop-nav a,
+    .mobile-nav a {
+      text-decoration: none;
+      color: inherit;
+      font-weight: 600;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 0;
+      color: inherit;
+      font-size: 1.6rem;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .mobile-nav {
+      display: none;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 16px 14px;
+    }
+
+    .mobile-nav.open {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .site-footer {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 28px 16px 40px;
+      opacity: 0.8;
+    }
+
     @media (max-width: 768px) {
       .album-card {
         flex-direction: column;
@@ -101,10 +172,43 @@
       .album-name {
         font-size: 1.2rem;
       }
+
+      .desktop-nav {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
     }
   </style>
 </head>
 <body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="index.html" class="site-logo">NMIXX JAPAN FANBASE</a>
+
+      <nav class="desktop-nav">
+        <a href="index.html">ホーム</a>
+        <a href="streaming.html">ストリーミングガイド</a>
+        <a href="showchampion.html">音楽番組</a>
+        <a href="record.html">記録</a>
+        <a href="discography.html">ディスコグラフィ</a>
+      </nav>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="メニューを開く">☰</button>
+    </div>
+
+    <nav class="mobile-nav" id="mobileNav">
+      <a href="index.html">ホーム</a>
+      <a href="streaming.html">ストリーミングガイド</a>
+      <a href="showchampion.html">音楽番組</a>
+      <a href="record.html">記録</a>
+      <a href="discography.html">ディスコグラフィ</a>
+    </nav>
+  </header>
+
   <main class="discography-page">
     <h1 class="discography-title">ディスコグラフィ</h1>
     <p class="discography-subtitle">
@@ -112,7 +216,6 @@
       タイトル曲は太字で表示しています。
     </p>
 
-    <!-- FULL ALBUM -->
     <section class="album-card">
       <img src="assets/images/bluevalentine.jpg" alt="Blue Valentine" class="album-cover" />
       <div class="album-info">
@@ -134,7 +237,6 @@
       </div>
     </section>
 
-    <!-- MINI ALBUM -->
     <section class="album-card">
       <img src="assets/images/forward.jpg" alt="Fe3O4: STICK OUT" class="album-cover" />
       <div class="album-info">
@@ -170,9 +272,6 @@
       </div>
     </section>
 
-    <!-- A Midsummer NMIXX's Dream -->
-    <!-- 画像ファイル名は今の手元で確認できなかったので、
-         ここだけ今使っている画像名に置き換えてください -->
     <section class="album-card">
       <img src="assets/images/midsummer-nmixx-dream.jpg" alt="A Midsummer NMIXX's Dream" class="album-cover" />
       <div class="album-info">
@@ -206,7 +305,6 @@
       </div>
     </section>
 
-    <!-- SINGLE ALBUM -->
     <section class="album-card">
       <img src="assets/images/entwurf.jpg" alt="ENTWURF" class="album-cover" />
       <div class="album-info">
@@ -233,9 +331,8 @@
       </div>
     </section>
 
-    <!-- DIGITAL SINGLE -->
     <section class="album-card">
-      <img src="assets/images/funky-glitter-christmas.jpg" alt="Funky Glitter Christmas" class="album-cover" />
+      <img src="images/funky-glitter-christmas.jpg" alt="Funky Glitter Christmas" class="album-cover" />
       <div class="album-info">
         <div class="album-type">DIGITAL SINGLE</div>
         <h2 class="album-name">Funky Glitter Christmas</h2>
@@ -245,7 +342,20 @@
         </ul>
       </div>
     </section>
-
   </main>
+
+  <footer class="site-footer">
+    <p>© NSWER JAPAN FANBASE</p>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+
+    menuToggle.addEventListener('click', () => {
+      mobileNav.classList.toggle('open');
+    });
+  </script>
+
 </body>
 </html>
