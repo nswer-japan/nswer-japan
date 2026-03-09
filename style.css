@@ -1,0 +1,397 @@
+/* =========================
+   Base
+========================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP",
+    "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  background: #0f0f12;
+  color: #ffffff;
+  line-height: 1.7;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  padding-left: 1.4rem;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px 56px;
+}
+
+/* =========================
+   Header / Nav
+========================= */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(15, 15, 18, 0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.site-logo {
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.desktop-nav > a,
+.desktop-nav > .nav-group > span {
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.nav-group {
+  position: relative;
+}
+
+.nav-group > span {
+  display: inline-block;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  min-width: 220px;
+  background: #17171c;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 10px;
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.nav-group:hover .dropdown {
+  display: flex;
+}
+
+.dropdown a {
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  opacity: 0.92;
+}
+
+.dropdown a:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.menu-toggle {
+  display: none;
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+}
+
+.mobile-nav {
+  display: none;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px 14px;
+}
+
+.mobile-nav.open {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.mobile-nav > a {
+  font-weight: 700;
+}
+
+.mobile-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 4px;
+}
+
+.mobile-section > span {
+  font-size: 0.9rem;
+  font-weight: 800;
+  opacity: 0.7;
+}
+
+.mobile-section a {
+  font-size: 0.95rem;
+  opacity: 0.95;
+}
+
+/* =========================
+   Footer
+========================= */
+
+.site-footer {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 16px 42px;
+  text-align: center;
+  opacity: 0.8;
+  font-size: 0.95rem;
+}
+
+/* =========================
+   Typography
+========================= */
+
+h1 {
+  font-size: 2rem;
+  margin: 0 0 12px;
+  font-weight: 800;
+}
+
+h2 {
+  font-size: 1.4rem;
+  margin: 28px 0 12px;
+  font-weight: 800;
+}
+
+h3 {
+  font-size: 1.1rem;
+  margin: 22px 0 10px;
+  font-weight: 800;
+}
+
+p {
+  margin: 0 0 14px;
+}
+
+/* =========================
+   Buttons / Links
+========================= */
+
+.button-link,
+main a[href^="http"],
+main a[href$=".html"] {
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.button-link:hover,
+main a[href^="http"]:hover,
+main a[href$=".html"]:hover {
+  opacity: 0.9;
+}
+
+.inline-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 18px 0 22px;
+}
+
+.inline-actions a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  font-weight: 700;
+}
+
+/* =========================
+   Guide pages
+========================= */
+
+.guide-page {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.guide-image {
+  width: 100%;
+  max-width: 900px;
+  margin: 24px auto;
+  border-radius: 16px;
+}
+
+.guide-note {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  line-height: 1.8;
+}
+
+/* YouTube */
+.youtube-guides {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 24px 0 28px;
+}
+
+.youtube-guide-image {
+  width: 100%;
+  border-radius: 16px;
+  display: block;
+}
+
+/* =========================
+   Discography
+========================= */
+
+.discography-title {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.discography-subtitle {
+  opacity: 0.85;
+  margin-bottom: 28px;
+  line-height: 1.7;
+}
+
+.album-card {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 32px;
+  padding: 20px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.album-cover {
+  width: 150px;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 14px;
+  flex-shrink: 0;
+}
+
+.album-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.album-type {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #999;
+  margin-bottom: 6px;
+}
+
+.album-type.full-album,
+.album-name.full-album {
+  color: #d4af37;
+}
+
+.album-name {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+}
+
+.album-release {
+  font-size: 0.95rem;
+  opacity: 0.85;
+  margin-bottom: 12px;
+}
+
+.track-list {
+  margin: 0;
+  padding-left: 20px;
+  line-height: 1.8;
+}
+
+.track-list li {
+  margin-bottom: 2px;
+}
+
+.track-list li strong,
+.track-list li.title-track {
+  font-weight: 800;
+  color: #ff4d4d;
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .album-card {
+    flex-direction: column;
+  }
+
+  .album-cover {
+    width: 100%;
+    max-width: 260px;
+  }
+
+  .album-name {
+    font-size: 1.2rem;
+  }
+
+  .youtube-guides {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 1.7rem;
+  }
+}

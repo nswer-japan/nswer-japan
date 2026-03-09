@@ -1,2 +1,134 @@
-window.WINS_DATA=[{song:'Blue Valentine',wins:['10月22日: SHOW CHAMPION','10月23日: M COUNTDOWN','10月24日: Music Bank','10月25日: ショー！音楽中心','10月26日: 人気歌謡','11月9日: 人気歌謡','11月15日: ショー！音楽中心','11月16日: 👑 人気歌謡（トリプルクラウン達成）','11月22日: 👑 ショー！音楽中心（トリプルクラウン達成）','2026年1月2日: Music Bank'],youtube:'https://www.youtube.com/embed/rKg9I4mVLVc'},{song:'KNOW ABOUT ME',wins:['3月26日: SHOW CHAMPION','3月28日: Music Bank','3月30日: 人気歌謡'],youtube:'https://www.youtube.com/embed/0rp54oXvJ4o'},{song:'See that?',wins:['8月29日: M COUNTDOWN','8月30日: Music Bank','9月1日: 人気歌謡'],youtube:'https://www.youtube.com/embed/NCQ89aLx54Y'},{song:'DASH',wins:['1月24日: SHOW CHAMPION','1月25日: M COUNTDOWN','1月26日: Music Bank','1月28日: 人気歌謡'],youtube:'https://www.youtube.com/embed/hoHy38Jjkvg'},{song:'Love Me Like This',wins:['3月29日: SHOW CHAMPION'],youtube:'https://www.youtube.com/embed/O8zBPFYgz04'}];
-window.NEWS_DATA=[{date:'2026.03.04',tag:'公演',title:'NMIXX JAPAN CONCERT 発表',text:'京王アリーナ東京 / 2026.08.08 - 08.09'},{date:'2026.03.04',tag:'公式',title:'NMIXX 日本公式X / ファンクラブ開設',text:'日本公式アカウントとファンクラブ情報をチェックできます。'},{date:'2026.02.26',tag:'新曲',title:'TIC TIC (Feat. Pabllo Vittar) リリース',text:'NMIXXのスペイン語曲が公開されました。'},{date:'2025',tag:'記録',title:'Blue Valentine 音楽番組10冠達成',text:'詳しい記録は音楽番組1位ページで確認できます。'}];
+window.NSWER = window.NSWER || {};
+window.NSWER.winsData = [
+  {
+    "title": "Blue Valentine",
+    "era": "Blue Valentine",
+    "badge": "10 WINS",
+    "gold": true,
+    "video": "https://www.youtube.com/embed/rKg9I4mVLVc",
+    "wins": [
+      {
+        "date": "10月22日",
+        "show": "SHOW CHAMPION"
+      },
+      {
+        "date": "10月23日",
+        "show": "M COUNTDOWN"
+      },
+      {
+        "date": "10月24日",
+        "show": "Music Bank"
+      },
+      {
+        "date": "10月25日",
+        "show": "ショー！音楽中心"
+      },
+      {
+        "date": "10月26日",
+        "show": "人気歌謡"
+      },
+      {
+        "date": "11月9日",
+        "show": "人気歌謡"
+      },
+      {
+        "date": "11月15日",
+        "show": "ショー！音楽中心"
+      },
+      {
+        "date": "11月16日",
+        "show": "人気歌謡",
+        "triple": true
+      },
+      {
+        "date": "11月22日",
+        "show": "ショー！音楽中心",
+        "triple": true
+      },
+      {
+        "date": "2026年1月2日",
+        "show": "Music Bank"
+      }
+    ]
+  },
+  {
+    "title": "KNOW ABOUT ME",
+    "era": "Fe3O4: FORWARD",
+    "badge": "3 WINS",
+    "gold": false,
+    "video": "https://www.youtube.com/embed/0rp54oXvJ4o",
+    "wins": [
+      {
+        "date": "3月26日",
+        "show": "SHOW CHAMPION"
+      },
+      {
+        "date": "3月28日",
+        "show": "Music Bank"
+      },
+      {
+        "date": "3月30日",
+        "show": "人気歌謡"
+      }
+    ]
+  },
+  {
+    "title": "별별별 (See that?)",
+    "era": "Fe3O4: STICK OUT",
+    "badge": "3 WINS",
+    "gold": false,
+    "video": "https://www.youtube.com/embed/NCQ89aLx54Y",
+    "wins": [
+      {
+        "date": "8月29日",
+        "show": "M COUNTDOWN"
+      },
+      {
+        "date": "8月30日",
+        "show": "Music Bank"
+      },
+      {
+        "date": "9月1日",
+        "show": "人気歌謡"
+      }
+    ]
+  },
+  {
+    "title": "DASH",
+    "era": "Fe3O4: BREAK",
+    "badge": "4 WINS",
+    "gold": false,
+    "video": "https://www.youtube.com/embed/hoHy38Jjkvg",
+    "wins": [
+      {
+        "date": "1月24日",
+        "show": "SHOW CHAMPION"
+      },
+      {
+        "date": "1月25日",
+        "show": "M COUNTDOWN"
+      },
+      {
+        "date": "1月26日",
+        "show": "Music Bank"
+      },
+      {
+        "date": "1月28日",
+        "show": "人気歌謡"
+      }
+    ]
+  },
+  {
+    "title": "Love Me Like This",
+    "era": "expérgo",
+    "badge": "1 WIN",
+    "gold": false,
+    "video": "https://www.youtube.com/embed/O8zBPFYgz04",
+    "wins": [
+      {
+        "date": "3月29日",
+        "show": "SHOW CHAMPION"
+      }
+    ]
+  }
+];
