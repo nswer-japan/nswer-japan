@@ -1,17 +1,33 @@
+document.addEventListener('DOMContentLoaded',()=>{
+  const h=document.getElementById('hamburger');
+  const m=document.getElementById('mobileMenu');
+  const themeToggle=document.getElementById('themeToggle');
+  const root=document.documentElement;
 
-window.NSWER = window.NSWER || {};
-(function(){
-  const menuBtn = document.getElementById('hamburger');
-  const menu = document.getElementById('mobileMenu');
-  if(menuBtn && menu){
-    menuBtn.addEventListener('click', ()=>{
-      menu.classList.toggle('active');
-      menuBtn.textContent = menu.classList.contains('active') ? '✕' : '☰';
+  function applyTheme(theme){
+    const isLight=theme==='light';
+    document.body.classList.toggle('light-mode',isLight);
+    root.classList.toggle('light-mode',isLight);
+    localStorage.setItem('theme',isLight?'light':'dark');
+    if(themeToggle){themeToggle.textContent=isLight?'☀️':'🌙';}
+  }
+
+  if(h&&m){
+    h.addEventListener('click',()=>{
+      m.classList.toggle('active');
+      h.textContent=m.classList.contains('active')?'✕':'☰';
     });
   }
-  document.querySelectorAll('[data-total-wins]').forEach(el=>{
-    const data = (window.NSWER && window.NSWER.winsData) || [];
-    const total = data.reduce((sum, item)=> sum + (item.wins ? item.wins.length : 0), 0);
-    el.textContent = `${total} WINS`;
-  });
-})();
+
+  let savedTheme='dark';
+  try{
+    savedTheme=localStorage.getItem('theme')==='light'?'light':'dark';
+  }catch(e){}
+  applyTheme(savedTheme);
+
+  if(themeToggle){
+    themeToggle.addEventListener('click',()=>{
+      applyTheme(document.body.classList.contains('light-mode')?'dark':'light');
+    });
+  }
+});
