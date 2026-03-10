@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nswer-japan.github.io/nswer-japan/sitemap.xml
