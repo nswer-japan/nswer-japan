@@ -1,0 +1,10 @@
+使い方:
+1. このZIPの中身をリポジトリに上書きアップロード
+2. DELETE_THESE_FROM_GITHUB.txt にある古いファイルを GitHub 上で削除
+3. Settings > Pages で公開サイトを確認
+
+今回追加したもの:
+- event-zero-frontier-japan.html
+- ニュース2件の追加
+- ニュースタイトルのリンク化
+- トップの便利ページにイベント詳細を追加
