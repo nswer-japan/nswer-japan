@@ -1,0 +1,37 @@
+
+body{
+font-family:sans-serif;
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+h1{
+margin-bottom:30px;
+}
+
+.event{
+border:1px solid #eee;
+border-radius:12px;
+padding:10px;
+margin-bottom:10px;
+}
+
+.calendar{
+display:grid;
+grid-template-columns:repeat(7,1fr);
+gap:6px;
+margin-top:20px;
+}
+
+.day{
+border:1px solid #eee;
+min-height:80px;
+padding:6px;
+font-size:12px;
+border-radius:8px;
+}
+
+.event-live{}
+.event-fc{}
+.event-birthday{}
