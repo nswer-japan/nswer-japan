@@ -202,13 +202,13 @@
 .schedule-page .legend-pill.live{background:var(--sp-live-soft);color:var(--sp-live)}
 .schedule-page .legend-pill.fc{background:var(--sp-fc-soft);color:var(--sp-fc)}
 .schedule-page .legend-pill.birthday{background:var(--sp-birthday-soft);color:var(--sp-birthday)}
-.schedule-page .calendar-week日,
+.schedule-page .calendar-weekdays,
 .schedule-page .calendar-grid{
   display:grid;
   grid-template-columns:repeat(7,minmax(0,1fr));
   gap:8px;
 }
-.schedule-page .calendar-week日 div{
+.schedule-page .calendar-weekdays div{
   text-align:center;
   color:var(--sp-muted);
   font-size:.82rem;
@@ -268,12 +268,41 @@
   .schedule-page .calendar-pill{font-size:.56rem;padding:3px 6px}
 }
 
-.schedule-page .world-map-base{
-  display:block;
-  width:100%;
-  height:auto;
-  border-radius:18px;
-  opacity:.95;
+.worldmap{width:100%;margin-top:18px;margin-bottom:18px}
+.map-svg{display:block;width:100%;height:auto;border-radius:20px;border:1px solid var(--sp-border)}
+.map-legend{display:flex;gap:20px;flex-wrap:wrap;margin:10px 0 16px;color:var(--sp-text)}
+.map-legend span{display:flex;align-items:center;gap:8px;font-weight:800}
+.dot{display:inline-block;width:12px;height:12px;border-radius:50%}
+.dot.korea{background:#8a63ff}
+.dot.europe{background:#5aa3ff}
+.dot.america{background:#39d0b3}
+.dot.japan{background:#ff4fa4}
+.map-region{fill:#8f7f88;font-size:18px;font-weight:800}
+.map-label{fill:#f3edf5;font-size:15px;font-weight:800}
+.map-date{fill:#a89aa4;font-size:12px;font-weight:700}
+.pin{stroke:#fff;stroke-width:2}
+.pin.korea{fill:#8a63ff}
+.pin.europe{fill:#5aa3ff}
+.pin.america{fill:#39d0b3}
+.pin.japan{fill:#ff4fa4}
+.route-europe,.route-america,.route-japan{fill:none;stroke-width:3;stroke-dasharray:8 8}
+.route-europe{stroke:#5aa3ff}
+.route-america{stroke:#39d0b3}
+.route-japan{stroke:#ff4fa4}
+.tour-cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.tour-stop{background:var(--sp-card);border:1px solid var(--sp-border);border-radius:18px;padding:16px}
+.tour-stop h3{margin:0 0 10px;color:var(--sp-text);font-size:1.05rem}
+.tour-stop .tour-date{margin:0 0 8px;font-weight:900;color:var(--sp-text)}
+.tour-stop p,.tour-stop li{color:var(--sp-text)}
+.tour-stop ul{margin:0;padding-left:18px}
+.tour-stop li+li{margin-top:8px}
+.tour-stop.korea{border-color:rgba(138,99,255,.45)}
+.tour-stop.europe{border-color:rgba(90,163,255,.45)}
+.tour-stop.america{border-color:rgba(57,208,179,.45)}
+.tour-stop.japan{border-color:rgba(255,79,164,.55)}
+@media (max-width:760px){
+  .map-label{font-size:12px}
+  .map-date{font-size:10px}
 }
 
 </style>
@@ -323,8 +352,8 @@
       <h2 class="section-title">東京公演カウントダウン</h2>
       <div class="countdown-card">
         <div>
-          <div class="countdown-kicker">東京公演</div>
-          <div><span class="countdown-num" id="countdownDays">--</span><span class="countdown-unit">日</span></div>
+          <div class="countdown-kicker">TOKYO CONCERT</div>
+          <div><span class="countdown-num" id="countdownDays">--</span><span class="countdown-unit">days</span></div>
         </div>
         <div class="countdown-meta">2026.08.08 / KEIO ARENA TOKYO</div>
       </div>
@@ -339,48 +368,133 @@
     </div>
   </section>
 
-  <section class="section">
-    <div class="section-card">
-      <h2 class="section-title">ワールドツアー</h2>
-      
-      <div class="tour-legend">
-        <span><i class="dot kr"></i>韓国</span>
-        <span><i class="dot eu"></i>ヨーロッパ</span>
-        <span><i class="dot na"></i>北米</span>
-        <span><i class="dot jp"></i>日本</span>
+  
+<section class="section">
+  <div class="section-card">
+    <h2 class="section-title">ワールドツアー</h2>
+
+    <div class="map-legend">
+      <span><span class="dot korea"></span>韓国</span>
+      <span><span class="dot europe"></span>ヨーロッパ</span>
+      <span><span class="dot america"></span>北米</span>
+      <span><span class="dot japan"></span>日本</span>
+    </div>
+
+    <div class="worldmap">
+      <svg viewBox="0 0 1000 520" class="map-svg" xmlns="http://www.w3.org/2000/svg" aria-label="NMIXX world tour map">
+        <rect x="0" y="0" width="1000" height="520" rx="24" fill="#14101a"/>
+
+        <!-- simple continent silhouettes -->
+        <ellipse cx="220" cy="250" rx="150" ry="105" fill="#2a2632"/>
+        <ellipse cx="500" cy="195" rx="120" ry="70" fill="#2a2632"/>
+        <ellipse cx="690" cy="235" rx="210" ry="120" fill="#2a2632"/>
+
+        <!-- region labels -->
+        <text x="150" y="110" class="map-region">北米</text>
+        <text x="470" y="105" class="map-region">ヨーロッパ</text>
+        <text x="650" y="105" class="map-region">アジア</text>
+
+        <!-- routes -->
+        <path d="M640,215 C605,195 585,188 560,188" class="route-europe"/>
+        <path d="M640,215 C690,240 720,255 760,262" class="route-america"/>
+        <path d="M640,215 C655,218 665,222 675,228" class="route-japan"/>
+
+        <!-- Korea/Japan -->
+        <circle cx="640" cy="215" r="8" class="pin korea"/>
+        <text x="655" y="208" class="map-label">仁川</text>
+        <text x="655" y="226" class="map-date">2025.11.29–30</text>
+
+        <circle cx="675" cy="228" r="8" class="pin japan"/>
+        <text x="690" y="221" class="map-label">東京</text>
+        <text x="690" y="239" class="map-date">2026.08.08–09</text>
+
+        <!-- Europe -->
+        <circle cx="520" cy="210" r="8" class="pin europe"/>
+        <text x="455" y="204" class="map-label">マドリード</text>
+        <text x="455" y="222" class="map-date">03.17</text>
+
+        <circle cx="555" cy="185" r="8" class="pin europe"/>
+        <text x="567" y="178" class="map-label">アムステルダム</text>
+        <text x="567" y="196" class="map-date">03.20</text>
+
+        <circle cx="540" cy="205" r="8" class="pin europe"/>
+        <text x="552" y="198" class="map-label">パリ</text>
+        <text x="552" y="216" class="map-date">03.22</text>
+
+        <circle cx="575" cy="205" r="8" class="pin europe"/>
+        <text x="587" y="198" class="map-label">フランクフルト</text>
+        <text x="587" y="216" class="map-date">03.24</text>
+
+        <circle cx="535" cy="170" r="8" class="pin europe"/>
+        <text x="547" y="163" class="map-label">ロンドン</text>
+        <text x="547" y="181" class="map-date">03.26</text>
+
+        <!-- North America -->
+        <circle cx="735" cy="250" r="8" class="pin america"/>
+        <text x="748" y="243" class="map-label">トロント</text>
+        <text x="748" y="261" class="map-date">03.29</text>
+
+        <circle cx="770" cy="258" r="8" class="pin america"/>
+        <text x="783" y="251" class="map-label">ブルックリン</text>
+        <text x="783" y="269" class="map-date">03.31</text>
+
+        <circle cx="785" cy="285" r="8" class="pin america"/>
+        <text x="798" y="278" class="map-label">ナショナルハーバー</text>
+        <text x="798" y="296" class="map-date">04.02</text>
+
+        <circle cx="742" cy="300" r="8" class="pin america"/>
+        <text x="675" y="325" class="map-label">アービング</text>
+        <text x="675" y="343" class="map-date">04.04</text>
+
+        <circle cx="705" cy="287" r="8" class="pin america"/>
+        <text x="642" y="290" class="map-label">オークランド</text>
+        <text x="642" y="308" class="map-date">04.07</text>
+
+        <circle cx="675" cy="325" r="8" class="pin america"/>
+        <text x="610" y="348" class="map-label">ロサンゼルス</text>
+        <text x="610" y="366" class="map-date">04.09</text>
+      </svg>
+    </div>
+
+    <div class="tour-cards-grid">
+      <div class="tour-stop korea">
+        <h3>韓国</h3>
+        <p class="tour-date">2025年11月29日〜30日</p>
+        <p>仁川 / INSPIRE ARENA</p>
       </div>
-      <div class="tour-map-wrap">
-        <svg viewBox="0 0 1100 520" class="tour-map" xmlns="http://www.w3.org/2000/svg">
-          <rect x="0" y="0" width="1100" height="520" rx="24" fill="transparent"/>
-          <text x="160" y="145" font-size="16" font-weight="900" fill="#8f7f88">北米</text>
-          <text x="500" y="120" font-size="16" font-weight="900" fill="#8f7f88">ヨーロッパ</text>
-          <text x="840" y="150" font-size="16" font-weight="900" fill="#8f7f88">ASIA</text>
-          <path d="M830,180 C760,120 680,110 620,150" fill="none" stroke="#7aa9ff" stroke-width="3" stroke-dasharray="8 8"/>
-          <path d="M620,210 C700,240 760,250 870,210" fill="none" stroke="#f6a4ce" stroke-width="3" stroke-dasharray="8 8"/>
-          <path d="M560,175 C470,190 350,210 260,235" fill="none" stroke="#70d2c1" stroke-width="3" stroke-dasharray="8 8"/>
-          <circle cx="860" cy="180" r="9" fill="#8c6bff"/><text x="875" y="175" font-size="14" font-weight="800" fill="currentColor">Incheon</text><text x="875" y="194" font-size="12" font-weight="700" fill="#8f7f88">2025.11.29-30</text>
-          <circle cx="600" cy="175" r="8" fill="#4f8ef7"/><text x="615" y="170" font-size="14" font-weight="800" fill="currentColor">Madrid</text><text x="615" y="189" font-size="12" font-weight="700" fill="#8f7f88">2026.03.17</text>
-          <circle cx="625" cy="152" r="8" fill="#4f8ef7"/><text x="640" y="147" font-size="14" font-weight="800" fill="currentColor">Amsterdam</text><text x="640" y="166" font-size="12" font-weight="700" fill="#8f7f88">03.20</text>
-          <circle cx="610" cy="142" r="8" fill="#4f8ef7"/><text x="625" y="137" font-size="14" font-weight="800" fill="currentColor">Paris</text><text x="625" y="156" font-size="12" font-weight="700" fill="#8f7f88">03.22</text>
-          <circle cx="642" cy="136" r="8" fill="#4f8ef7"/><text x="657" y="131" font-size="14" font-weight="800" fill="currentColor">Frankfurt</text><text x="657" y="150" font-size="12" font-weight="700" fill="#8f7f88">03.24</text>
-          <circle cx="590" cy="124" r="8" fill="#4f8ef7"/><text x="605" y="119" font-size="14" font-weight="800" fill="currentColor">London</text><text x="605" y="138" font-size="12" font-weight="700" fill="#8f7f88">03.26</text>
-          <circle cx="255" cy="228" r="8" fill="#39b79a"/><text x="270" y="223" font-size="14" font-weight="800" fill="currentColor">Toronto</text><text x="270" y="242" font-size="12" font-weight="700" fill="#8f7f88">03.29</text>
-          <circle cx="285" cy="245" r="8" fill="#39b79a"/><text x="300" y="240" font-size="14" font-weight="800" fill="currentColor">Brooklyn</text><text x="300" y="259" font-size="12" font-weight="700" fill="#8f7f88">03.31</text>
-          <circle cx="270" cy="260" r="8" fill="#39b79a"/><text x="285" y="255" font-size="14" font-weight="800" fill="currentColor">National Harbor</text><text x="285" y="274" font-size="12" font-weight="700" fill="#8f7f88">04.02</text>
-          <circle cx="205" cy="285" r="8" fill="#39b79a"/><text x="220" y="280" font-size="14" font-weight="800" fill="currentColor">Irving</text><text x="220" y="299" font-size="12" font-weight="700" fill="#8f7f88">04.04</text>
-          <circle cx="135" cy="250" r="8" fill="#39b79a"/><text x="150" y="245" font-size="14" font-weight="800" fill="currentColor">Oakland</text><text x="150" y="264" font-size="12" font-weight="700" fill="#8f7f88">04.07</text>
-          <circle cx="120" cy="275" r="8" fill="#39b79a"/><text x="135" y="270" font-size="14" font-weight="800" fill="currentColor">Los Angeles</text><text x="135" y="289" font-size="12" font-weight="700" fill="#8f7f88">04.09</text>
-          <circle cx="900" cy="212" r="10" fill="#ff4fa4"/><text x="918" y="207" font-size="14" font-weight="800" fill="currentColor">Tokyo</text><text x="918" y="226" font-size="12" font-weight="700" fill="#8f7f88">2026.08.08-09</text>
-        </svg>
+
+      <div class="tour-stop europe">
+        <h3>ヨーロッパ</h3>
+        <ul>
+          <li>2026年3月17日 / マドリード / PALACIO VISTALEGRE</li>
+          <li>2026年3月20日 / アムステルダム / AFAS LIVE</li>
+          <li>2026年3月22日 / パリ / SALLE PLEYEL</li>
+          <li>2026年3月24日 / フランクフルト / MYTICKET JAHRHUNDERTHALLE</li>
+          <li>2026年3月26日 / ロンドン / EVENTIM APOLLO</li>
+        </ul>
       </div>
-      <div class="tour-groups">
-        <div class="tour-group"><h3>韓国</h3><ul><li>2025.11.29-30 / Incheon / INSPIRE ARENA</li></ul></div>
-        <div class="tour-group"><h3>ヨーロッパ</h3><ul><li>03.17 / Madrid / PALACIO VISTALEGRE</li><li>03.20 / Amsterdam / AFAS LIVE</li><li>03.22 / Paris / SALLE PLEYEL</li><li>03.24 / Frankfurt / MYTICKET JAHRHUNDERTHALLE</li><li>03.26 / London / EVENTIM APOLLO</li></ul></div>
-        <div class="tour-group"><h3>北米</h3><ul><li>03.29 / Toronto / GREAT CANADIAN TORONTO</li><li>03.31 / Brooklyn / BROOKLYN PARAMOUNT</li><li>04.02 / National Harbor / THE THEATER AT MGM NATIONAL HARBOR</li><li>04.04 / Irving / THE PAVILION AT TOYOTA MUSIC FACTORY</li><li>04.07 / Oakland / PARAMOUNT THEATRE</li><li>04.09 / Los Angeles / YOUTUBE THEATER</li></ul></div>
-        <div class="tour-group"><h3>日本</h3><ul><li>08.08-09 / Tokyo / KEIO ARENA TOKYO</li></ul></div>
+
+      <div class="tour-stop america">
+        <h3>北米</h3>
+        <ul>
+          <li>2026年3月29日 / トロント / GREAT CANADIAN TORONTO</li>
+          <li>2026年3月31日 / ブルックリン / BROOKLYN PARAMOUNT</li>
+          <li>2026年4月2日 / ナショナルハーバー / THE THEATER AT MGM NATIONAL HARBOR</li>
+          <li>2026年4月4日 / アービング / THE PAVILION AT TOYOTA MUSIC FACTORY</li>
+          <li>2026年4月7日 / オークランド / PARAMOUNT THEATRE</li>
+          <li>2026年4月9日 / ロサンゼルス / YOUTUBE THEATER</li>
+        </ul>
+      </div>
+
+      <div class="tour-stop japan">
+        <h3>日本</h3>
+        <p class="tour-date">2026年8月8日〜9日 🆕</p>
+        <p>東京 / KEIO ARENA TOKYO</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <section class="section">
     <div class="section-card">
@@ -396,7 +510,7 @@
         <div id="monthLabel" class="month-label"></div>
         <button id="nextMonth" type="button">›</button>
       </div>
-      <div class="calendar-week日">
+      <div class="calendar-weekdays">
         <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
       </div>
       <div id="calendarGrid" class="calendar-grid"></div>
@@ -496,7 +610,7 @@ function renderCalendar(){
 
   const first = new Date(currentYear, currentMonth, 1);
   const start = first.getDay();
-  const 日 = new Date(currentYear, currentMonth + 1, 0).getDate();
+  const days = new Date(currentYear, currentMonth + 1, 0).getDate();
   const prevDays = new Date(currentYear, currentMonth, 0).getDate();
 
   for(let i=0;i<start;i++){
@@ -504,7 +618,7 @@ function renderCalendar(){
     grid.insertAdjacentHTML('beforeend', `<div class="calendar-day other-month"><div class="calendar-date">${n}</div></div>`);
   }
 
-  for(let d=1; d<=日; d++){
+  for(let d=1; d<=days; d++){
     const key = `${currentYear}-${String(currentMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
     const match = events.filter(e => e.date === key);
     const visible = match.slice(0,2);
@@ -518,7 +632,7 @@ function renderCalendar(){
     `);
   }
 
-  const total = start + 日;
+  const total = start + days;
   const rest = total % 7 === 0 ? 0 : 7 - (total % 7);
   for(let i=1;i<=rest;i++){
     grid.insertAdjacentHTML('beforeend', `<div class="calendar-day other-month"><div class="calendar-date">${i}</div></div>`);
