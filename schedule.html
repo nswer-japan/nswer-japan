@@ -202,13 +202,13 @@
 .schedule-page .legend-pill.live{background:var(--sp-live-soft);color:var(--sp-live)}
 .schedule-page .legend-pill.fc{background:var(--sp-fc-soft);color:var(--sp-fc)}
 .schedule-page .legend-pill.birthday{background:var(--sp-birthday-soft);color:var(--sp-birthday)}
-.schedule-page .calendar-weekdays,
+.schedule-page .calendar-week日,
 .schedule-page .calendar-grid{
   display:grid;
   grid-template-columns:repeat(7,minmax(0,1fr));
   gap:8px;
 }
-.schedule-page .calendar-weekdays div{
+.schedule-page .calendar-week日 div{
   text-align:center;
   color:var(--sp-muted);
   font-size:.82rem;
@@ -267,15 +267,6 @@
   .schedule-page .calendar-day{min-height:88px;padding:8px}
   .schedule-page .calendar-pill{font-size:.56rem;padding:3px 6px}
 }
-
-.schedule-page .world-map-base{
-  display:block;
-  width:100%;
-  height:auto;
-  border-radius:18px;
-  opacity:.9;
-}
-
 </style>
 </head>
 <body>
@@ -323,8 +314,8 @@
       <h2 class="section-title">東京公演カウントダウン</h2>
       <div class="countdown-card">
         <div>
-          <div class="countdown-kicker">TOKYO CONCERT</div>
-          <div><span class="countdown-num" id="countdownDays">--</span><span class="countdown-unit">days</span></div>
+          <div class="countdown-kicker">東京公演</div>
+          <div><span class="countdown-num" id="countdownDays">--</span><span class="countdown-unit">日</span></div>
         </div>
         <div class="countdown-meta">2026.08.08 / KEIO ARENA TOKYO</div>
       </div>
@@ -341,43 +332,43 @@
 
   <section class="section">
     <div class="section-card">
-      <h2 class="section-title">World Tour Map</h2>
+      <h2 class="section-title">ワールドツアー</h2>
       
       <div class="tour-legend">
-        <span><i class="dot kr"></i>KOREA</span>
-        <span><i class="dot eu"></i>EUROPE</span>
-        <span><i class="dot na"></i>NORTH AMERICA</span>
-        <span><i class="dot jp"></i>JAPAN</span>
+        <span><i class="dot kr"></i>韓国</span>
+        <span><i class="dot eu"></i>ヨーロッパ</span>
+        <span><i class="dot na"></i>北米</span>
+        <span><i class="dot jp"></i>日本</span>
       </div>
       <div class="tour-map-wrap">
         <svg viewBox="0 0 1100 520" class="tour-map" xmlns="http://www.w3.org/2000/svg">
           <rect x="0" y="0" width="1100" height="520" rx="24" fill="transparent"/>
-          <text x="160" y="145" font-size="16" font-weight="900" fill="#8f7f88">NORTH AMERICA</text>
-          <text x="500" y="120" font-size="16" font-weight="900" fill="#8f7f88">EUROPE</text>
+          <text x="160" y="145" font-size="16" font-weight="900" fill="#8f7f88">北米</text>
+          <text x="500" y="120" font-size="16" font-weight="900" fill="#8f7f88">ヨーロッパ</text>
           <text x="840" y="150" font-size="16" font-weight="900" fill="#8f7f88">ASIA</text>
           <path d="M830,180 C760,120 680,110 620,150" fill="none" stroke="#7aa9ff" stroke-width="3" stroke-dasharray="8 8"/>
           <path d="M620,210 C700,240 760,250 870,210" fill="none" stroke="#f6a4ce" stroke-width="3" stroke-dasharray="8 8"/>
           <path d="M560,175 C470,190 350,210 260,235" fill="none" stroke="#70d2c1" stroke-width="3" stroke-dasharray="8 8"/>
-          <circle cx="860" cy="180" r="9" fill="#8c6bff"/><text x="875" y="175" font-size="14" font-weight="800" fill="currentColor">Incheon</text><text x="875" y="194" font-size="12" font-weight="700" fill="#8f7f88">2025.11.29-30</text>
-          <circle cx="600" cy="175" r="8" fill="#4f8ef7"/><text x="615" y="170" font-size="14" font-weight="800" fill="currentColor">Madrid</text><text x="615" y="189" font-size="12" font-weight="700" fill="#8f7f88">2026.03.17</text>
-          <circle cx="625" cy="152" r="8" fill="#4f8ef7"/><text x="640" y="147" font-size="14" font-weight="800" fill="currentColor">Amsterdam</text><text x="640" y="166" font-size="12" font-weight="700" fill="#8f7f88">03.20</text>
-          <circle cx="610" cy="142" r="8" fill="#4f8ef7"/><text x="625" y="137" font-size="14" font-weight="800" fill="currentColor">Paris</text><text x="625" y="156" font-size="12" font-weight="700" fill="#8f7f88">03.22</text>
-          <circle cx="642" cy="136" r="8" fill="#4f8ef7"/><text x="657" y="131" font-size="14" font-weight="800" fill="currentColor">Frankfurt</text><text x="657" y="150" font-size="12" font-weight="700" fill="#8f7f88">03.24</text>
-          <circle cx="590" cy="124" r="8" fill="#4f8ef7"/><text x="605" y="119" font-size="14" font-weight="800" fill="currentColor">London</text><text x="605" y="138" font-size="12" font-weight="700" fill="#8f7f88">03.26</text>
-          <circle cx="255" cy="228" r="8" fill="#39b79a"/><text x="270" y="223" font-size="14" font-weight="800" fill="currentColor">Toronto</text><text x="270" y="242" font-size="12" font-weight="700" fill="#8f7f88">03.29</text>
-          <circle cx="285" cy="245" r="8" fill="#39b79a"/><text x="300" y="240" font-size="14" font-weight="800" fill="currentColor">Brooklyn</text><text x="300" y="259" font-size="12" font-weight="700" fill="#8f7f88">03.31</text>
-          <circle cx="270" cy="260" r="8" fill="#39b79a"/><text x="285" y="255" font-size="14" font-weight="800" fill="currentColor">National Harbor</text><text x="285" y="274" font-size="12" font-weight="700" fill="#8f7f88">04.02</text>
-          <circle cx="205" cy="285" r="8" fill="#39b79a"/><text x="220" y="280" font-size="14" font-weight="800" fill="currentColor">Irving</text><text x="220" y="299" font-size="12" font-weight="700" fill="#8f7f88">04.04</text>
-          <circle cx="135" cy="250" r="8" fill="#39b79a"/><text x="150" y="245" font-size="14" font-weight="800" fill="currentColor">Oakland</text><text x="150" y="264" font-size="12" font-weight="700" fill="#8f7f88">04.07</text>
-          <circle cx="120" cy="275" r="8" fill="#39b79a"/><text x="135" y="270" font-size="14" font-weight="800" fill="currentColor">Los Angeles</text><text x="135" y="289" font-size="12" font-weight="700" fill="#8f7f88">04.09</text>
-          <circle cx="900" cy="212" r="10" fill="#ff4fa4"/><text x="918" y="207" font-size="14" font-weight="800" fill="currentColor">Tokyo</text><text x="918" y="226" font-size="12" font-weight="700" fill="#8f7f88">2026.08.08-09</text>
+          <circle cx="860" cy="180" r="9" fill="#8c6bff"/><text x="875" y="175" font-size="14" font-weight="800" fill="currentColor">仁川</text><text x="875" y="194" font-size="12" font-weight="700" fill="#8f7f88">2025.11.29-30</text>
+          <circle cx="600" cy="175" r="8" fill="#4f8ef7"/><text x="615" y="170" font-size="14" font-weight="800" fill="currentColor">マドリード</text><text x="615" y="189" font-size="12" font-weight="700" fill="#8f7f88">2026.03.17</text>
+          <circle cx="625" cy="152" r="8" fill="#4f8ef7"/><text x="640" y="147" font-size="14" font-weight="800" fill="currentColor">アムステルダム</text><text x="640" y="166" font-size="12" font-weight="700" fill="#8f7f88">03.20</text>
+          <circle cx="610" cy="142" r="8" fill="#4f8ef7"/><text x="625" y="137" font-size="14" font-weight="800" fill="currentColor">パリ</text><text x="625" y="156" font-size="12" font-weight="700" fill="#8f7f88">03.22</text>
+          <circle cx="642" cy="136" r="8" fill="#4f8ef7"/><text x="657" y="131" font-size="14" font-weight="800" fill="currentColor">フランクフルト</text><text x="657" y="150" font-size="12" font-weight="700" fill="#8f7f88">03.24</text>
+          <circle cx="590" cy="124" r="8" fill="#4f8ef7"/><text x="605" y="119" font-size="14" font-weight="800" fill="currentColor">ロンドン</text><text x="605" y="138" font-size="12" font-weight="700" fill="#8f7f88">03.26</text>
+          <circle cx="255" cy="228" r="8" fill="#39b79a"/><text x="270" y="223" font-size="14" font-weight="800" fill="currentColor">トロント</text><text x="270" y="242" font-size="12" font-weight="700" fill="#8f7f88">03.29</text>
+          <circle cx="285" cy="245" r="8" fill="#39b79a"/><text x="300" y="240" font-size="14" font-weight="800" fill="currentColor">ブルックリン</text><text x="300" y="259" font-size="12" font-weight="700" fill="#8f7f88">03.31</text>
+          <circle cx="270" cy="260" r="8" fill="#39b79a"/><text x="285" y="255" font-size="14" font-weight="800" fill="currentColor">ナショナルハーバー</text><text x="285" y="274" font-size="12" font-weight="700" fill="#8f7f88">04.02</text>
+          <circle cx="205" cy="285" r="8" fill="#39b79a"/><text x="220" y="280" font-size="14" font-weight="800" fill="currentColor">アービング</text><text x="220" y="299" font-size="12" font-weight="700" fill="#8f7f88">04.04</text>
+          <circle cx="135" cy="250" r="8" fill="#39b79a"/><text x="150" y="245" font-size="14" font-weight="800" fill="currentColor">オークランド</text><text x="150" y="264" font-size="12" font-weight="700" fill="#8f7f88">04.07</text>
+          <circle cx="120" cy="275" r="8" fill="#39b79a"/><text x="135" y="270" font-size="14" font-weight="800" fill="currentColor">ロサンゼルス</text><text x="135" y="289" font-size="12" font-weight="700" fill="#8f7f88">04.09</text>
+          <circle cx="900" cy="212" r="10" fill="#ff4fa4"/><text x="918" y="207" font-size="14" font-weight="800" fill="currentColor">東京</text><text x="918" y="226" font-size="12" font-weight="700" fill="#8f7f88">2026.08.08-09</text>
         </svg>
       </div>
       <div class="tour-groups">
-        <div class="tour-group"><h3>KOREA</h3><ul><li>2025.11.29-30 / Incheon / INSPIRE ARENA</li></ul></div>
-        <div class="tour-group"><h3>EUROPE</h3><ul><li>03.17 / Madrid / PALACIO VISTALEGRE</li><li>03.20 / Amsterdam / AFAS LIVE</li><li>03.22 / Paris / SALLE PLEYEL</li><li>03.24 / Frankfurt / MYTICKET JAHRHUNDERTHALLE</li><li>03.26 / London / EVENTIM APOLLO</li></ul></div>
-        <div class="tour-group"><h3>NORTH AMERICA</h3><ul><li>03.29 / Toronto / GREAT CANADIAN TORONTO</li><li>03.31 / Brooklyn / BROOKLYN PARAMOUNT</li><li>04.02 / National Harbor / THE THEATER AT MGM NATIONAL HARBOR</li><li>04.04 / Irving / THE PAVILION AT TOYOTA MUSIC FACTORY</li><li>04.07 / Oakland / PARAMOUNT THEATRE</li><li>04.09 / Los Angeles / YOUTUBE THEATER</li></ul></div>
-        <div class="tour-group"><h3>JAPAN</h3><ul><li>08.08-09 / Tokyo / KEIO ARENA TOKYO</li></ul></div>
+        <div class="tour-group"><h3>韓国</h3><ul><li>2025.11.29-30 / 仁川 / INSPIRE ARENA</li></ul></div>
+        <div class="tour-group"><h3>ヨーロッパ</h3><ul><li>03.17 / マドリード / PALACIO VISTALEGRE</li><li>03.20 / アムステルダム / AFAS LIVE</li><li>03.22 / パリ / SALLE PLEYEL</li><li>03.24 / フランクフルト / MYTICKET JAHRHUNDERTHALLE</li><li>03.26 / ロンドン / EVENTIM APOLLO</li></ul></div>
+        <div class="tour-group"><h3>北米</h3><ul><li>03.29 / トロント / GREAT CANADIAN TORONTO</li><li>03.31 / ブルックリン / BROOKLYN PARAMOUNT</li><li>04.02 / ナショナルハーバー / THE THEATER AT MGM NATIONAL HARBOR</li><li>04.04 / アービング / THE PAVILION AT TOYOTA MUSIC FACTORY</li><li>04.07 / オークランド / PARAMOUNT THEATRE</li><li>04.09 / ロサンゼルス / YOUTUBE THEATER</li></ul></div>
+        <div class="tour-group"><h3>日本</h3><ul><li>08.08-09 / 東京 / KEIO ARENA TOKYO</li></ul></div>
       </div>
     </div>
   </section>
@@ -389,14 +380,14 @@
       <div class="legend-mini">
         <span class="legend-pill live">LIVE</span>
         <span class="legend-pill fc">FC</span>
-        <span class="legend-pill birthday">BDAY</span>
+        <span class="legend-pill birthday">誕生日</span>
       </div>
       <div class="calendar-controls">
         <button id="prevMonth" type="button">‹</button>
         <div id="monthLabel" class="month-label"></div>
         <button id="nextMonth" type="button">›</button>
       </div>
-      <div class="calendar-weekdays">
+      <div class="calendar-week日">
         <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
       </div>
       <div id="calendarGrid" class="calendar-grid"></div>
@@ -420,21 +411,21 @@
 <script src="js/common.js"></script>
 <script>
 const events = [
-  { date:'2025-11-29', type:'LIVE', title:'Incheon / INSPIRE ARENA' },
-  { date:'2025-11-30', type:'LIVE', title:'Incheon / INSPIRE ARENA' },
-  { date:'2026-03-17', type:'LIVE', title:'Madrid / PALACIO VISTALEGRE' },
-  { date:'2026-03-20', type:'LIVE', title:'Amsterdam / AFAS LIVE' },
-  { date:'2026-03-22', type:'LIVE', title:'Paris / SALLE PLEYEL' },
-  { date:'2026-03-24', type:'LIVE', title:'Frankfurt / MYTICKET JAHRHUNDERTHALLE' },
-  { date:'2026-03-26', type:'LIVE', title:'London / EVENTIM APOLLO' },
-  { date:'2026-03-29', type:'LIVE', title:'Toronto / GREAT CANADIAN TORONTO' },
-  { date:'2026-03-31', type:'LIVE', title:'Brooklyn / BROOKLYN PARAMOUNT' },
-  { date:'2026-04-02', type:'LIVE', title:'National Harbor / MGM NATIONAL HARBOR' },
-  { date:'2026-04-04', type:'LIVE', title:'Irving / TOYOTA MUSIC FACTORY' },
-  { date:'2026-04-07', type:'LIVE', title:'Oakland / PARAMOUNT THEATRE' },
-  { date:'2026-04-09', type:'LIVE', title:'Los Angeles / YOUTUBE THEATER' },
-  { date:'2026-08-08', type:'LIVE', title:'Tokyo / KEIO ARENA TOKYO' },
-  { date:'2026-08-09', type:'LIVE', title:'Tokyo / KEIO ARENA TOKYO' },
+  { date:'2025-11-29', type:'LIVE', title:'仁川 / INSPIRE ARENA' },
+  { date:'2025-11-30', type:'LIVE', title:'仁川 / INSPIRE ARENA' },
+  { date:'2026-03-17', type:'LIVE', title:'マドリード / PALACIO VISTALEGRE' },
+  { date:'2026-03-20', type:'LIVE', title:'アムステルダム / AFAS LIVE' },
+  { date:'2026-03-22', type:'LIVE', title:'パリ / SALLE PLEYEL' },
+  { date:'2026-03-24', type:'LIVE', title:'フランクフルト / MYTICKET JAHRHUNDERTHALLE' },
+  { date:'2026-03-26', type:'LIVE', title:'ロンドン / EVENTIM APOLLO' },
+  { date:'2026-03-29', type:'LIVE', title:'トロント / GREAT CANADIAN TORONTO' },
+  { date:'2026-03-31', type:'LIVE', title:'ブルックリン / BROOKLYN PARAMOUNT' },
+  { date:'2026-04-02', type:'LIVE', title:'ナショナルハーバー / MGM NATIONAL HARBOR' },
+  { date:'2026-04-04', type:'LIVE', title:'アービング / TOYOTA MUSIC FACTORY' },
+  { date:'2026-04-07', type:'LIVE', title:'オークランド / PARAMOUNT THEATRE' },
+  { date:'2026-04-09', type:'LIVE', title:'ロサンゼルス / YOUTUBE THEATER' },
+  { date:'2026-08-08', type:'LIVE', title:'東京 / KEIO ARENA TOKYO' },
+  { date:'2026-08-09', type:'LIVE', title:'東京 / KEIO ARENA TOKYO' },
 
   { date:'2026-03-13', type:'FC', title:'W会員先行 受付開始' },
   { date:'2026-03-26', type:'FC', title:'W会員先行 締切 23:59' },
@@ -443,12 +434,12 @@ const events = [
   { date:'2026-04-06', type:'FC', title:'MOBILE先行 受付開始' },
   { date:'2026-04-15', type:'FC', title:'MOBILE先行 締切 23:59' },
 
-  { date:'2026-01-17', type:'BIRTHDAY', title:'LILY Birthday' },
-  { date:'2026-01-26', type:'BIRTHDAY', title:'JIWOO Birthday' },
-  { date:'2026-02-26', type:'BIRTHDAY', title:'KYUJIN Birthday' },
-  { date:'2026-05-25', type:'BIRTHDAY', title:'HAEWON Birthday' },
-  { date:'2026-06-28', type:'BIRTHDAY', title:'SULLYOON Birthday' },
-  { date:'2026-12-28', type:'BIRTHDAY', title:'BAE Birthday' }
+  { date:'2026-01-17', type:'誕生日', title:'LILY 誕生日' },
+  { date:'2026-01-26', type:'誕生日', title:'JIWOO 誕生日' },
+  { date:'2026-02-26', type:'誕生日', title:'KYUJIN 誕生日' },
+  { date:'2026-05-25', type:'誕生日', title:'HAEWON 誕生日' },
+  { date:'2026-06-28', type:'誕生日', title:'SULLYOON 誕生日' },
+  { date:'2026-12-28', type:'誕生日', title:'BAE 誕生日' }
 ];
 
 const today = new Date();
@@ -460,7 +451,7 @@ function jp(dateStr){
 }
 function cls(type){ return type.toLowerCase(); }
 function shortType(type){
-  if(type === 'BIRTHDAY') return 'BDAY';
+  if(type === '誕生日') return '誕生日';
   return type;
 }
 
@@ -496,7 +487,7 @@ function renderCalendar(){
 
   const first = new Date(currentYear, currentMonth, 1);
   const start = first.getDay();
-  const days = new Date(currentYear, currentMonth + 1, 0).getDate();
+  const 日 = new Date(currentYear, currentMonth + 1, 0).getDate();
   const prevDays = new Date(currentYear, currentMonth, 0).getDate();
 
   for(let i=0;i<start;i++){
@@ -504,7 +495,7 @@ function renderCalendar(){
     grid.insertAdjacentHTML('beforeend', `<div class="calendar-day other-month"><div class="calendar-date">${n}</div></div>`);
   }
 
-  for(let d=1; d<=days; d++){
+  for(let d=1; d<=日; d++){
     const key = `${currentYear}-${String(currentMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
     const match = events.filter(e => e.date === key);
     const visible = match.slice(0,2);
@@ -518,7 +509,7 @@ function renderCalendar(){
     `);
   }
 
-  const total = start + days;
+  const total = start + 日;
   const rest = total % 7 === 0 ? 0 : 7 - (total % 7);
   for(let i=1;i<=rest;i++){
     grid.insertAdjacentHTML('beforeend', `<div class="calendar-day other-month"><div class="calendar-date">${i}</div></div>`);

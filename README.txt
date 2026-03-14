@@ -1,11 +1,8 @@
-原因
-- 画像の壊れたアイコンは、ブラウザが images/world-map-base.svg を読めていない状態です。
-- よくある原因は、images フォルダに入っていない / ファイル名違い / 大文字小文字違いです。
-
-今回の修正版
-- ベース地図を SVG ではなく PNG に変更
-- schedule.html の参照先も images/world-map-base.png に変更
-
-やること
-- schedule.html を上書き
-- images/world-map-base.png を images フォルダに入れる
+日本語化した schedule.html です。
+主な変更:
+- ワールドツアー関連の見出しを日本語化
+- 地域名を日本語化
+- 都市名を日本語表記に変更
+- 日付表記を日本語サイト向けに変更
+- 誕生日表記を日本語化
+- 説明っぽい補足文を削除
