@@ -13,7 +13,6 @@
 <script>try{if(localStorage.getItem('theme')==='light'){document.documentElement.classList.add('light-mode');}}catch(e){}</script>
 <style>
 .schedule-page{
-  --sp-page:#171319;
   --sp-card:#221b22;
   --sp-text:#f7f2f6;
   --sp-muted:#c9b8c3;
@@ -28,8 +27,7 @@
   color:var(--sp-text);
 }
 .light-mode .schedule-page{
-  --sp-page:#fff8fc;
-  --sp-card:#ffffff;
+  --sp-card:#fffdfd;
   --sp-text:#23161f;
   --sp-muted:#6f5c67;
   --sp-border:#ead9e3;
@@ -186,6 +184,24 @@
   font-weight:900;
   color:var(--sp-text);
 }
+.schedule-page .legend-mini{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:0 0 14px;
+}
+.schedule-page .legend-pill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:999px;
+  padding:6px 10px;
+  font-size:.72rem;
+  font-weight:900;
+}
+.schedule-page .legend-pill.live{background:var(--sp-live-soft);color:var(--sp-live)}
+.schedule-page .legend-pill.fc{background:var(--sp-fc-soft);color:var(--sp-fc)}
+.schedule-page .legend-pill.birthday{background:var(--sp-birthday-soft);color:var(--sp-birthday)}
 .schedule-page .calendar-weekdays,
 .schedule-page .calendar-grid{
   display:grid;
@@ -199,7 +215,7 @@
   padding:6px 0;
 }
 .schedule-page .calendar-day{
-  min-height:132px;
+  min-height:108px;
   border:1px solid var(--sp-border);
   border-radius:16px;
   padding:10px;
@@ -211,22 +227,45 @@
   margin-bottom:8px;
   color:var(--sp-text);
 }
-.schedule-page .calendar-items{display:grid;gap:6px}
+.schedule-page .calendar-items{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+}
 .schedule-page .calendar-pill{
-  border-radius:10px;
-  padding:5px 7px;
-  font-size:.66rem;
+  border-radius:999px;
+  padding:4px 8px;
+  font-size:.62rem;
   font-weight:900;
-  line-height:1.35;
-  word-break:break-word;
+  line-height:1.2;
 }
 .schedule-page .calendar-pill.live{background:var(--sp-live-soft);color:var(--sp-live)}
 .schedule-page .calendar-pill.fc{background:var(--sp-fc-soft);color:var(--sp-fc)}
 .schedule-page .calendar-pill.birthday{background:var(--sp-birthday-soft);color:var(--sp-birthday)}
+.schedule-page .month-list{
+  display:grid;
+  gap:10px;
+}
+.schedule-page .month-row{
+  display:grid;
+  grid-template-columns:110px 90px 1fr;
+  gap:14px;
+  align-items:center;
+  background:var(--sp-card);
+  border:1px solid var(--sp-border);
+  border-radius:14px;
+  padding:12px 14px;
+}
+.schedule-page .month-row-date{font-weight:900}
+.schedule-page .month-row-title{font-weight:700}
 @media (max-width:760px){
-  .schedule-page .upcoming-item{grid-template-columns:1fr;gap:8px}
-  .schedule-page .calendar-day{min-height:95px;padding:8px}
-  .schedule-page .calendar-pill{font-size:.58rem;padding:4px 6px}
+  .schedule-page .upcoming-item,
+  .schedule-page .month-row{
+    grid-template-columns:1fr;
+    gap:8px;
+  }
+  .schedule-page .calendar-day{min-height:88px;padding:8px}
+  .schedule-page .calendar-pill{font-size:.56rem;padding:3px 6px}
 }
 </style>
 </head>
@@ -267,7 +306,7 @@
 <div class="container schedule-page">
   <section class="page-header">
     <h1>スケジュール</h1>
-    <p>NMIXX 1ST WORLD TOUR、メンバー誕生日、日本公演の申込情報をまとめています。</p>
+    <p>NMIXX 1ST WORLD TOUR、メンバー誕生日、日本公演の申込情報</p>
   </section>
 
   <section class="section">
@@ -286,7 +325,7 @@
   <section class="section">
     <div class="section-card">
       <h2 class="section-title">直近の予定</h2>
-      <p class="section-note">今日以降の予定を近い順に自動表示します。</p>
+      
       <div id="upcomingList" class="upcoming-list"></div>
     </div>
   </section>
@@ -294,7 +333,7 @@
   <section class="section">
     <div class="section-card">
       <h2 class="section-title">World Tour Map</h2>
-      <p class="section-note">NMIXX 1ST WORLD TOUR &lt;EPISODE 1: ZERO FRONTIER&gt;</p>
+      
       <div class="tour-legend">
         <span><i class="dot kr"></i>KOREA</span>
         <span><i class="dot eu"></i>EUROPE</span>
@@ -337,7 +376,12 @@
   <section class="section">
     <div class="section-card">
       <h2 class="section-title">カレンダー</h2>
-      <p class="section-note">LIVE / FC / BIRTHDAY を月ごとに確認できます。</p>
+      
+      <div class="legend-mini">
+        <span class="legend-pill live">LIVE</span>
+        <span class="legend-pill fc">FC</span>
+        <span class="legend-pill birthday">BDAY</span>
+      </div>
       <div class="calendar-controls">
         <button id="prevMonth" type="button">‹</button>
         <div id="monthLabel" class="month-label"></div>
@@ -347,6 +391,14 @@
         <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
       </div>
       <div id="calendarGrid" class="calendar-grid"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-card">
+      <h2 class="section-title">月別の予定一覧</h2>
+      
+      <div id="monthList" class="month-list"></div>
     </div>
   </section>
 </div>
@@ -398,6 +450,10 @@ function jp(dateStr){
   return `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}`;
 }
 function cls(type){ return type.toLowerCase(); }
+function shortType(type){
+  if(type === 'BIRTHDAY') return 'BDAY';
+  return type;
+}
 
 function renderCountdown(){
   const target = new Date('2026-08-08T00:00:00');
@@ -414,7 +470,7 @@ function renderUpcoming(){
   document.getElementById('upcomingList').innerHTML = items.map(e => `
     <div class="upcoming-item">
       <div class="upcoming-date">${jp(e.date)}</div>
-      <div><span class="badge ${cls(e.type)}">${e.type}</span></div>
+      <div><span class="badge ${cls(e.type)}">${shortType(e.type)}</span></div>
       <div class="upcoming-title">${e.title}</div>
     </div>
   `).join('');
@@ -442,11 +498,13 @@ function renderCalendar(){
   for(let d=1; d<=days; d++){
     const key = `${currentYear}-${String(currentMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
     const match = events.filter(e => e.date === key);
-    const pills = match.map(m => `<div class="calendar-pill ${cls(m.type)}">${m.type} ${m.title}</div>`).join('');
+    const visible = match.slice(0,2);
+    const pills = visible.map(m => `<div class="calendar-pill ${cls(m.type)}">${shortType(m.type)}</div>`).join('');
+    const extra = match.length > 2 ? `<div class="calendar-pill">${'+' + (match.length - 2)}</div>` : '';
     grid.insertAdjacentHTML('beforeend', `
       <div class="calendar-day">
         <div class="calendar-date">${d}</div>
-        <div class="calendar-items">${pills}</div>
+        <div class="calendar-items">${pills}${extra}</div>
       </div>
     `);
   }
@@ -458,20 +516,48 @@ function renderCalendar(){
   }
 }
 
+function renderMonthList(){
+  const box = document.getElementById('monthList');
+  const monthItems = events
+    .filter(e => {
+      const d = new Date(e.date + 'T00:00:00');
+      return d.getFullYear() === currentYear && d.getMonth() === currentMonth;
+    })
+    .sort((a,b) => new Date(a.date) - new Date(b.date));
+
+  if(monthItems.length === 0){
+    box.innerHTML = `<div class="month-row"><div class="month-row-title">この月の予定はまだありません。</div></div>`;
+    return;
+  }
+
+  box.innerHTML = monthItems.map(e => `
+    <div class="month-row">
+      <div class="month-row-date">${jp(e.date)}</div>
+      <div><span class="badge ${cls(e.type)}">${shortType(e.type)}</span></div>
+      <div class="month-row-title">${e.title}</div>
+    </div>
+  `).join('');
+}
+
+function rerenderAll(){
+  renderCalendar();
+  renderMonthList();
+}
+
 document.getElementById('prevMonth').addEventListener('click', () => {
   currentMonth--;
   if(currentMonth < 0){ currentMonth = 11; currentYear--; }
-  renderCalendar();
+  rerenderAll();
 });
 document.getElementById('nextMonth').addEventListener('click', () => {
   currentMonth++;
   if(currentMonth > 11){ currentMonth = 0; currentYear++; }
-  renderCalendar();
+  rerenderAll();
 });
 
 renderCountdown();
 renderUpcoming();
-renderCalendar();
+rerenderAll();
 </script>
 </body>
 </html>
