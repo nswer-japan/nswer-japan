@@ -267,6 +267,67 @@
   .schedule-page .calendar-day{min-height:88px;padding:8px}
   .schedule-page .calendar-pill{font-size:.56rem;padding:3px 6px}
 }
+
+/* schedule visibility fix */
+.schedule-page .tour-map-wrap{
+  background: var(--sp-card) !important;
+}
+.schedule-page .tour-map text{
+  paint-order: stroke;
+  stroke: rgba(0,0,0,.18);
+  stroke-width: 2px;
+}
+.light-mode .schedule-page .tour-map text{
+  stroke: rgba(255,255,255,.55);
+}
+.schedule-page .calendar-day{
+  min-height: 118px !important;
+}
+.schedule-page .calendar-items{
+  display:flex !important;
+  flex-wrap:wrap !important;
+  gap:6px !important;
+}
+.schedule-page .calendar-pill{
+  font-size:.7rem !important;
+  padding:5px 8px !important;
+  border-radius:999px !important;
+  letter-spacing:.01em;
+}
+.schedule-page .calendar-pill.live{
+  background:#ff4fa4 !important;
+  color:#fff !important;
+}
+.schedule-page .calendar-pill.fc{
+  background:#ff9f43 !important;
+  color:#fff !important;
+}
+.schedule-page .calendar-pill.birthday{
+  background:#f4c542 !important;
+  color:#241900 !important;
+}
+.schedule-page .legend-pill.live{
+  background:#ff4fa4 !important;
+  color:#fff !important;
+}
+.schedule-page .legend-pill.fc{
+  background:#ff9f43 !important;
+  color:#fff !important;
+}
+.schedule-page .legend-pill.birthday{
+  background:#f4c542 !important;
+  color:#241900 !important;
+}
+@media (max-width:760px){
+  .schedule-page .calendar-day{
+    min-height: 96px !important;
+  }
+  .schedule-page .calendar-pill{
+    font-size:.62rem !important;
+    padding:4px 6px !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -349,19 +410,19 @@
           <path d="M830,180 C760,120 680,110 620,150" fill="none" stroke="#7aa9ff" stroke-width="3" stroke-dasharray="8 8"/>
           <path d="M620,210 C700,240 760,250 870,210" fill="none" stroke="#f6a4ce" stroke-width="3" stroke-dasharray="8 8"/>
           <path d="M560,175 C470,190 350,210 260,235" fill="none" stroke="#70d2c1" stroke-width="3" stroke-dasharray="8 8"/>
-          <circle cx="860" cy="180" r="9" fill="#8c6bff"/><text x="875" y="175" font-size="14" font-weight="800" fill="currentColor">Incheon</text><text x="875" y="194" font-size="12" font-weight="700" fill="#8f7f88">2025.11.29-30</text>
-          <circle cx="600" cy="175" r="8" fill="#4f8ef7"/><text x="615" y="170" font-size="14" font-weight="800" fill="currentColor">Madrid</text><text x="615" y="189" font-size="12" font-weight="700" fill="#8f7f88">2026.03.17</text>
-          <circle cx="625" cy="152" r="8" fill="#4f8ef7"/><text x="640" y="147" font-size="14" font-weight="800" fill="currentColor">Amsterdam</text><text x="640" y="166" font-size="12" font-weight="700" fill="#8f7f88">03.20</text>
-          <circle cx="610" cy="142" r="8" fill="#4f8ef7"/><text x="625" y="137" font-size="14" font-weight="800" fill="currentColor">Paris</text><text x="625" y="156" font-size="12" font-weight="700" fill="#8f7f88">03.22</text>
-          <circle cx="642" cy="136" r="8" fill="#4f8ef7"/><text x="657" y="131" font-size="14" font-weight="800" fill="currentColor">Frankfurt</text><text x="657" y="150" font-size="12" font-weight="700" fill="#8f7f88">03.24</text>
-          <circle cx="590" cy="124" r="8" fill="#4f8ef7"/><text x="605" y="119" font-size="14" font-weight="800" fill="currentColor">London</text><text x="605" y="138" font-size="12" font-weight="700" fill="#8f7f88">03.26</text>
-          <circle cx="255" cy="228" r="8" fill="#39b79a"/><text x="270" y="223" font-size="14" font-weight="800" fill="currentColor">Toronto</text><text x="270" y="242" font-size="12" font-weight="700" fill="#8f7f88">03.29</text>
-          <circle cx="285" cy="245" r="8" fill="#39b79a"/><text x="300" y="240" font-size="14" font-weight="800" fill="currentColor">Brooklyn</text><text x="300" y="259" font-size="12" font-weight="700" fill="#8f7f88">03.31</text>
-          <circle cx="270" cy="260" r="8" fill="#39b79a"/><text x="285" y="255" font-size="14" font-weight="800" fill="currentColor">National Harbor</text><text x="285" y="274" font-size="12" font-weight="700" fill="#8f7f88">04.02</text>
-          <circle cx="205" cy="285" r="8" fill="#39b79a"/><text x="220" y="280" font-size="14" font-weight="800" fill="currentColor">Irving</text><text x="220" y="299" font-size="12" font-weight="700" fill="#8f7f88">04.04</text>
-          <circle cx="135" cy="250" r="8" fill="#39b79a"/><text x="150" y="245" font-size="14" font-weight="800" fill="currentColor">Oakland</text><text x="150" y="264" font-size="12" font-weight="700" fill="#8f7f88">04.07</text>
-          <circle cx="120" cy="275" r="8" fill="#39b79a"/><text x="135" y="270" font-size="14" font-weight="800" fill="currentColor">Los Angeles</text><text x="135" y="289" font-size="12" font-weight="700" fill="#8f7f88">04.09</text>
-          <circle cx="900" cy="212" r="10" fill="#ff4fa4"/><text x="918" y="207" font-size="14" font-weight="800" fill="currentColor">Tokyo</text><text x="918" y="226" font-size="12" font-weight="700" fill="#8f7f88">2026.08.08-09</text>
+          <circle cx="860" cy="180" r="9" fill="#8c6bff"/><text x="875" y="175" font-size="14" font-weight="800" fill="#f7f2f6">Incheon</text><text x="875" y="194" font-size="12" font-weight="700" fill="#8f7f88">2025.11.29-30</text>
+          <circle cx="600" cy="175" r="8" fill="#4f8ef7"/><text x="615" y="170" font-size="14" font-weight="800" fill="#f7f2f6">Madrid</text><text x="615" y="189" font-size="12" font-weight="700" fill="#8f7f88">2026.03.17</text>
+          <circle cx="625" cy="152" r="8" fill="#4f8ef7"/><text x="640" y="147" font-size="14" font-weight="800" fill="#f7f2f6">Amsterdam</text><text x="640" y="166" font-size="12" font-weight="700" fill="#8f7f88">03.20</text>
+          <circle cx="610" cy="142" r="8" fill="#4f8ef7"/><text x="625" y="137" font-size="14" font-weight="800" fill="#f7f2f6">Paris</text><text x="625" y="156" font-size="12" font-weight="700" fill="#8f7f88">03.22</text>
+          <circle cx="642" cy="136" r="8" fill="#4f8ef7"/><text x="657" y="131" font-size="14" font-weight="800" fill="#f7f2f6">Frankfurt</text><text x="657" y="150" font-size="12" font-weight="700" fill="#8f7f88">03.24</text>
+          <circle cx="590" cy="124" r="8" fill="#4f8ef7"/><text x="605" y="119" font-size="14" font-weight="800" fill="#f7f2f6">London</text><text x="605" y="138" font-size="12" font-weight="700" fill="#8f7f88">03.26</text>
+          <circle cx="255" cy="228" r="8" fill="#39b79a"/><text x="270" y="223" font-size="14" font-weight="800" fill="#f7f2f6">Toronto</text><text x="270" y="242" font-size="12" font-weight="700" fill="#8f7f88">03.29</text>
+          <circle cx="285" cy="245" r="8" fill="#39b79a"/><text x="300" y="240" font-size="14" font-weight="800" fill="#f7f2f6">Brooklyn</text><text x="300" y="259" font-size="12" font-weight="700" fill="#8f7f88">03.31</text>
+          <circle cx="270" cy="260" r="8" fill="#39b79a"/><text x="285" y="255" font-size="14" font-weight="800" fill="#f7f2f6">National Harbor</text><text x="285" y="274" font-size="12" font-weight="700" fill="#8f7f88">04.02</text>
+          <circle cx="205" cy="285" r="8" fill="#39b79a"/><text x="220" y="280" font-size="14" font-weight="800" fill="#f7f2f6">Irving</text><text x="220" y="299" font-size="12" font-weight="700" fill="#8f7f88">04.04</text>
+          <circle cx="135" cy="250" r="8" fill="#39b79a"/><text x="150" y="245" font-size="14" font-weight="800" fill="#f7f2f6">Oakland</text><text x="150" y="264" font-size="12" font-weight="700" fill="#8f7f88">04.07</text>
+          <circle cx="120" cy="275" r="8" fill="#39b79a"/><text x="135" y="270" font-size="14" font-weight="800" fill="#f7f2f6">Los Angeles</text><text x="135" y="289" font-size="12" font-weight="700" fill="#8f7f88">04.09</text>
+          <circle cx="900" cy="212" r="10" fill="#ff4fa4"/><text x="918" y="207" font-size="14" font-weight="800" fill="#f7f2f6">Tokyo</text><text x="918" y="226" font-size="12" font-weight="700" fill="#8f7f88">2026.08.08-09</text>
         </svg>
       </div>
       <div class="tour-groups">
