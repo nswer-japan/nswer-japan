@@ -268,63 +268,12 @@
   .schedule-page .calendar-pill{font-size:.56rem;padding:3px 6px}
 }
 
-.schedule-page .tour-map-stage{
-  position:relative;
-  border:1px solid var(--sp-border);
-  border-radius:20px;
-  overflow:hidden;
-  background:var(--sp-card);
-}
-.schedule-page .tour-map-base{
+.schedule-page .world-map-base{
   display:block;
   width:100%;
   height:auto;
-}
-.schedule-page .tour-route{
-  position:absolute;
-  border-top:2px dashed rgba(255,255,255,.28);
-  transform-origin:left center;
-  opacity:.75;
-}
-.schedule-page .tour-route.eu{border-color:rgba(93,160,255,.7)}
-.schedule-page .tour-route.na{border-color:rgba(63,210,199,.7)}
-.schedule-page .tour-route.asia{border-color:rgba(255,79,164,.7)}
-.schedule-page .tour-pin{
-  position:absolute;
-  transform:translate(-50%,-50%);
-}
-.schedule-page .tour-pin .pin-dot{
-  width:12px;height:12px;border-radius:999px;border:2px solid rgba(255,255,255,.75);
-  box-shadow:0 0 0 4px rgba(255,255,255,.08);
-}
-.schedule-page .tour-pin.kr .pin-dot{background:#8c6bff}
-.schedule-page .tour-pin.eu .pin-dot{background:#4f8ef7}
-.schedule-page .tour-pin.na .pin-dot{background:#39b79a}
-.schedule-page .tour-pin.jp .pin-dot{background:#ff4fa4}
-.schedule-page .tour-label{
-  position:absolute;
-  left:14px; top:-8px;
-  min-width:108px;
-  background:rgba(20,14,20,.82);
-  color:#f7f2f6;
-  border:1px solid rgba(255,255,255,.12);
-  border-radius:12px;
-  padding:8px 10px;
-  font-size:.72rem;
-  line-height:1.35;
-  box-shadow:0 8px 18px rgba(0,0,0,.16);
-}
-.light-mode .schedule-page .tour-label{
-  background:rgba(255,255,255,.96);
-  color:#23161f;
-  border-color:#ead9e3;
-}
-.schedule-page .tour-label strong{display:block;font-size:.76rem}
-.schedule-page .tour-label span{display:block;color:var(--sp-muted)}
-.schedule-page .tour-label.compact{min-width:92px}
-.schedule-page .tour-label.left{left:auto; right:14px}
-@media (max-width:760px){
-  .schedule-page .tour-label{display:none}
+  border-radius:18px;
+  opacity:.9;
 }
 
 </style>
@@ -392,111 +341,46 @@
 
   <section class="section">
     <div class="section-card">
+      <h2 class="section-title">World Tour Map</h2>
       
-<h2 class="section-title">World Tour Map</h2>
-<div class="tour-legend">
-  <span><i class="dot kr"></i>KOREA</span>
-  <span><i class="dot eu"></i>EUROPE</span>
-  <span><i class="dot na"></i>NORTH AMERICA</span>
-  <span><i class="dot jp"></i>JAPAN</span>
-</div>
-<div class="tour-map-stage">
-  <img src="images/world-map-base.svg" alt="World map" class="tour-map-base">
-
-  <div class="tour-route eu" style="left:57%;top:31%;width:18%;transform:rotate(18deg);"></div>
-  <div class="tour-route na" style="left:25%;top:45%;width:26%;transform:rotate(-16deg);"></div>
-  <div class="tour-route asia" style="left:75%;top:37%;width:10%;transform:rotate(22deg);"></div>
-
-  <div class="tour-pin kr" style="left:79%;top:31%;">
-    <div class="pin-dot"></div>
-    <div class="tour-label"><strong>Incheon</strong><span>Nov 29–30, 2025</span><span>INSPIRE ARENA</span></div>
-  </div>
-
-  <div class="tour-pin eu" style="left:54%;top:35%;">
-    <div class="pin-dot"></div>
-    <div class="tour-label compact"><strong>Madrid</strong><span>Mar 17</span></div>
-  </div>
-  <div class="tour-pin eu" style="left:57%;top:29%;">
-    <div class="pin-dot"></div>
-    <div class="tour-label compact"><strong>Amsterdam</strong><span>Mar 20</span></div>
-  </div>
-  <div class="tour-pin eu" style="left:55.5%;top:27%;">
-    <div class="pin-dot"></div>
-    <div class="tour-label compact"><strong>Paris</strong><span>Mar 22</span></div>
-  </div>
-  <div class="tour-pin eu" style="left:58.5%;top:26%;">
-    <div class="pin-dot"></div>
-    <div class="tour-label compact"><strong>Frankfurt</strong><span>Mar 24</span></div>
-  </div>
-  <div class="tour-pin eu" style="left:53.5%;top:24%;">
-    <div class="pin-dot"></div>
-    <div class="tour-label compact"><strong>London</strong><span>Mar 26</span></div>
-  </div>
-
-  <div class="tour-pin na" style="left:24%;top:44%;">
-    <div class="pin-dot"></div>
-    <div class="tour-label compact"><strong>Toronto</strong><span>Mar 29</span></div>
-  </div>
-  <div class="tour-pin na" style="left:27%;top:48%;">
-    <div class="pin-dot"></div>
-    <div class="tour-label compact"><strong>Brooklyn</strong><span>Mar 31</span></div>
-  </div>
-  <div class="tour-pin na" style="left:25.5%;top:51%;">
-    <div class="pin-dot"></div>
-    <div class="tour-label compact"><strong>National Harbor</strong><span>Apr 2</span></div>
-  </div>
-  <div class="tour-pin na" style="left:19.5%;top:56%;">
-    <div class="pin-dot"></div>
-    <div class="tour-label compact"><strong>Irving</strong><span>Apr 4</span></div>
-  </div>
-  <div class="tour-pin na" style="left:13.5%;top:49%;">
-    <div class="pin-dot"></div>
-    <div class="tour-label compact"><strong>Oakland</strong><span>Apr 7</span></div>
-  </div>
-  <div class="tour-pin na" style="left:12%;top:54%;">
-    <div class="pin-dot"></div>
-    <div class="tour-label compact"><strong>Los Angeles</strong><span>Apr 9</span></div>
-  </div>
-
-  <div class="tour-pin jp" style="left:83%;top:37%;">
-    <div class="pin-dot"></div>
-    <div class="tour-label left"><strong>Tokyo 🆕</strong><span>Aug 8–9, 2026</span><span>KEIO ARENA TOKYO</span></div>
-  </div>
-</div>
-<div class="tour-groups">
-  <div class="tour-group">
-    <h3>KOREA</h3>
-    <ul><li>Nov 29–30, 2025 / Incheon / INSPIRE ARENA</li></ul>
-  </div>
-  <div class="tour-group">
-    <h3>EUROPE</h3>
-    <ul>
-      <li>Mar 17 / Madrid / PALACIO VISTALEGRE</li>
-      <li>Mar 20 / Amsterdam / AFAS LIVE</li>
-      <li>Mar 22 / Paris / SALLE PLEYEL</li>
-      <li>Mar 24 / Frankfurt / MYTICKET JAHRHUNDERTHALLE</li>
-      <li>Mar 26 / London / EVENTIM APOLLO</li>
-    </ul>
-  </div>
-  <div class="tour-group">
-    <h3>NORTH AMERICA</h3>
-    <ul>
-      <li>Mar 29 / Toronto / GREAT CANADIAN TORONTO</li>
-      <li>Mar 31 / Brooklyn / BROOKLYN PARAMOUNT</li>
-      <li>Apr 2 / National Harbor / THE THEATER AT MGM NATIONAL HARBOR</li>
-      <li>Apr 4 / Irving / THE PAVILION AT TOYOTA MUSIC FACTORY</li>
-      <li>Apr 7 / Oakland / PARAMOUNT THEATRE</li>
-      <li>Apr 9 / Los Angeles / YOUTUBE THEATER</li>
-    </ul>
-  </div>
-  <div class="tour-group">
-    <h3>JAPAN</h3>
-    <ul><li>Aug 8–9 / Tokyo / KEIO ARENA TOKYO</li></ul>
-  </div>
-</div>
-
-  </div>
-</section>
+      <div class="tour-legend">
+        <span><i class="dot kr"></i>KOREA</span>
+        <span><i class="dot eu"></i>EUROPE</span>
+        <span><i class="dot na"></i>NORTH AMERICA</span>
+        <span><i class="dot jp"></i>JAPAN</span>
+      </div>
+      <div class="tour-map-wrap">
+        <svg viewBox="0 0 1100 520" class="tour-map" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="1100" height="520" rx="24" fill="transparent"/>
+          <text x="160" y="145" font-size="16" font-weight="900" fill="#8f7f88">NORTH AMERICA</text>
+          <text x="500" y="120" font-size="16" font-weight="900" fill="#8f7f88">EUROPE</text>
+          <text x="840" y="150" font-size="16" font-weight="900" fill="#8f7f88">ASIA</text>
+          <path d="M830,180 C760,120 680,110 620,150" fill="none" stroke="#7aa9ff" stroke-width="3" stroke-dasharray="8 8"/>
+          <path d="M620,210 C700,240 760,250 870,210" fill="none" stroke="#f6a4ce" stroke-width="3" stroke-dasharray="8 8"/>
+          <path d="M560,175 C470,190 350,210 260,235" fill="none" stroke="#70d2c1" stroke-width="3" stroke-dasharray="8 8"/>
+          <circle cx="860" cy="180" r="9" fill="#8c6bff"/><text x="875" y="175" font-size="14" font-weight="800" fill="currentColor">Incheon</text><text x="875" y="194" font-size="12" font-weight="700" fill="#8f7f88">2025.11.29-30</text>
+          <circle cx="600" cy="175" r="8" fill="#4f8ef7"/><text x="615" y="170" font-size="14" font-weight="800" fill="currentColor">Madrid</text><text x="615" y="189" font-size="12" font-weight="700" fill="#8f7f88">2026.03.17</text>
+          <circle cx="625" cy="152" r="8" fill="#4f8ef7"/><text x="640" y="147" font-size="14" font-weight="800" fill="currentColor">Amsterdam</text><text x="640" y="166" font-size="12" font-weight="700" fill="#8f7f88">03.20</text>
+          <circle cx="610" cy="142" r="8" fill="#4f8ef7"/><text x="625" y="137" font-size="14" font-weight="800" fill="currentColor">Paris</text><text x="625" y="156" font-size="12" font-weight="700" fill="#8f7f88">03.22</text>
+          <circle cx="642" cy="136" r="8" fill="#4f8ef7"/><text x="657" y="131" font-size="14" font-weight="800" fill="currentColor">Frankfurt</text><text x="657" y="150" font-size="12" font-weight="700" fill="#8f7f88">03.24</text>
+          <circle cx="590" cy="124" r="8" fill="#4f8ef7"/><text x="605" y="119" font-size="14" font-weight="800" fill="currentColor">London</text><text x="605" y="138" font-size="12" font-weight="700" fill="#8f7f88">03.26</text>
+          <circle cx="255" cy="228" r="8" fill="#39b79a"/><text x="270" y="223" font-size="14" font-weight="800" fill="currentColor">Toronto</text><text x="270" y="242" font-size="12" font-weight="700" fill="#8f7f88">03.29</text>
+          <circle cx="285" cy="245" r="8" fill="#39b79a"/><text x="300" y="240" font-size="14" font-weight="800" fill="currentColor">Brooklyn</text><text x="300" y="259" font-size="12" font-weight="700" fill="#8f7f88">03.31</text>
+          <circle cx="270" cy="260" r="8" fill="#39b79a"/><text x="285" y="255" font-size="14" font-weight="800" fill="currentColor">National Harbor</text><text x="285" y="274" font-size="12" font-weight="700" fill="#8f7f88">04.02</text>
+          <circle cx="205" cy="285" r="8" fill="#39b79a"/><text x="220" y="280" font-size="14" font-weight="800" fill="currentColor">Irving</text><text x="220" y="299" font-size="12" font-weight="700" fill="#8f7f88">04.04</text>
+          <circle cx="135" cy="250" r="8" fill="#39b79a"/><text x="150" y="245" font-size="14" font-weight="800" fill="currentColor">Oakland</text><text x="150" y="264" font-size="12" font-weight="700" fill="#8f7f88">04.07</text>
+          <circle cx="120" cy="275" r="8" fill="#39b79a"/><text x="135" y="270" font-size="14" font-weight="800" fill="currentColor">Los Angeles</text><text x="135" y="289" font-size="12" font-weight="700" fill="#8f7f88">04.09</text>
+          <circle cx="900" cy="212" r="10" fill="#ff4fa4"/><text x="918" y="207" font-size="14" font-weight="800" fill="currentColor">Tokyo</text><text x="918" y="226" font-size="12" font-weight="700" fill="#8f7f88">2026.08.08-09</text>
+        </svg>
+      </div>
+      <div class="tour-groups">
+        <div class="tour-group"><h3>KOREA</h3><ul><li>2025.11.29-30 / Incheon / INSPIRE ARENA</li></ul></div>
+        <div class="tour-group"><h3>EUROPE</h3><ul><li>03.17 / Madrid / PALACIO VISTALEGRE</li><li>03.20 / Amsterdam / AFAS LIVE</li><li>03.22 / Paris / SALLE PLEYEL</li><li>03.24 / Frankfurt / MYTICKET JAHRHUNDERTHALLE</li><li>03.26 / London / EVENTIM APOLLO</li></ul></div>
+        <div class="tour-group"><h3>NORTH AMERICA</h3><ul><li>03.29 / Toronto / GREAT CANADIAN TORONTO</li><li>03.31 / Brooklyn / BROOKLYN PARAMOUNT</li><li>04.02 / National Harbor / THE THEATER AT MGM NATIONAL HARBOR</li><li>04.04 / Irving / THE PAVILION AT TOYOTA MUSIC FACTORY</li><li>04.07 / Oakland / PARAMOUNT THEATRE</li><li>04.09 / Los Angeles / YOUTUBE THEATER</li></ul></div>
+        <div class="tour-group"><h3>JAPAN</h3><ul><li>08.08-09 / Tokyo / KEIO ARENA TOKYO</li></ul></div>
+      </div>
+    </div>
+  </section>
 
   <section class="section">
     <div class="section-card">
