@@ -12,105 +12,208 @@
 <link rel="stylesheet" href="css/common.css">
 <script>try{if(localStorage.getItem('theme')==='light'){document.documentElement.classList.add('light-mode');}}catch(e){}</script>
 <style>
-.schedule-page .section-intro{margin-bottom:18px}
-.schedule-page .schedule-note{color:var(--subtle,#777);font-size:.95rem}
+.schedule-page{color:#222}
+.schedule-page .section-card{
+  background:#fff;
+  border:1px solid #ece7ec;
+  border-radius:20px;
+  padding:22px;
+  box-shadow:0 8px 24px rgba(0,0,0,.04);
+}
+.schedule-page .section-note{
+  color:#666;
+  margin:0 0 16px;
+}
 .schedule-page .countdown-card{
-  background:linear-gradient(135deg, rgba(255,96,170,.14), rgba(255,255,255,.98));
-  border:1px solid rgba(255,96,170,.22);
-  border-radius:24px;
+  background:linear-gradient(135deg,#fff0f7,#ffffff);
+  border:1px solid #ffd4e8;
+  border-radius:22px;
   padding:22px;
   display:flex;
-  align-items:end;
   justify-content:space-between;
+  align-items:flex-end;
   gap:18px;
   flex-wrap:wrap;
 }
-.schedule-page .countdown-label{font-size:.82rem;font-weight:900;color:var(--pink,#ff4fa4);letter-spacing:.08em}
-.schedule-page .countdown-days-wrap{display:flex;align-items:flex-end;gap:10px}
-.schedule-page .countdown-days{font-size:clamp(48px,9vw,86px);font-weight:900;line-height:1;color:var(--text,#222)}
-.schedule-page .countdown-unit{font-size:1rem;color:var(--subtle,#666);padding-bottom:10px}
-.schedule-page .countdown-meta{color:var(--subtle,#666);font-weight:700}
-.schedule-page .upcoming-list{display:grid;gap:12px}
+.schedule-page .countdown-kicker{
+  font-size:.8rem;
+  font-weight:900;
+  color:#ff4fa4;
+  letter-spacing:.08em;
+  margin-bottom:10px;
+}
+.schedule-page .countdown-num{
+  font-size:clamp(46px,8vw,84px);
+  font-weight:900;
+  line-height:1;
+}
+.schedule-page .countdown-unit{
+  font-size:1rem;
+  color:#666;
+  margin-left:8px;
+}
+.schedule-page .countdown-meta{
+  color:#666;
+  font-weight:700;
+}
+.schedule-page .upcoming-list{
+  display:grid;
+  gap:12px;
+}
 .schedule-page .upcoming-item{
   display:grid;
-  grid-template-columns:120px 92px 1fr;
+  grid-template-columns:120px 90px 1fr;
   gap:14px;
   align-items:center;
-  border:1px solid rgba(0,0,0,.08);
-  border-radius:18px;
-  padding:14px 16px;
   background:#fff;
+  border:1px solid #ece7ec;
+  border-radius:16px;
+  padding:14px 16px;
 }
 .schedule-page .upcoming-date{font-weight:900}
-.schedule-page .schedule-badge{
-  display:inline-flex;align-items:center;justify-content:center;
-  min-width:78px;padding:8px 12px;border-radius:999px;
-  font-size:.76rem;font-weight:900;color:#fff;
+.schedule-page .badge{
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  min-width:78px;
+  padding:8px 12px;
+  border-radius:999px;
+  color:#fff;
+  font-size:.75rem;
+  font-weight:900;
 }
-.schedule-page .schedule-badge.live{background:#ff4fa4}
-.schedule-page .schedule-badge.fc{background:#ff9f43}
-.schedule-page .schedule-badge.birthday{background:#f4c542;color:#4a3900}
-.schedule-page .schedule-title{font-weight:800}
+.schedule-page .badge.live{background:#ff4fa4}
+.schedule-page .badge.fc{background:#ff9f43}
+.schedule-page .badge.birthday{background:#f4c542;color:#4a3900}
+.schedule-page .upcoming-title{font-weight:800}
+.schedule-page .tour-legend{
+  display:flex;
+  flex-wrap:wrap;
+  gap:16px;
+  margin-bottom:14px;
+  color:#666;
+}
+.schedule-page .tour-legend span{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-weight:700;
+}
+.schedule-page .dot{
+  width:12px;height:12px;border-radius:999px;display:inline-block;
+}
+.schedule-page .dot.kr{background:#8c6bff}
+.schedule-page .dot.eu{background:#4f8ef7}
+.schedule-page .dot.na{background:#39b79a}
+.schedule-page .dot.jp{background:#ff4fa4}
 .schedule-page .tour-map-wrap{
   overflow:auto;
-  border:1px solid rgba(0,0,0,.08);
-  border-radius:22px;
+  border:1px solid #ece7ec;
+  border-radius:20px;
   background:#fff;
 }
 .schedule-page .tour-map{
   width:100%;
   min-width:920px;
   display:block;
-  height:auto;
 }
-.schedule-page .tour-legend{
-  display:flex;gap:16px;flex-wrap:wrap;margin-bottom:14px;color:var(--subtle,#666)
+.schedule-page .tour-groups{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:14px;
+  margin-top:16px;
 }
-.schedule-page .tour-legend span{display:flex;align-items:center;gap:8px;font-weight:700}
-.schedule-page .tour-dot{width:12px;height:12px;border-radius:999px;display:inline-block}
-.schedule-page .tour-dot.kr{background:#8c6bff}
-.schedule-page .tour-dot.eu{background:#4f8ef7}
-.schedule-page .tour-dot.na{background:#39b79a}
-.schedule-page .tour-dot.jp{background:#ff4fa4}
-.schedule-page .tour-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:16px}
-.schedule-page .tour-group{border:1px solid rgba(0,0,0,.08);border-radius:18px;padding:16px;background:#fff}
-.schedule-page .tour-group h3{margin:0 0 10px;color:var(--pink,#ff4fa4)}
-.schedule-page .tour-group ul{margin:0;padding-left:18px}
-.schedule-page .tour-group li+li{margin-top:8px}
+.schedule-page .tour-group{
+  border:1px solid #ece7ec;
+  border-radius:16px;
+  padding:16px;
+  background:#fff;
+}
+.schedule-page .tour-group h3{
+  margin:0 0 10px;
+  color:#ff4fa4;
+}
+.schedule-page .tour-group ul{
+  margin:0;
+  padding-left:18px;
+}
+.schedule-page .tour-group li+li{
+  margin-top:8px;
+}
 .schedule-page .calendar-controls{
-  display:flex;align-items:center;justify-content:center;gap:16px;margin:10px 0 18px
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  margin:6px 0 18px;
 }
 .schedule-page .calendar-controls button{
-  width:38px;height:38px;border-radius:999px;border:1px solid rgba(0,0,0,.1);background:#fff;cursor:pointer;font-size:20px
+  width:38px;
+  height:38px;
+  border-radius:999px;
+  border:1px solid #ddd;
+  background:#fff;
+  font-size:20px;
+  cursor:pointer;
 }
-.schedule-page #monthLabel{font-weight:900;font-size:1.12rem}
+.schedule-page .month-label{
+  font-size:1.1rem;
+  font-weight:900;
+}
 .schedule-page .calendar-weekdays,
 .schedule-page .calendar-grid{
-  display:grid;grid-template-columns:repeat(7,1fr);gap:8px
+  display:grid;
+  grid-template-columns:repeat(7,minmax(0,1fr));
+  gap:8px;
 }
 .schedule-page .calendar-weekdays div{
-  text-align:center;font-size:.82rem;color:var(--subtle,#666);padding:6px 0
+  text-align:center;
+  color:#777;
+  font-size:.82rem;
+  padding:6px 0;
 }
 .schedule-page .calendar-day{
-  border:1px solid rgba(0,0,0,.08);
+  min-height:132px;
+  border:1px solid #ece7ec;
   border-radius:16px;
-  min-height:124px;
   padding:10px;
   background:#fff;
 }
-.schedule-page .calendar-day.other-month{opacity:.34}
-.schedule-page .calendar-date{font-weight:900;margin-bottom:8px}
-.schedule-page .calendar-items{display:grid;gap:6px}
+.schedule-page .calendar-day.other-month{
+  opacity:.35;
+}
+.schedule-page .calendar-date{
+  font-weight:900;
+  margin-bottom:8px;
+}
+.schedule-page .calendar-items{
+  display:grid;
+  gap:6px;
+}
 .schedule-page .calendar-pill{
-  border-radius:10px;padding:5px 7px;font-size:.68rem;font-weight:900;line-height:1.35
+  border-radius:10px;
+  padding:5px 7px;
+  font-size:.66rem;
+  font-weight:900;
+  line-height:1.35;
+  word-break:break-word;
 }
 .schedule-page .calendar-pill.live{background:#ffe0ef;color:#a02264}
 .schedule-page .calendar-pill.fc{background:#fff0df;color:#99520f}
 .schedule-page .calendar-pill.birthday{background:#fff6cb;color:#775600}
-@media (max-width:720px){
-  .schedule-page .upcoming-item{grid-template-columns:1fr;gap:8px}
-  .schedule-page .calendar-day{min-height:96px}
-  .schedule-page .calendar-pill{font-size:.62rem}
+@media (max-width:760px){
+  .schedule-page .upcoming-item{
+    grid-template-columns:1fr;
+    gap:8px;
+  }
+  .schedule-page .calendar-day{
+    min-height:95px;
+    padding:8px;
+  }
+  .schedule-page .calendar-pill{
+    font-size:.58rem;
+    padding:4px 6px;
+  }
 }
 </style>
 </head>
@@ -153,162 +256,150 @@
   </section>
 
   <section class="section">
-    <h2 class="section-title">東京公演カウントダウン</h2>
-    <div class="countdown-card">
-      <div>
-        <div class="countdown-label">TOKYO CONCERT</div>
-        <div class="countdown-days-wrap">
-          <div class="countdown-days" id="countdownDays">--</div>
-          <div class="countdown-unit">days</div>
+    <div class="section-card">
+      <h2 class="section-title">東京公演カウントダウン</h2>
+      <div class="countdown-card">
+        <div>
+          <div class="countdown-kicker">TOKYO CONCERT</div>
+          <div><span class="countdown-num" id="countdownDays">--</span><span class="countdown-unit">days</span></div>
         </div>
+        <div class="countdown-meta">2026.08.08 / KEIO ARENA TOKYO</div>
       </div>
-      <div class="countdown-meta" id="countdownMeta">2026.08.08 / KEIO ARENA TOKYO</div>
     </div>
   </section>
 
   <section class="section">
-    <h2 class="section-title">直近の予定</h2>
-    <p class="section-intro schedule-note">今日以降の予定を近い順に自動表示します。</p>
-    <div id="upcomingList" class="upcoming-list"></div>
+    <div class="section-card">
+      <h2 class="section-title">直近の予定</h2>
+      <p class="section-note">今日以降の予定を近い順に自動表示します。</p>
+      <div id="upcomingList" class="upcoming-list"></div>
+    </div>
   </section>
 
   <section class="section">
-    <h2 class="section-title">World Tour Map</h2>
-    <p class="section-intro schedule-note">NMIXX 1ST WORLD TOUR &lt;EPISODE 1: ZERO FRONTIER&gt;</p>
-    <div class="tour-legend">
-      <span><i class="tour-dot kr"></i>KOREA</span>
-      <span><i class="tour-dot eu"></i>EUROPE</span>
-      <span><i class="tour-dot na"></i>NORTH AMERICA</span>
-      <span><i class="tour-dot jp"></i>JAPAN</span>
-    </div>
-    <div class="tour-map-wrap">
-      <svg viewBox="0 0 1100 520" class="tour-map" aria-label="World tour map">
-        <rect x="0" y="0" width="1100" height="520" rx="24" fill="#fffafd"></rect>
+    <div class="section-card">
+      <h2 class="section-title">World Tour Map</h2>
+      <p class="section-note">NMIXX 1ST WORLD TOUR &lt;EPISODE 1: ZERO FRONTIER&gt;</p>
+      <div class="tour-legend">
+        <span><i class="dot kr"></i>KOREA</span>
+        <span><i class="dot eu"></i>EUROPE</span>
+        <span><i class="dot na"></i>NORTH AMERICA</span>
+        <span><i class="dot jp"></i>JAPAN</span>
+      </div>
 
-        <text x="160" y="145" font-size="16" font-weight="900" fill="#ccb1bf">NORTH AMERICA</text>
-        <text x="500" y="120" font-size="16" font-weight="900" fill="#ccb1bf">EUROPE</text>
-        <text x="840" y="150" font-size="16" font-weight="900" fill="#ccb1bf">ASIA</text>
+      <div class="tour-map-wrap">
+        <svg viewBox="0 0 1100 520" class="tour-map" xmlns="http://www.w3.org/2000/svg">
+          <rect x="0" y="0" width="1100" height="520" rx="24" fill="#fffafd"/>
+          <text x="160" y="145" font-size="16" font-weight="900" fill="#ccb1bf">NORTH AMERICA</text>
+          <text x="500" y="120" font-size="16" font-weight="900" fill="#ccb1bf">EUROPE</text>
+          <text x="840" y="150" font-size="16" font-weight="900" fill="#ccb1bf">ASIA</text>
 
-        <path d="M830,180 C760,120 680,110 620,150" fill="none" stroke="#7aa9ff" stroke-width="3" stroke-dasharray="8 8"></path>
-        <path d="M620,210 C700,240 760,250 870,210" fill="none" stroke="#f6a4ce" stroke-width="3" stroke-dasharray="8 8"></path>
-        <path d="M560,175 C470,190 350,210 260,235" fill="none" stroke="#70d2c1" stroke-width="3" stroke-dasharray="8 8"></path>
+          <path d="M830,180 C760,120 680,110 620,150" fill="none" stroke="#7aa9ff" stroke-width="3" stroke-dasharray="8 8"/>
+          <path d="M620,210 C700,240 760,250 870,210" fill="none" stroke="#f6a4ce" stroke-width="3" stroke-dasharray="8 8"/>
+          <path d="M560,175 C470,190 350,210 260,235" fill="none" stroke="#70d2c1" stroke-width="3" stroke-dasharray="8 8"/>
 
-        <g>
-          <circle cx="860" cy="180" r="9" fill="#8c6bff"></circle>
+          <circle cx="860" cy="180" r="9" fill="#8c6bff"/>
           <text x="875" y="175" font-size="14" font-weight="800" fill="#3f2e36">Incheon</text>
           <text x="875" y="194" font-size="12" font-weight="700" fill="#7f6b77">2025.11.29-30</text>
-        </g>
 
-        <g>
-          <circle cx="600" cy="175" r="8" fill="#4f8ef7"></circle>
+          <circle cx="600" cy="175" r="8" fill="#4f8ef7"/>
           <text x="615" y="170" font-size="14" font-weight="800" fill="#3f2e36">Madrid</text>
           <text x="615" y="189" font-size="12" font-weight="700" fill="#7f6b77">2026.03.17</text>
-        </g>
-        <g>
-          <circle cx="625" cy="152" r="8" fill="#4f8ef7"></circle>
+
+          <circle cx="625" cy="152" r="8" fill="#4f8ef7"/>
           <text x="640" y="147" font-size="14" font-weight="800" fill="#3f2e36">Amsterdam</text>
           <text x="640" y="166" font-size="12" font-weight="700" fill="#7f6b77">03.20</text>
-        </g>
-        <g>
-          <circle cx="610" cy="142" r="8" fill="#4f8ef7"></circle>
+
+          <circle cx="610" cy="142" r="8" fill="#4f8ef7"/>
           <text x="625" y="137" font-size="14" font-weight="800" fill="#3f2e36">Paris</text>
           <text x="625" y="156" font-size="12" font-weight="700" fill="#7f6b77">03.22</text>
-        </g>
-        <g>
-          <circle cx="642" cy="136" r="8" fill="#4f8ef7"></circle>
+
+          <circle cx="642" cy="136" r="8" fill="#4f8ef7"/>
           <text x="657" y="131" font-size="14" font-weight="800" fill="#3f2e36">Frankfurt</text>
           <text x="657" y="150" font-size="12" font-weight="700" fill="#7f6b77">03.24</text>
-        </g>
-        <g>
-          <circle cx="590" cy="124" r="8" fill="#4f8ef7"></circle>
+
+          <circle cx="590" cy="124" r="8" fill="#4f8ef7"/>
           <text x="605" y="119" font-size="14" font-weight="800" fill="#3f2e36">London</text>
           <text x="605" y="138" font-size="12" font-weight="700" fill="#7f6b77">03.26</text>
-        </g>
 
-        <g>
-          <circle cx="255" cy="228" r="8" fill="#39b79a"></circle>
+          <circle cx="255" cy="228" r="8" fill="#39b79a"/>
           <text x="270" y="223" font-size="14" font-weight="800" fill="#3f2e36">Toronto</text>
           <text x="270" y="242" font-size="12" font-weight="700" fill="#7f6b77">03.29</text>
-        </g>
-        <g>
-          <circle cx="285" cy="245" r="8" fill="#39b79a"></circle>
+
+          <circle cx="285" cy="245" r="8" fill="#39b79a"/>
           <text x="300" y="240" font-size="14" font-weight="800" fill="#3f2e36">Brooklyn</text>
           <text x="300" y="259" font-size="12" font-weight="700" fill="#7f6b77">03.31</text>
-        </g>
-        <g>
-          <circle cx="270" cy="260" r="8" fill="#39b79a"></circle>
+
+          <circle cx="270" cy="260" r="8" fill="#39b79a"/>
           <text x="285" y="255" font-size="14" font-weight="800" fill="#3f2e36">National Harbor</text>
           <text x="285" y="274" font-size="12" font-weight="700" fill="#7f6b77">04.02</text>
-        </g>
-        <g>
-          <circle cx="205" cy="285" r="8" fill="#39b79a"></circle>
+
+          <circle cx="205" cy="285" r="8" fill="#39b79a"/>
           <text x="220" y="280" font-size="14" font-weight="800" fill="#3f2e36">Irving</text>
           <text x="220" y="299" font-size="12" font-weight="700" fill="#7f6b77">04.04</text>
-        </g>
-        <g>
-          <circle cx="135" cy="250" r="8" fill="#39b79a"></circle>
+
+          <circle cx="135" cy="250" r="8" fill="#39b79a"/>
           <text x="150" y="245" font-size="14" font-weight="800" fill="#3f2e36">Oakland</text>
           <text x="150" y="264" font-size="12" font-weight="700" fill="#7f6b77">04.07</text>
-        </g>
-        <g>
-          <circle cx="120" cy="275" r="8" fill="#39b79a"></circle>
+
+          <circle cx="120" cy="275" r="8" fill="#39b79a"/>
           <text x="135" y="270" font-size="14" font-weight="800" fill="#3f2e36">Los Angeles</text>
           <text x="135" y="289" font-size="12" font-weight="700" fill="#7f6b77">04.09</text>
-        </g>
 
-        <g>
-          <circle cx="900" cy="212" r="10" fill="#ff4fa4"></circle>
+          <circle cx="900" cy="212" r="10" fill="#ff4fa4"/>
           <text x="918" y="207" font-size="14" font-weight="800" fill="#3f2e36">Tokyo</text>
           <text x="918" y="226" font-size="12" font-weight="700" fill="#7f6b77">2026.08.08-09</text>
-        </g>
-      </svg>
-    </div>
+        </svg>
+      </div>
 
-    <div class="tour-groups">
-      <div class="tour-group">
-        <h3>KOREA</h3>
-        <ul><li>2025.11.29-30 / Incheon / INSPIRE ARENA</li></ul>
-      </div>
-      <div class="tour-group">
-        <h3>EUROPE</h3>
-        <ul>
-          <li>03.17 / Madrid / PALACIO VISTALEGRE</li>
-          <li>03.20 / Amsterdam / AFAS LIVE</li>
-          <li>03.22 / Paris / SALLE PLEYEL</li>
-          <li>03.24 / Frankfurt / MYTICKET JAHRHUNDERTHALLE</li>
-          <li>03.26 / London / EVENTIM APOLLO</li>
-        </ul>
-      </div>
-      <div class="tour-group">
-        <h3>NORTH AMERICA</h3>
-        <ul>
-          <li>03.29 / Toronto / GREAT CANADIAN TORONTO</li>
-          <li>03.31 / Brooklyn / BROOKLYN PARAMOUNT</li>
-          <li>04.02 / National Harbor / THE THEATER AT MGM NATIONAL HARBOR</li>
-          <li>04.04 / Irving / THE PAVILION AT TOYOTA MUSIC FACTORY</li>
-          <li>04.07 / Oakland / PARAMOUNT THEATRE</li>
-          <li>04.09 / Los Angeles / YOUTUBE THEATER</li>
-        </ul>
-      </div>
-      <div class="tour-group">
-        <h3>JAPAN</h3>
-        <ul><li>08.08-09 / Tokyo / KEIO ARENA TOKYO</li></ul>
+      <div class="tour-groups">
+        <div class="tour-group">
+          <h3>KOREA</h3>
+          <ul><li>2025.11.29-30 / Incheon / INSPIRE ARENA</li></ul>
+        </div>
+        <div class="tour-group">
+          <h3>EUROPE</h3>
+          <ul>
+            <li>03.17 / Madrid / PALACIO VISTALEGRE</li>
+            <li>03.20 / Amsterdam / AFAS LIVE</li>
+            <li>03.22 / Paris / SALLE PLEYEL</li>
+            <li>03.24 / Frankfurt / MYTICKET JAHRHUNDERTHALLE</li>
+            <li>03.26 / London / EVENTIM APOLLO</li>
+          </ul>
+        </div>
+        <div class="tour-group">
+          <h3>NORTH AMERICA</h3>
+          <ul>
+            <li>03.29 / Toronto / GREAT CANADIAN TORONTO</li>
+            <li>03.31 / Brooklyn / BROOKLYN PARAMOUNT</li>
+            <li>04.02 / National Harbor / THE THEATER AT MGM NATIONAL HARBOR</li>
+            <li>04.04 / Irving / THE PAVILION AT TOYOTA MUSIC FACTORY</li>
+            <li>04.07 / Oakland / PARAMOUNT THEATRE</li>
+            <li>04.09 / Los Angeles / YOUTUBE THEATER</li>
+          </ul>
+        </div>
+        <div class="tour-group">
+          <h3>JAPAN</h3>
+          <ul><li>08.08-09 / Tokyo / KEIO ARENA TOKYO</li></ul>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="section">
-    <h2 class="section-title">カレンダー</h2>
-    <p class="section-intro schedule-note">LIVE / FC / BIRTHDAY を月ごとに確認できます。</p>
-    <div class="calendar-controls">
-      <button id="prevMonth" type="button">‹</button>
-      <div id="monthLabel"></div>
-      <button id="nextMonth" type="button">›</button>
+    <div class="section-card">
+      <h2 class="section-title">カレンダー</h2>
+      <p class="section-note">LIVE / FC / BIRTHDAY を月ごとに確認できます。</p>
+      <div class="calendar-controls">
+        <button id="prevMonth" type="button">‹</button>
+        <div id="monthLabel" class="month-label"></div>
+        <button id="nextMonth" type="button">›</button>
+      </div>
+      <div class="calendar-weekdays">
+        <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+      </div>
+      <div id="calendarGrid" class="calendar-grid"></div>
     </div>
-    <div class="calendar-weekdays">
-      <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
-    </div>
-    <div id="calendarGrid" class="calendar-grid"></div>
   </section>
 </div>
 
@@ -354,84 +445,86 @@ const events = [
 const today = new Date();
 today.setHours(0,0,0,0);
 
-function formatJP(dateStr){
+function jp(dateStr){
   const d = new Date(dateStr + 'T00:00:00');
-  const y = d.getFullYear();
-  const m = String(d.getMonth()+1).padStart(2,'0');
-  const day = String(d.getDate()).padStart(2,'0');
-  return `${y}.${m}.${day}`;
+  return `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}`;
 }
-function classFromType(type){ return type.toLowerCase(); }
+function cls(type){ return type.toLowerCase(); }
 
 function renderCountdown(){
   const target = new Date('2026-08-08T00:00:00');
-  const diff = Math.ceil((target - today) / (1000*60*60*24));
+  const diff = Math.ceil((target - today)/(1000*60*60*24));
   document.getElementById('countdownDays').textContent = diff >= 0 ? diff : 0;
 }
+
 function renderUpcoming(){
-  const list = document.getElementById('upcomingList');
-  const upcoming = events
+  const items = events
     .filter(e => new Date(e.date + 'T00:00:00') >= today)
     .sort((a,b) => new Date(a.date) - new Date(b.date))
-    .slice(0, 8);
+    .slice(0,8);
 
-  list.innerHTML = upcoming.map(e => `
+  document.getElementById('upcomingList').innerHTML = items.map(e => `
     <div class="upcoming-item">
-      <div class="upcoming-date">${formatJP(e.date)}</div>
-      <div><span class="schedule-badge ${classFromType(e.type)}">${e.type}</span></div>
-      <div class="schedule-title">${e.title}</div>
+      <div class="upcoming-date">${jp(e.date)}</div>
+      <div><span class="badge ${cls(e.type)}">${e.type}</span></div>
+      <div class="upcoming-title">${e.title}</div>
     </div>
   `).join('');
 }
 
-let currentMonth = today.getMonth();
 let currentYear = today.getFullYear();
+let currentMonth = today.getMonth();
 
-function eventsForDay(year, month, day){
-  const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
-  return events.filter(e => e.date === dateStr);
-}
 function renderCalendar(){
   const grid = document.getElementById('calendarGrid');
   const label = document.getElementById('monthLabel');
   grid.innerHTML = '';
   label.textContent = `${currentYear}.${String(currentMonth+1).padStart(2,'0')}`;
 
-  const firstDay = new Date(currentYear, currentMonth, 1);
-  const startWeekday = firstDay.getDay();
-  const daysInMonth = new Date(currentYear, currentMonth+1, 0).getDate();
-  const prevMonthDays = new Date(currentYear, currentMonth, 0).getDate();
+  const first = new Date(currentYear, currentMonth, 1);
+  const start = first.getDay();
+  const days = new Date(currentYear, currentMonth + 1, 0).getDate();
+  const prevDays = new Date(currentYear, currentMonth, 0).getDate();
 
-  for(let i=0;i<startWeekday;i++){
-    const n = prevMonthDays - startWeekday + i + 1;
+  for(let i=0;i<start;i++){
+    const n = prevDays - start + i + 1;
     grid.insertAdjacentHTML('beforeend', `<div class="calendar-day other-month"><div class="calendar-date">${n}</div></div>`);
   }
 
-  for(let day=1; day<=daysInMonth; day++){
-    const dayEvents = eventsForDay(currentYear, currentMonth, day);
-    const pills = dayEvents.map(e => `<div class="calendar-pill ${classFromType(e.type)}">${e.type} ${e.title}</div>`).join('');
+  for(let d=1; d<=days; d++){
+    const key = `${currentYear}-${String(currentMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const match = events.filter(e => e.date === key);
+    const pills = match.map(m => `<div class="calendar-pill ${cls(m.type)}">${m.type} ${m.title}</div>`).join('');
     grid.insertAdjacentHTML('beforeend', `
       <div class="calendar-day">
-        <div class="calendar-date">${day}</div>
+        <div class="calendar-date">${d}</div>
         <div class="calendar-items">${pills}</div>
       </div>
     `);
   }
 
-  const cells = startWeekday + daysInMonth;
-  const rest = cells % 7 === 0 ? 0 : 7 - (cells % 7);
+  const total = start + days;
+  const rest = total % 7 === 0 ? 0 : 7 - (total % 7);
   for(let i=1;i<=rest;i++){
     grid.insertAdjacentHTML('beforeend', `<div class="calendar-day other-month"><div class="calendar-date">${i}</div></div>`);
   }
 }
+
 document.getElementById('prevMonth').addEventListener('click', () => {
   currentMonth--;
-  if(currentMonth < 0){ currentMonth = 11; currentYear--; }
+  if(currentMonth < 0){
+    currentMonth = 11;
+    currentYear--;
+  }
   renderCalendar();
 });
+
 document.getElementById('nextMonth').addEventListener('click', () => {
   currentMonth++;
-  if(currentMonth > 11){ currentMonth = 0; currentYear++; }
+  if(currentMonth > 11){
+    currentMonth = 0;
+    currentYear++;
+  }
   renderCalendar();
 });
 
