@@ -86,3 +86,45 @@ html.light-mode body,body.light-mode{--bg:#f6f7fb;--bg2:#eef1f8;--card:#ffffff;-
 .win-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
 .win-links a{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;border:1px solid var(--border);font-weight:800;background:var(--soft-bg)}
 .win-links a:hover{border-color:var(--pink);color:var(--pink)}
+
+
+/* custom schedule page */
+.schedule-hero{display:grid;grid-template-columns:1.2fr .8fr;gap:20px;align-items:stretch}
+@media (max-width:900px){.schedule-hero{grid-template-columns:1fr}}
+.schedule-legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.legend-chip{display:inline-flex;align-items:center;padding:7px 12px;border-radius:999px;font-size:.78rem;font-weight:900;border:1px solid var(--border);background:var(--soft-bg)}
+.legend-live{color:#ff80b6;border-color:rgba(255,128,182,.45);background:rgba(255,128,182,.08)}
+.legend-fc{color:#ffb156;border-color:rgba(255,177,86,.45);background:rgba(255,177,86,.08)}
+.legend-birthday{color:#ffd84d;border-color:rgba(255,216,77,.45);background:rgba(255,216,77,.10)}
+.schedule-hero-box{border:1px solid var(--border);border-radius:20px;padding:22px;background:linear-gradient(135deg,rgba(255,177,86,.14),rgba(255,0,127,.10));display:flex;flex-direction:column;justify-content:center}
+.schedule-highlight-label{font-size:.78rem;font-weight:900;color:var(--muted);letter-spacing:.08em}
+.schedule-highlight-date{font-size:2rem;font-weight:900;color:var(--pink);line-height:1.1;margin:10px 0 8px}
+.schedule-highlight-title{font-size:1.1rem;font-weight:900}
+.schedule-highlight-sub{margin-top:6px;color:var(--muted)}
+.custom-schedule-list{gap:18px}
+.schedule-event-card{display:grid;grid-template-columns:160px 1fr;gap:18px;padding:20px;border-radius:20px;border:1px solid var(--border);background:var(--card);box-shadow:var(--shadow)}
+@media (max-width:760px){.schedule-event-card{grid-template-columns:1fr}}
+.schedule-event-date{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:16px;border-radius:18px;background:var(--soft-bg)}
+.schedule-event-date span{font-size:1.35rem;font-weight:900;color:var(--pink);line-height:1.1}
+.schedule-event-date small{margin-top:6px;color:var(--muted);font-size:.9rem;font-weight:700}
+.schedule-event-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px}
+.schedule-event-body h3{margin:0 0 8px;font-size:1.08rem;color:var(--text)}
+.schedule-event-body p{margin:0;color:var(--muted)}
+.fc-card .schedule-event-date{background:rgba(255,177,86,.08)}
+.deadline-card{border-color:rgba(255,177,86,.35)}
+.tour-grid{display:grid;grid-template-columns:1fr;gap:20px}
+.compact-tour-list{display:grid;gap:10px}
+.tour-row{display:grid;grid-template-columns:32px 1fr;gap:12px;align-items:start;padding:10px 0;border-bottom:1px solid var(--border)}
+.tour-row:last-child{border-bottom:none}
+.tour-flag{font-size:1.2rem;line-height:1}
+.tour-row strong{display:block;color:var(--pink)}
+.tour-row span{display:block;color:var(--muted);font-size:.94rem}
+.japan-tour-row{background:linear-gradient(135deg,rgba(255,0,127,.08),rgba(179,136,255,.06));margin:6px -10px -4px;padding:14px 10px;border-radius:14px;border-bottom:none}
+.birthday-grid{display:grid;grid-template-columns:1fr;gap:16px}
+@media (min-width:760px){.birthday-grid{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1040px){.birthday-grid{grid-template-columns:repeat(3,1fr)}}
+.birthday-card{background:linear-gradient(135deg,rgba(255,216,77,.10),rgba(255,255,255,.02));}
+.birthday-top{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:14px}
+.birthday-top strong{font-size:1.1rem;color:var(--gold)}
+.birthday-card h3{margin:0 0 6px;color:var(--text)}
+.birthday-card p{margin:0;color:var(--muted)}
