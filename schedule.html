@@ -268,35 +268,64 @@
   .schedule-page .calendar-pill{font-size:.56rem;padding:3px 6px}
 }
 
-.schedule-page .tour-cards-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:14px;
-}
-.schedule-page .tour-stop{
-  background:var(--sp-card);
+.schedule-page .tour-map-stage{
+  position:relative;
   border:1px solid var(--sp-border);
-  border-radius:18px;
-  padding:16px;
+  border-radius:20px;
+  overflow:hidden;
+  background:var(--sp-card);
 }
-.schedule-page .tour-stop h3{
-  margin:0 0 8px;
-  color:var(--sp-text);
-  font-size:1.05rem;
+.schedule-page .tour-map-base{
+  display:block;
+  width:100%;
+  height:auto;
 }
-.schedule-page .tour-stop .tour-date{
-  margin:0 0 8px;
-  font-weight:900;
-  color:var(--sp-text);
+.schedule-page .tour-route{
+  position:absolute;
+  border-top:2px dashed rgba(255,255,255,.28);
+  transform-origin:left center;
+  opacity:.75;
 }
-.schedule-page .tour-stop p{
-  margin:0 0 6px;
-  color:var(--sp-muted);
+.schedule-page .tour-route.eu{border-color:rgba(93,160,255,.7)}
+.schedule-page .tour-route.na{border-color:rgba(63,210,199,.7)}
+.schedule-page .tour-route.asia{border-color:rgba(255,79,164,.7)}
+.schedule-page .tour-pin{
+  position:absolute;
+  transform:translate(-50%,-50%);
 }
-.schedule-page .tour-stop.korea{border-color:rgba(155,92,255,.45)}
-.schedule-page .tour-stop.europe{border-color:rgba(93,160,255,.45)}
-.schedule-page .tour-stop.america{border-color:rgba(63,210,199,.45)}
-.schedule-page .tour-stop.japan{border-color:rgba(255,79,164,.55)}
+.schedule-page .tour-pin .pin-dot{
+  width:12px;height:12px;border-radius:999px;border:2px solid rgba(255,255,255,.75);
+  box-shadow:0 0 0 4px rgba(255,255,255,.08);
+}
+.schedule-page .tour-pin.kr .pin-dot{background:#8c6bff}
+.schedule-page .tour-pin.eu .pin-dot{background:#4f8ef7}
+.schedule-page .tour-pin.na .pin-dot{background:#39b79a}
+.schedule-page .tour-pin.jp .pin-dot{background:#ff4fa4}
+.schedule-page .tour-label{
+  position:absolute;
+  left:14px; top:-8px;
+  min-width:108px;
+  background:rgba(20,14,20,.82);
+  color:#f7f2f6;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:12px;
+  padding:8px 10px;
+  font-size:.72rem;
+  line-height:1.35;
+  box-shadow:0 8px 18px rgba(0,0,0,.16);
+}
+.light-mode .schedule-page .tour-label{
+  background:rgba(255,255,255,.96);
+  color:#23161f;
+  border-color:#ead9e3;
+}
+.schedule-page .tour-label strong{display:block;font-size:.76rem}
+.schedule-page .tour-label span{display:block;color:var(--sp-muted)}
+.schedule-page .tour-label.compact{min-width:92px}
+.schedule-page .tour-label.left{left:auto; right:14px}
+@media (max-width:760px){
+  .schedule-page .tour-label{display:none}
+}
 
 </style>
 </head>
@@ -361,92 +390,113 @@
     </div>
   </section>
 
-  
-<section class="section">
-  <div class="section-card">
-    <h2 class="section-title">WORLD TOUR</h2>
-    <div class="tour-cards-grid">
-      <div class="tour-stop korea">
-        <h3>🇰🇷 Incheon</h3>
-        <p class="tour-date">Nov 29–30, 2025</p>
-        <p>INSPIRE ARENA</p>
-      </div>
+  <section class="section">
+    <div class="section-card">
+      
+<h2 class="section-title">World Tour Map</h2>
+<div class="tour-legend">
+  <span><i class="dot kr"></i>KOREA</span>
+  <span><i class="dot eu"></i>EUROPE</span>
+  <span><i class="dot na"></i>NORTH AMERICA</span>
+  <span><i class="dot jp"></i>JAPAN</span>
+</div>
+<div class="tour-map-stage">
+  <img src="images/world-map-base.svg" alt="World map" class="tour-map-base">
 
-      <div class="tour-stop europe">
-        <h3>🇪🇸 Madrid</h3>
-        <p class="tour-date">Mar 17, 2026</p>
-        <p>PALACIO VISTALEGRE</p>
-      </div>
+  <div class="tour-route eu" style="left:57%;top:31%;width:18%;transform:rotate(18deg);"></div>
+  <div class="tour-route na" style="left:25%;top:45%;width:26%;transform:rotate(-16deg);"></div>
+  <div class="tour-route asia" style="left:75%;top:37%;width:10%;transform:rotate(22deg);"></div>
 
-      <div class="tour-stop europe">
-        <h3>🇳🇱 Amsterdam</h3>
-        <p class="tour-date">Mar 20, 2026</p>
-        <p>AFAS LIVE</p>
-      </div>
+  <div class="tour-pin kr" style="left:79%;top:31%;">
+    <div class="pin-dot"></div>
+    <div class="tour-label"><strong>Incheon</strong><span>Nov 29–30, 2025</span><span>INSPIRE ARENA</span></div>
+  </div>
 
-      <div class="tour-stop europe">
-        <h3>🇫🇷 Paris</h3>
-        <p class="tour-date">Mar 22, 2026</p>
-        <p>SALLE PLEYEL</p>
-      </div>
+  <div class="tour-pin eu" style="left:54%;top:35%;">
+    <div class="pin-dot"></div>
+    <div class="tour-label compact"><strong>Madrid</strong><span>Mar 17</span></div>
+  </div>
+  <div class="tour-pin eu" style="left:57%;top:29%;">
+    <div class="pin-dot"></div>
+    <div class="tour-label compact"><strong>Amsterdam</strong><span>Mar 20</span></div>
+  </div>
+  <div class="tour-pin eu" style="left:55.5%;top:27%;">
+    <div class="pin-dot"></div>
+    <div class="tour-label compact"><strong>Paris</strong><span>Mar 22</span></div>
+  </div>
+  <div class="tour-pin eu" style="left:58.5%;top:26%;">
+    <div class="pin-dot"></div>
+    <div class="tour-label compact"><strong>Frankfurt</strong><span>Mar 24</span></div>
+  </div>
+  <div class="tour-pin eu" style="left:53.5%;top:24%;">
+    <div class="pin-dot"></div>
+    <div class="tour-label compact"><strong>London</strong><span>Mar 26</span></div>
+  </div>
 
-      <div class="tour-stop europe">
-        <h3>🇩🇪 Frankfurt</h3>
-        <p class="tour-date">Mar 24, 2026</p>
-        <p>MYTICKET JAHRHUNDERTHALLE</p>
-      </div>
+  <div class="tour-pin na" style="left:24%;top:44%;">
+    <div class="pin-dot"></div>
+    <div class="tour-label compact"><strong>Toronto</strong><span>Mar 29</span></div>
+  </div>
+  <div class="tour-pin na" style="left:27%;top:48%;">
+    <div class="pin-dot"></div>
+    <div class="tour-label compact"><strong>Brooklyn</strong><span>Mar 31</span></div>
+  </div>
+  <div class="tour-pin na" style="left:25.5%;top:51%;">
+    <div class="pin-dot"></div>
+    <div class="tour-label compact"><strong>National Harbor</strong><span>Apr 2</span></div>
+  </div>
+  <div class="tour-pin na" style="left:19.5%;top:56%;">
+    <div class="pin-dot"></div>
+    <div class="tour-label compact"><strong>Irving</strong><span>Apr 4</span></div>
+  </div>
+  <div class="tour-pin na" style="left:13.5%;top:49%;">
+    <div class="pin-dot"></div>
+    <div class="tour-label compact"><strong>Oakland</strong><span>Apr 7</span></div>
+  </div>
+  <div class="tour-pin na" style="left:12%;top:54%;">
+    <div class="pin-dot"></div>
+    <div class="tour-label compact"><strong>Los Angeles</strong><span>Apr 9</span></div>
+  </div>
 
-      <div class="tour-stop europe">
-        <h3>🇬🇧 London</h3>
-        <p class="tour-date">Mar 26, 2026</p>
-        <p>EVENTIM APOLLO</p>
-      </div>
+  <div class="tour-pin jp" style="left:83%;top:37%;">
+    <div class="pin-dot"></div>
+    <div class="tour-label left"><strong>Tokyo 🆕</strong><span>Aug 8–9, 2026</span><span>KEIO ARENA TOKYO</span></div>
+  </div>
+</div>
+<div class="tour-groups">
+  <div class="tour-group">
+    <h3>KOREA</h3>
+    <ul><li>Nov 29–30, 2025 / Incheon / INSPIRE ARENA</li></ul>
+  </div>
+  <div class="tour-group">
+    <h3>EUROPE</h3>
+    <ul>
+      <li>Mar 17 / Madrid / PALACIO VISTALEGRE</li>
+      <li>Mar 20 / Amsterdam / AFAS LIVE</li>
+      <li>Mar 22 / Paris / SALLE PLEYEL</li>
+      <li>Mar 24 / Frankfurt / MYTICKET JAHRHUNDERTHALLE</li>
+      <li>Mar 26 / London / EVENTIM APOLLO</li>
+    </ul>
+  </div>
+  <div class="tour-group">
+    <h3>NORTH AMERICA</h3>
+    <ul>
+      <li>Mar 29 / Toronto / GREAT CANADIAN TORONTO</li>
+      <li>Mar 31 / Brooklyn / BROOKLYN PARAMOUNT</li>
+      <li>Apr 2 / National Harbor / THE THEATER AT MGM NATIONAL HARBOR</li>
+      <li>Apr 4 / Irving / THE PAVILION AT TOYOTA MUSIC FACTORY</li>
+      <li>Apr 7 / Oakland / PARAMOUNT THEATRE</li>
+      <li>Apr 9 / Los Angeles / YOUTUBE THEATER</li>
+    </ul>
+  </div>
+  <div class="tour-group">
+    <h3>JAPAN</h3>
+    <ul><li>Aug 8–9 / Tokyo / KEIO ARENA TOKYO</li></ul>
+  </div>
+</div>
 
-      <div class="tour-stop america">
-        <h3>🇨🇦 Toronto</h3>
-        <p class="tour-date">Mar 29, 2026</p>
-        <p>GREAT CANADIAN TORONTO</p>
-      </div>
-
-      <div class="tour-stop america">
-        <h3>🇺🇸 Brooklyn</h3>
-        <p class="tour-date">Mar 31, 2026</p>
-        <p>BROOKLYN PARAMOUNT</p>
-      </div>
-
-      <div class="tour-stop america">
-        <h3>🇺🇸 National Harbor</h3>
-        <p class="tour-date">Apr 2, 2026</p>
-        <p>THE THEATER AT MGM NATIONAL HARBOR</p>
-      </div>
-
-      <div class="tour-stop america">
-        <h3>🇺🇸 Irving</h3>
-        <p class="tour-date">Apr 4, 2026</p>
-        <p>THE PAVILION AT TOYOTA MUSIC FACTORY</p>
-      </div>
-
-      <div class="tour-stop america">
-        <h3>🇺🇸 Oakland</h3>
-        <p class="tour-date">Apr 7, 2026</p>
-        <p>PARAMOUNT THEATRE</p>
-      </div>
-
-      <div class="tour-stop america">
-        <h3>🇺🇸 Los Angeles</h3>
-        <p class="tour-date">Apr 9, 2026</p>
-        <p>YOUTUBE THEATER</p>
-      </div>
-
-      <div class="tour-stop japan">
-        <h3>🇯🇵 Tokyo 🆕</h3>
-        <p class="tour-date">Aug 8–9, 2026</p>
-        <p>KEIO ARENA TOKYO</p>
-      </div>
-    </div>
   </div>
 </section>
-
 
   <section class="section">
     <div class="section-card">
