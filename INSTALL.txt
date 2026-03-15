@@ -1,1 +1,1 @@
-ZIPを解凍して、入っているHTMLをそのままGitHubで上書きしてください。
+ZIPを解凍して、入っている index.html と schedule.html をそのままGitHubで上書きしてください。
