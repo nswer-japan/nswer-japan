@@ -1,1 +1,1 @@
-冒頭テキストを削除し、Appleイベント風に寄せて地図を描き直した schedule.html です。
+本物の地図（OpenStreetMap / Leaflet）を埋め込んだ schedule.html です。これだけ上書きしてください。
