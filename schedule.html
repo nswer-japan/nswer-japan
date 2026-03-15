@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>スケジュール | NSWER JAPAN FB</title>
-<meta name="description" content="NMIXXのワールドツアー、メンバー誕生日、日本公演申込情報をまとめたスケジュールページです。">
+<meta name="description" content="NMIXXのワールドツアー、メンバー誕生日、日本公演の申込情報をまとめたスケジュールページです。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
@@ -46,13 +46,8 @@
   padding:22px;
   box-shadow:0 8px 24px rgba(0,0,0,.06);
 }
-.schedule-page .section-note{
-  color:var(--sp-muted);
-  margin:0 0 16px;
-}
 .schedule-page .countdown-card{
-  background:linear-gradient(135deg, var(--sp-soft), var(--sp-card));
-  border:1px solid var(--sp-border);
+  background:linear-gradient(135deg, var(--sp-live), #8a63ff);
   border-radius:22px;
   padding:22px;
   display:flex;
@@ -60,28 +55,28 @@
   align-items:flex-end;
   gap:18px;
   flex-wrap:wrap;
+  color:#fff;
 }
 .schedule-page .countdown-kicker{
   font-size:.8rem;
   font-weight:900;
-  color:var(--sp-live);
   letter-spacing:.08em;
   margin-bottom:10px;
+  opacity:.9;
 }
 .schedule-page .countdown-num{
   font-size:clamp(46px,8vw,84px);
   font-weight:900;
   line-height:1;
-  color:var(--sp-text);
 }
 .schedule-page .countdown-unit{
   font-size:1rem;
-  color:var(--sp-muted);
   margin-left:8px;
+  opacity:.9;
 }
 .schedule-page .countdown-meta{
-  color:var(--sp-muted);
   font-weight:700;
+  opacity:.95;
 }
 .schedule-page .upcoming-list{
   display:grid;
@@ -113,162 +108,8 @@
 .schedule-page .badge.fc{background:var(--sp-fc)}
 .schedule-page .badge.birthday{background:var(--sp-birthday);color:#4a3900}
 .schedule-page .upcoming-title{font-weight:800;color:var(--sp-text)}
-.schedule-page .tour-legend{
-  display:flex;
-  flex-wrap:wrap;
-  gap:16px;
-  margin-bottom:14px;
-  color:var(--sp-muted);
-}
-.schedule-page .tour-legend span{
-  display:flex;
-  align-items:center;
-  gap:8px;
-  font-weight:700;
-}
-.schedule-page .dot{
-  width:12px;height:12px;border-radius:999px;display:inline-block;
-}
-.schedule-page .dot.kr{background:#8c6bff}
-.schedule-page .dot.eu{background:#4f8ef7}
-.schedule-page .dot.na{background:#39b79a}
-.schedule-page .dot.jp{background:var(--sp-live)}
-.schedule-page .tour-map-wrap{
-  overflow:auto;
-  border:1px solid var(--sp-border);
-  border-radius:20px;
-  background:var(--sp-card);
-}
-.schedule-page .tour-map{
-  width:100%;
-  min-width:920px;
-  display:block;
-}
-.schedule-page .tour-groups{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:14px;
-  margin-top:16px;
-}
-.schedule-page .tour-group{
-  border:1px solid var(--sp-border);
-  border-radius:16px;
-  padding:16px;
-  background:var(--sp-card);
-}
-.schedule-page .tour-group h3{
-  margin:0 0 10px;
-  color:var(--sp-live);
-}
-.schedule-page .tour-group ul{margin:0;padding-left:18px;color:var(--sp-text)}
-.schedule-page .tour-group li+li{margin-top:8px}
-.schedule-page .calendar-controls{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  gap:16px;
-  margin:6px 0 18px;
-}
-.schedule-page .calendar-controls button{
-  width:38px;
-  height:38px;
-  border-radius:999px;
-  border:1px solid var(--sp-border);
-  background:var(--sp-card);
-  color:var(--sp-text);
-  font-size:20px;
-  cursor:pointer;
-}
-.schedule-page .month-label{
-  font-size:1.1rem;
-  font-weight:900;
-  color:var(--sp-text);
-}
-.schedule-page .legend-mini{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin:0 0 14px;
-}
-.schedule-page .legend-pill{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:999px;
-  padding:6px 10px;
-  font-size:.72rem;
-  font-weight:900;
-}
-.schedule-page .legend-pill.live{background:var(--sp-live-soft);color:var(--sp-live)}
-.schedule-page .legend-pill.fc{background:var(--sp-fc-soft);color:var(--sp-fc)}
-.schedule-page .legend-pill.birthday{background:var(--sp-birthday-soft);color:var(--sp-birthday)}
-.schedule-page .calendar-weekdays,
-.schedule-page .calendar-grid{
-  display:grid;
-  grid-template-columns:repeat(7,minmax(0,1fr));
-  gap:8px;
-}
-.schedule-page .calendar-weekdays div{
-  text-align:center;
-  color:var(--sp-muted);
-  font-size:.82rem;
-  padding:6px 0;
-}
-.schedule-page .calendar-day{
-  min-height:108px;
-  border:1px solid var(--sp-border);
-  border-radius:16px;
-  padding:10px;
-  background:var(--sp-card);
-}
-.schedule-page .calendar-day.other-month{opacity:.35}
-.schedule-page .calendar-date{
-  font-weight:900;
-  margin-bottom:8px;
-  color:var(--sp-text);
-}
-.schedule-page .calendar-items{
-  display:flex;
-  flex-wrap:wrap;
-  gap:6px;
-}
-.schedule-page .calendar-pill{
-  border-radius:999px;
-  padding:4px 8px;
-  font-size:.62rem;
-  font-weight:900;
-  line-height:1.2;
-}
-.schedule-page .calendar-pill.live{background:var(--sp-live-soft);color:var(--sp-live)}
-.schedule-page .calendar-pill.fc{background:var(--sp-fc-soft);color:var(--sp-fc)}
-.schedule-page .calendar-pill.birthday{background:var(--sp-birthday-soft);color:var(--sp-birthday)}
-.schedule-page .month-list{
-  display:grid;
-  gap:10px;
-}
-.schedule-page .month-row{
-  display:grid;
-  grid-template-columns:110px 90px 1fr;
-  gap:14px;
-  align-items:center;
-  background:var(--sp-card);
-  border:1px solid var(--sp-border);
-  border-radius:14px;
-  padding:12px 14px;
-}
-.schedule-page .month-row-date{font-weight:900}
-.schedule-page .month-row-title{font-weight:700}
-@media (max-width:760px){
-  .schedule-page .upcoming-item,
-  .schedule-page .month-row{
-    grid-template-columns:1fr;
-    gap:8px;
-  }
-  .schedule-page .calendar-day{min-height:88px;padding:8px}
-  .schedule-page .calendar-pill{font-size:.56rem;padding:3px 6px}
-}
 
-.worldmap{width:100%;margin-top:18px;margin-bottom:18px}
+.worldmap{width:100%;margin-top:16px;margin-bottom:18px}
 .map-svg{display:block;width:100%;height:auto;border-radius:20px;border:1px solid var(--sp-border)}
 .map-legend{display:flex;gap:20px;flex-wrap:wrap;margin:10px 0 16px;color:var(--sp-text)}
 .map-legend span{display:flex;align-items:center;gap:8px;font-weight:800}
@@ -286,9 +127,11 @@
 .pin.america{fill:#39d0b3}
 .pin.japan{fill:#ff4fa4}
 .route-europe,.route-america,.route-japan{fill:none;stroke-width:3;stroke-dasharray:8 8}
-.route-europe{stroke:#5aa3ff}
-.route-america{stroke:#39d0b3}
-.route-japan{stroke:#ff4fa4}
+.route-europe{stroke:#5aa3ff;animation:routeMove 4s linear infinite}
+.route-america{stroke:#39d0b3;animation:routeMove 4.5s linear infinite}
+.route-japan{stroke:#ff4fa4;animation:routeMove 3.5s linear infinite}
+@keyframes routeMove{0%{stroke-dashoffset:0}100%{stroke-dashoffset:100}}
+
 .tour-cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
 .tour-stop{background:var(--sp-card);border:1px solid var(--sp-border);border-radius:18px;padding:16px}
 .tour-stop h3{margin:0 0 10px;color:var(--sp-text);font-size:1.05rem}
@@ -300,11 +143,62 @@
 .tour-stop.europe{border-color:rgba(90,163,255,.45)}
 .tour-stop.america{border-color:rgba(57,208,179,.45)}
 .tour-stop.japan{border-color:rgba(255,79,164,.55)}
+
+.schedule-page .calendar-controls{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  margin:6px 0 18px;
+}
+.schedule-page .calendar-controls button{
+  width:38px;height:38px;border-radius:999px;border:1px solid var(--sp-border);
+  background:var(--sp-card);color:var(--sp-text);font-size:20px;cursor:pointer;
+}
+.schedule-page .month-label{font-size:1.1rem;font-weight:900;color:var(--sp-text)}
+.schedule-page .legend-mini{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}
+.schedule-page .legend-pill{
+  display:inline-flex;align-items:center;justify-content:center;border-radius:999px;
+  padding:6px 10px;font-size:.72rem;font-weight:900
+}
+.schedule-page .legend-pill.live{background:#ff4fa4;color:#fff}
+.schedule-page .legend-pill.fc{background:#ff9f43;color:#fff}
+.schedule-page .legend-pill.birthday{background:#f4c542;color:#241900}
+.schedule-page .calendar-weekdays,
+.schedule-page .calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+.schedule-page .calendar-weekdays div{
+  text-align:center;color:var(--sp-muted);font-size:.82rem;padding:6px 0
+}
+.schedule-page .calendar-day{
+  min-height:108px;border:1px solid var(--sp-border);border-radius:16px;
+  padding:10px;background:var(--sp-card);
+}
+.schedule-page .calendar-day.other-month{opacity:.35}
+.schedule-page .calendar-date{font-weight:900;margin-bottom:8px;color:var(--sp-text)}
+.schedule-page .calendar-items{display:flex;flex-wrap:wrap;gap:6px}
+.schedule-page .calendar-pill{
+  border-radius:999px;padding:4px 8px;font-size:.62rem;font-weight:900;line-height:1.2
+}
+.schedule-page .calendar-pill.live{background:#ff4fa4;color:#fff}
+.schedule-page .calendar-pill.fc{background:#ff9f43;color:#fff}
+.schedule-page .calendar-pill.birthday{background:#f4c542;color:#241900}
+
+.schedule-page .month-list{display:grid;gap:10px}
+.schedule-page .month-row{
+  display:grid;grid-template-columns:110px 90px 1fr;gap:14px;align-items:center;
+  background:var(--sp-card);border:1px solid var(--sp-border);border-radius:14px;padding:12px 14px
+}
+.schedule-page .month-row-date{font-weight:900}
+.schedule-page .month-row-title{font-weight:700}
+
 @media (max-width:760px){
+  .schedule-page .upcoming-item,
+  .schedule-page .month-row{grid-template-columns:1fr;gap:8px}
+  .schedule-page .calendar-day{min-height:88px;padding:8px}
+  .schedule-page .calendar-pill{font-size:.56rem;padding:3px 6px}
   .map-label{font-size:12px}
   .map-date{font-size:10px}
 }
-
 </style>
 </head>
 <body>
@@ -344,7 +238,7 @@
 <div class="container schedule-page">
   <section class="page-header">
     <h1>スケジュール</h1>
-    <p>NMIXX 1ST WORLD TOUR、メンバー誕生日、日本公演の申込情報</p>
+    <p>NMIXX 1ST WORLD TOUR、メンバーの誕生日、日本公演の申込情報</p>
   </section>
 
   <section class="section">
@@ -352,10 +246,10 @@
       <h2 class="section-title">東京公演カウントダウン</h2>
       <div class="countdown-card">
         <div>
-          <div class="countdown-kicker">TOKYO CONCERT</div>
-          <div><span class="countdown-num" id="countdownDays">--</span><span class="countdown-unit">days</span></div>
+          <div class="countdown-kicker">東京公演</div>
+          <div><span class="countdown-num" id="countdownDays">--</span><span class="countdown-unit">日</span></div>
         </div>
-        <div class="countdown-meta">2026.08.08 / KEIO ARENA TOKYO</div>
+        <div class="countdown-meta">2026.08.08 / KEIO ARENA TOKYO / OPEN 16:30 START 17:30</div>
       </div>
     </div>
   </section>
@@ -363,147 +257,136 @@
   <section class="section">
     <div class="section-card">
       <h2 class="section-title">直近の予定</h2>
-      
       <div id="upcomingList" class="upcoming-list"></div>
     </div>
   </section>
 
-  
-<section class="section">
-  <div class="section-card">
-    <h2 class="section-title">ワールドツアー</h2>
+  <section class="section">
+    <div class="section-card">
+      <h2 class="section-title">ワールドツアー</h2>
 
-    <div class="map-legend">
-      <span><span class="dot korea"></span>韓国</span>
-      <span><span class="dot europe"></span>ヨーロッパ</span>
-      <span><span class="dot america"></span>北米</span>
-      <span><span class="dot japan"></span>日本</span>
-    </div>
-
-    <div class="worldmap">
-      <svg viewBox="0 0 1000 520" class="map-svg" xmlns="http://www.w3.org/2000/svg" aria-label="NMIXX world tour map">
-        <rect x="0" y="0" width="1000" height="520" rx="24" fill="#14101a"/>
-
-        <!-- simple continent silhouettes -->
-        <ellipse cx="220" cy="250" rx="150" ry="105" fill="#2a2632"/>
-        <ellipse cx="500" cy="195" rx="120" ry="70" fill="#2a2632"/>
-        <ellipse cx="690" cy="235" rx="210" ry="120" fill="#2a2632"/>
-
-        <!-- region labels -->
-        <text x="150" y="110" class="map-region">北米</text>
-        <text x="470" y="105" class="map-region">ヨーロッパ</text>
-        <text x="650" y="105" class="map-region">アジア</text>
-
-        <!-- routes -->
-        <path d="M640,215 C605,195 585,188 560,188" class="route-europe"/>
-        <path d="M640,215 C690,240 720,255 760,262" class="route-america"/>
-        <path d="M640,215 C655,218 665,222 675,228" class="route-japan"/>
-
-        <!-- Korea/Japan -->
-        <circle cx="640" cy="215" r="8" class="pin korea"/>
-        <text x="655" y="208" class="map-label">仁川</text>
-        <text x="655" y="226" class="map-date">2025.11.29–30</text>
-
-        <circle cx="675" cy="228" r="8" class="pin japan"/>
-        <text x="690" y="221" class="map-label">東京</text>
-        <text x="690" y="239" class="map-date">2026.08.08–09</text>
-
-        <!-- Europe -->
-        <circle cx="520" cy="210" r="8" class="pin europe"/>
-        <text x="455" y="204" class="map-label">マドリード</text>
-        <text x="455" y="222" class="map-date">03.17</text>
-
-        <circle cx="555" cy="185" r="8" class="pin europe"/>
-        <text x="567" y="178" class="map-label">アムステルダム</text>
-        <text x="567" y="196" class="map-date">03.20</text>
-
-        <circle cx="540" cy="205" r="8" class="pin europe"/>
-        <text x="552" y="198" class="map-label">パリ</text>
-        <text x="552" y="216" class="map-date">03.22</text>
-
-        <circle cx="575" cy="205" r="8" class="pin europe"/>
-        <text x="587" y="198" class="map-label">フランクフルト</text>
-        <text x="587" y="216" class="map-date">03.24</text>
-
-        <circle cx="535" cy="170" r="8" class="pin europe"/>
-        <text x="547" y="163" class="map-label">ロンドン</text>
-        <text x="547" y="181" class="map-date">03.26</text>
-
-        <!-- North America -->
-        <circle cx="735" cy="250" r="8" class="pin america"/>
-        <text x="748" y="243" class="map-label">トロント</text>
-        <text x="748" y="261" class="map-date">03.29</text>
-
-        <circle cx="770" cy="258" r="8" class="pin america"/>
-        <text x="783" y="251" class="map-label">ブルックリン</text>
-        <text x="783" y="269" class="map-date">03.31</text>
-
-        <circle cx="785" cy="285" r="8" class="pin america"/>
-        <text x="798" y="278" class="map-label">ナショナルハーバー</text>
-        <text x="798" y="296" class="map-date">04.02</text>
-
-        <circle cx="742" cy="300" r="8" class="pin america"/>
-        <text x="675" y="325" class="map-label">アービング</text>
-        <text x="675" y="343" class="map-date">04.04</text>
-
-        <circle cx="705" cy="287" r="8" class="pin america"/>
-        <text x="642" y="290" class="map-label">オークランド</text>
-        <text x="642" y="308" class="map-date">04.07</text>
-
-        <circle cx="675" cy="325" r="8" class="pin america"/>
-        <text x="610" y="348" class="map-label">ロサンゼルス</text>
-        <text x="610" y="366" class="map-date">04.09</text>
-      </svg>
-    </div>
-
-    <div class="tour-cards-grid">
-      <div class="tour-stop korea">
-        <h3>韓国</h3>
-        <p class="tour-date">2025年11月29日〜30日</p>
-        <p>仁川 / INSPIRE ARENA</p>
+      <div class="map-legend">
+        <span><span class="dot korea"></span>韓国</span>
+        <span><span class="dot europe"></span>ヨーロッパ</span>
+        <span><span class="dot america"></span>北米</span>
+        <span><span class="dot japan"></span>日本</span>
       </div>
 
-      <div class="tour-stop europe">
-        <h3>ヨーロッパ</h3>
-        <ul>
-          <li>2026年3月17日 / マドリード / PALACIO VISTALEGRE</li>
-          <li>2026年3月20日 / アムステルダム / AFAS LIVE</li>
-          <li>2026年3月22日 / パリ / SALLE PLEYEL</li>
-          <li>2026年3月24日 / フランクフルト / MYTICKET JAHRHUNDERTHALLE</li>
-          <li>2026年3月26日 / ロンドン / EVENTIM APOLLO</li>
-        </ul>
+      <div class="worldmap">
+        <svg viewBox="0 0 1000 520" class="map-svg" xmlns="http://www.w3.org/2000/svg" aria-label="NMIXX world tour map">
+          <rect x="0" y="0" width="1000" height="520" rx="24" fill="#14101a"/>
+          <ellipse cx="220" cy="250" rx="150" ry="105" fill="#2a2632"/>
+          <ellipse cx="500" cy="195" rx="120" ry="70" fill="#2a2632"/>
+          <ellipse cx="690" cy="235" rx="210" ry="120" fill="#2a2632"/>
+
+          <text x="150" y="110" class="map-region">北米</text>
+          <text x="470" y="105" class="map-region">ヨーロッパ</text>
+          <text x="650" y="105" class="map-region">アジア</text>
+
+          <path d="M640,215 C605,195 585,188 560,188" class="route-europe"/>
+          <path d="M640,215 C690,240 720,255 760,262" class="route-america"/>
+          <path d="M640,215 C655,218 665,222 675,228" class="route-japan"/>
+
+          <circle cx="640" cy="215" r="8" class="pin korea"/>
+          <text x="655" y="208" class="map-label">仁川</text>
+          <text x="655" y="226" class="map-date">2025.11.29–30</text>
+
+          <circle cx="675" cy="228" r="8" class="pin japan"/>
+          <text x="690" y="221" class="map-label">東京</text>
+          <text x="690" y="239" class="map-date">2026.08.08–09</text>
+
+          <circle cx="520" cy="210" r="8" class="pin europe"/>
+          <text x="455" y="204" class="map-label">マドリード</text>
+          <text x="455" y="222" class="map-date">03.17</text>
+
+          <circle cx="555" cy="185" r="8" class="pin europe"/>
+          <text x="567" y="178" class="map-label">アムステルダム</text>
+          <text x="567" y="196" class="map-date">03.20</text>
+
+          <circle cx="540" cy="205" r="8" class="pin europe"/>
+          <text x="552" y="198" class="map-label">パリ</text>
+          <text x="552" y="216" class="map-date">03.22</text>
+
+          <circle cx="575" cy="205" r="8" class="pin europe"/>
+          <text x="587" y="198" class="map-label">フランクフルト</text>
+          <text x="587" y="216" class="map-date">03.24</text>
+
+          <circle cx="535" cy="170" r="8" class="pin europe"/>
+          <text x="547" y="163" class="map-label">ロンドン</text>
+          <text x="547" y="181" class="map-date">03.26</text>
+
+          <circle cx="735" cy="250" r="8" class="pin america"/>
+          <text x="748" y="243" class="map-label">トロント</text>
+          <text x="748" y="261" class="map-date">03.29</text>
+
+          <circle cx="770" cy="258" r="8" class="pin america"/>
+          <text x="783" y="251" class="map-label">ブルックリン</text>
+          <text x="783" y="269" class="map-date">03.31</text>
+
+          <circle cx="785" cy="285" r="8" class="pin america"/>
+          <text x="798" y="278" class="map-label">ナショナルハーバー</text>
+          <text x="798" y="296" class="map-date">04.02</text>
+
+          <circle cx="742" cy="300" r="8" class="pin america"/>
+          <text x="675" y="325" class="map-label">アービング</text>
+          <text x="675" y="343" class="map-date">04.04</text>
+
+          <circle cx="705" cy="287" r="8" class="pin america"/>
+          <text x="642" y="290" class="map-label">オークランド</text>
+          <text x="642" y="308" class="map-date">04.07</text>
+
+          <circle cx="675" cy="325" r="8" class="pin america"/>
+          <text x="610" y="348" class="map-label">ロサンゼルス</text>
+          <text x="610" y="366" class="map-date">04.09</text>
+        </svg>
       </div>
 
-      <div class="tour-stop america">
-        <h3>北米</h3>
-        <ul>
-          <li>2026年3月29日 / トロント / GREAT CANADIAN TORONTO</li>
-          <li>2026年3月31日 / ブルックリン / BROOKLYN PARAMOUNT</li>
-          <li>2026年4月2日 / ナショナルハーバー / THE THEATER AT MGM NATIONAL HARBOR</li>
-          <li>2026年4月4日 / アービング / THE PAVILION AT TOYOTA MUSIC FACTORY</li>
-          <li>2026年4月7日 / オークランド / PARAMOUNT THEATRE</li>
-          <li>2026年4月9日 / ロサンゼルス / YOUTUBE THEATER</li>
-        </ul>
-      </div>
+      <div class="tour-cards-grid">
+        <div class="tour-stop korea">
+          <h3>韓国</h3>
+          <p class="tour-date">2025年11月29日〜30日</p>
+          <p>仁川 / INSPIRE ARENA</p>
+        </div>
 
-      <div class="tour-stop japan">
-        <h3>日本</h3>
-        <p class="tour-date">2026年8月8日〜9日 🆕</p>
-        <p>東京 / KEIO ARENA TOKYO</p>
+        <div class="tour-stop europe">
+          <h3>ヨーロッパ</h3>
+          <ul>
+            <li>2026年3月17日 / マドリード / PALACIO VISTALEGRE</li>
+            <li>2026年3月20日 / アムステルダム / AFAS LIVE</li>
+            <li>2026年3月22日 / パリ / SALLE PLEYEL</li>
+            <li>2026年3月24日 / フランクフルト / MYTICKET JAHRHUNDERTHALLE</li>
+            <li>2026年3月26日 / ロンドン / EVENTIM APOLLO</li>
+          </ul>
+        </div>
+
+        <div class="tour-stop america">
+          <h3>北米</h3>
+          <ul>
+            <li>2026年3月29日 / トロント / GREAT CANADIAN TORONTO</li>
+            <li>2026年3月31日 / ブルックリン / BROOKLYN PARAMOUNT</li>
+            <li>2026年4月2日 / ナショナルハーバー / THE THEATER AT MGM NATIONAL HARBOR</li>
+            <li>2026年4月4日 / アービング / THE PAVILION AT TOYOTA MUSIC FACTORY</li>
+            <li>2026年4月7日 / オークランド / PARAMOUNT THEATRE</li>
+            <li>2026年4月9日 / ロサンゼルス / YOUTUBE THEATER</li>
+          </ul>
+        </div>
+
+        <div class="tour-stop japan">
+          <h3>日本</h3>
+          <p class="tour-date">2026年8月8日〜9日 🆕</p>
+          <p>東京 / KEIO ARENA TOKYO</p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
-
+  </section>
 
   <section class="section">
     <div class="section-card">
       <h2 class="section-title">カレンダー</h2>
-      
       <div class="legend-mini">
         <span class="legend-pill live">LIVE</span>
         <span class="legend-pill fc">FC</span>
-        <span class="legend-pill birthday">BDAY</span>
+        <span class="legend-pill birthday">誕生日</span>
       </div>
       <div class="calendar-controls">
         <button id="prevMonth" type="button">‹</button>
@@ -520,7 +403,6 @@
   <section class="section">
     <div class="section-card">
       <h2 class="section-title">月別の予定一覧</h2>
-      
       <div id="monthList" class="month-list"></div>
     </div>
   </section>
@@ -534,21 +416,21 @@
 <script src="js/common.js"></script>
 <script>
 const events = [
-  { date:'2025-11-29', type:'LIVE', title:'Incheon / INSPIRE ARENA' },
-  { date:'2025-11-30', type:'LIVE', title:'Incheon / INSPIRE ARENA' },
-  { date:'2026-03-17', type:'LIVE', title:'Madrid / PALACIO VISTALEGRE' },
-  { date:'2026-03-20', type:'LIVE', title:'Amsterdam / AFAS LIVE' },
-  { date:'2026-03-22', type:'LIVE', title:'Paris / SALLE PLEYEL' },
-  { date:'2026-03-24', type:'LIVE', title:'Frankfurt / MYTICKET JAHRHUNDERTHALLE' },
-  { date:'2026-03-26', type:'LIVE', title:'London / EVENTIM APOLLO' },
-  { date:'2026-03-29', type:'LIVE', title:'Toronto / GREAT CANADIAN TORONTO' },
-  { date:'2026-03-31', type:'LIVE', title:'Brooklyn / BROOKLYN PARAMOUNT' },
-  { date:'2026-04-02', type:'LIVE', title:'National Harbor / MGM NATIONAL HARBOR' },
-  { date:'2026-04-04', type:'LIVE', title:'Irving / TOYOTA MUSIC FACTORY' },
-  { date:'2026-04-07', type:'LIVE', title:'Oakland / PARAMOUNT THEATRE' },
-  { date:'2026-04-09', type:'LIVE', title:'Los Angeles / YOUTUBE THEATER' },
-  { date:'2026-08-08', type:'LIVE', title:'Tokyo / KEIO ARENA TOKYO' },
-  { date:'2026-08-09', type:'LIVE', title:'Tokyo / KEIO ARENA TOKYO' },
+  { date:'2025-11-29', type:'LIVE', title:'仁川 / INSPIRE ARENA' },
+  { date:'2025-11-30', type:'LIVE', title:'仁川 / INSPIRE ARENA' },
+  { date:'2026-03-17', type:'LIVE', title:'マドリード / PALACIO VISTALEGRE' },
+  { date:'2026-03-20', type:'LIVE', title:'アムステルダム / AFAS LIVE' },
+  { date:'2026-03-22', type:'LIVE', title:'パリ / SALLE PLEYEL' },
+  { date:'2026-03-24', type:'LIVE', title:'フランクフルト / MYTICKET JAHRHUNDERTHALLE' },
+  { date:'2026-03-26', type:'LIVE', title:'ロンドン / EVENTIM APOLLO' },
+  { date:'2026-03-29', type:'LIVE', title:'トロント / GREAT CANADIAN TORONTO' },
+  { date:'2026-03-31', type:'LIVE', title:'ブルックリン / BROOKLYN PARAMOUNT' },
+  { date:'2026-04-02', type:'LIVE', title:'ナショナルハーバー / THE THEATER AT MGM NATIONAL HARBOR' },
+  { date:'2026-04-04', type:'LIVE', title:'アービング / THE PAVILION AT TOYOTA MUSIC FACTORY' },
+  { date:'2026-04-07', type:'LIVE', title:'オークランド / PARAMOUNT THEATRE' },
+  { date:'2026-04-09', type:'LIVE', title:'ロサンゼルス / YOUTUBE THEATER' },
+  { date:'2026-08-08', type:'LIVE', title:'東京 / KEIO ARENA TOKYO' },
+  { date:'2026-08-09', type:'LIVE', title:'東京 / KEIO ARENA TOKYO' },
 
   { date:'2026-03-13', type:'FC', title:'W会員先行 受付開始' },
   { date:'2026-03-26', type:'FC', title:'W会員先行 締切 23:59' },
@@ -557,12 +439,12 @@ const events = [
   { date:'2026-04-06', type:'FC', title:'MOBILE先行 受付開始' },
   { date:'2026-04-15', type:'FC', title:'MOBILE先行 締切 23:59' },
 
-  { date:'2026-01-17', type:'BIRTHDAY', title:'LILY Birthday' },
-  { date:'2026-01-26', type:'BIRTHDAY', title:'JIWOO Birthday' },
-  { date:'2026-02-26', type:'BIRTHDAY', title:'KYUJIN Birthday' },
-  { date:'2026-05-25', type:'BIRTHDAY', title:'HAEWON Birthday' },
-  { date:'2026-06-28', type:'BIRTHDAY', title:'SULLYOON Birthday' },
-  { date:'2026-12-28', type:'BIRTHDAY', title:'BAE Birthday' }
+  { date:'2026-01-17', type:'BIRTHDAY', title:'LILY 誕生日' },
+  { date:'2026-01-26', type:'BIRTHDAY', title:'JIWOO 誕生日' },
+  { date:'2026-02-26', type:'BIRTHDAY', title:'KYUJIN 誕生日' },
+  { date:'2026-05-25', type:'BIRTHDAY', title:'HAEWON 誕生日' },
+  { date:'2026-06-28', type:'BIRTHDAY', title:'SULLYOON 誕生日' },
+  { date:'2026-12-28', type:'BIRTHDAY', title:'BAE 誕生日' }
 ];
 
 const today = new Date();
@@ -573,15 +455,17 @@ function jp(dateStr){
   return `${d.getFullYear()}.${String(d.getMonth()+1).padStart(2,'0')}.${String(d.getDate()).padStart(2,'0')}`;
 }
 function cls(type){ return type.toLowerCase(); }
-function shortType(type){
-  if(type === 'BIRTHDAY') return 'BDAY';
-  return type;
-}
+function shortType(type){ return type === 'BIRTHDAY' ? '誕生日' : type; }
 
 function renderCountdown(){
-  const target = new Date('2026-08-08T00:00:00');
-  const diff = Math.ceil((target - today)/(1000*60*60*24));
-  document.getElementById('countdownDays').textContent = diff >= 0 ? diff : 0;
+  const target = new Date('2026-08-08T17:30:00+09:00');
+  const diff = target - new Date();
+  if (diff <= 0){
+    document.getElementById('countdownDays').textContent = 0;
+    return;
+  }
+  const days = Math.floor(diff/(1000*60*60*24));
+  document.getElementById('countdownDays').textContent = days;
 }
 
 function renderUpcoming(){
@@ -622,8 +506,8 @@ function renderCalendar(){
     const key = `${currentYear}-${String(currentMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
     const match = events.filter(e => e.date === key);
     const visible = match.slice(0,2);
-    const pills = visible.map(m => `<div class="calendar-pill ${cls(m.type)}">${shortType(m.type)}</div>`).join('');
-    const extra = match.length > 2 ? `<div class="calendar-pill">${'+' + (match.length - 2)}</div>` : '';
+    const pills = visible.map(m => `<div class="calendar-pill ${cls(m.type)}">${m.type === 'BIRTHDAY' ? '誕生日' : m.type}</div>`).join('');
+    const extra = match.length > 2 ? `<div class="calendar-pill">+${match.length - 2}</div>` : '';
     grid.insertAdjacentHTML('beforeend', `
       <div class="calendar-day">
         <div class="calendar-date">${d}</div>
@@ -662,10 +546,7 @@ function renderMonthList(){
   `).join('');
 }
 
-function rerenderAll(){
-  renderCalendar();
-  renderMonthList();
-}
+function rerenderAll(){ renderCalendar(); renderMonthList(); }
 
 document.getElementById('prevMonth').addEventListener('click', () => {
   currentMonth--;
@@ -681,6 +562,7 @@ document.getElementById('nextMonth').addEventListener('click', () => {
 renderCountdown();
 renderUpcoming();
 rerenderAll();
+setInterval(renderCountdown, 60000);
 </script>
 </body>
 </html>
