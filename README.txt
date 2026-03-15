@@ -1,1 +1,2 @@
-本物の地図（OpenStreetMap / Leaflet）を埋め込んだ schedule.html です。これだけ上書きしてください。
+1. ogp.jpg をサイト直下に置く
+2. head_ogp_tags.html の中身を index.html の <head> に貼る
