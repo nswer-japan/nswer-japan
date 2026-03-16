@@ -1,3 +1,9 @@
-このZIPは、あなたが確認した画像をそのまま ogp.jpg にした版です。
-index.html には OGP / Twitter Card タグを追加済みです。
-そのまま index.html と ogp.jpg を上書きしてください。
+入っているもの
+- index.html（トップニュース4件表示）
+- news.html
+- wins-data.js（PHOTOBOOKニュース追加済み）
+- zero-frontier-incheon-photobook.html（詳細ページ）
+- images/zero-frontier-incheon-photobook-detail.jpg
+- images/zero-frontier-incheon-photobook-cover.jpg
+
+そのまま上書きしてください。
