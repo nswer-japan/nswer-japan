@@ -70,6 +70,16 @@
   .calendar-pill{font-size:.56rem;padding:3px 6px}
   #tourMap{height:440px}
 }
+
+.hs-text-schedule{display:grid;gap:10px;margin-top:18px}
+.hs-row{display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:start;background:var(--sp-card);border:1px solid var(--sp-border);border-radius:14px;padding:12px 14px}
+.hs-date{font-weight:900;color:var(--sp-text)}
+.hs-desc{color:var(--sp-text);font-weight:700}
+.hs-note{color:var(--sp-muted);font-size:.92rem;margin-top:10px}
+@media (max-width:760px){
+  .hs-row{grid-template-columns:1fr;gap:6px}
+}
+
 </style>
 </head>
 <body>
@@ -119,6 +129,38 @@
     <div id="upcomingList" class="upcoming-list"></div>
   </div></section>
 
+
+
+  <section class="section"><div class="section-card">
+    <h2 class="section-title">Heavy Serenade カムバックスケジュール</h2>
+    <div class="card" style="display:grid;gap:24px;align-items:start;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));margin-top:12px;">
+      <div><img src="images/heavy-serenade-schedule.jpg" alt="Heavy Serenade スケジュール" style="width:100%;border-radius:20px;border:1px solid var(--line)"></div>
+      <div>
+        <p><strong>5月11日</strong>にNMIXX 5th EP <strong>“Heavy Serenade”</strong> がリリースされます。</p>
+        <p class="subtle">販売形態: Heavy Ver. / Serenade Ver. / POCAALBUM Ver. / Melody Box Ver.</p>
+
+        <div class="hs-text-schedule">
+          <div class="hs-row"><div class="hs-date">4/21 22:00</div><div class="hs-desc">“Heavy Serenade” Album Trailer</div></div>
+          <div class="hs-row"><div class="hs-date">4/22 22:00</div><div class="hs-desc">Track List / “Heavy Serenade” Motion Poster</div></div>
+          <div class="hs-row"><div class="hs-date">4/24 00:00</div><div class="hs-desc">Concept Photo: Heavy Ver.</div></div>
+          <div class="hs-row"><div class="hs-date">4/25 00:00</div><div class="hs-desc">Concept Photo: Serenade Ver.</div></div>
+          <div class="hs-row"><div class="hs-date">4/26 00:00</div><div class="hs-desc">“Heavy Serenade” Special Website Launch</div></div>
+          <div class="hs-row"><div class="hs-date">4/27 00:00</div><div class="hs-desc">Pre-release “Crescendo” M/V Teaser</div></div>
+          <div class="hs-row"><div class="hs-date">4/28 18:00</div><div class="hs-desc">Pre-release “Crescendo” M/V</div></div>
+          <div class="hs-row"><div class="hs-date">5/3 20:00</div><div class="hs-desc">A Cappella Highlight Medley</div></div>
+          <div class="hs-row"><div class="hs-date">5/7 20:00</div><div class="hs-desc">Original Highlight Medley</div></div>
+          <div class="hs-row"><div class="hs-date">5/8 12:00</div><div class="hs-desc">“Heavy Serenade” 3D Album Preview</div></div>
+          <div class="hs-row"><div class="hs-date">5/10 00:00</div><div class="hs-desc">“Heavy Serenade” M/V Teaser</div></div>
+          <div class="hs-row"><div class="hs-date">5/11 16:40</div><div class="hs-desc">“Heavy Serenade” Countdown Live</div></div>
+          <div class="hs-row"><div class="hs-date">5/11 18:00</div><div class="hs-desc">“Heavy Serenade” M/V</div></div>
+          <div class="hs-row"><div class="hs-date">5/18 18:00</div><div class="hs-desc">In-ear Monitor Audio</div></div>
+        </div>
+
+        <p class="hs-note">画像のスケジュールを文字でも確認できるように、カレンダーページ内にテキスト版を追加しています。</p>
+      </div>
+    </div>
+  </div></section>
+
   <section class="section"><div class="section-card">
     <div class="map-section-title">
       <h2 class="section-title">ワールドツアー</h2>
@@ -155,7 +197,7 @@
 
   <section class="section"><div class="section-card">
     <h2 class="section-title">カレンダー</h2>
-    <div class="legend-mini"><span class="legend-pill live">LIVE</span><span class="legend-pill fc">FC</span><span class="legend-pill birthday">誕生日</span></div>
+    <div class="legend-mini"><span class="legend-pill live">LIVE</span><span class="legend-pill fc">FC</span><span class="legend-pill birthday">誕生日</span><span class="legend-pill live">COMEBACK</span></div>
     <div class="calendar-controls"><button id="prevMonth" type="button">‹</button><div id="monthLabel" class="month-label"></div><button id="nextMonth" type="button">›</button></div>
     <div class="calendar-weekdays"><div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div></div>
     <div id="calendarGrid" class="calendar-grid"></div>
@@ -173,6 +215,19 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 const events=[
+{date:'2026-04-21',type:'COMEBACK',title:'22:00 Album Trailer'},
+{date:'2026-04-22',type:'COMEBACK',title:'22:00 Track List / Motion Poster'},
+{date:'2026-04-24',type:'COMEBACK',title:'00:00 Concept Photo: Heavy Ver.'},
+{date:'2026-04-25',type:'COMEBACK',title:'00:00 Concept Photo: Serenade Ver.'},
+{date:'2026-04-26',type:'COMEBACK',title:'00:00 Special Website Launch'},
+{date:'2026-04-27',type:'COMEBACK',title:'00:00 Pre-release “Crescendo” M/V Teaser'},
+{date:'2026-04-28',type:'COMEBACK',title:'18:00 Pre-release “Crescendo” M/V'},
+{date:'2026-05-03',type:'COMEBACK',title:'20:00 A Cappella Highlight Medley'},
+{date:'2026-05-07',type:'COMEBACK',title:'20:00 Original Highlight Medley'},
+{date:'2026-05-08',type:'COMEBACK',title:'12:00 3D Album Preview'},
+{date:'2026-05-10',type:'COMEBACK',title:'00:00 “Heavy Serenade” M/V Teaser'},
+{date:'2026-05-11',type:'COMEBACK',title:'16:40 Countdown Live / 18:00 “Heavy Serenade” M/V'},
+{date:'2026-05-18',type:'COMEBACK',title:'18:00 In-ear Monitor Audio'},
 {date:'2025-11-29',type:'LIVE',title:'仁川 / INSPIRE ARENA'},
 {date:'2025-11-30',type:'LIVE',title:'仁川 / INSPIRE ARENA'},
 {date:'2026-03-17',type:'LIVE',title:'マドリード / PALACIO VISTALEGRE'},
