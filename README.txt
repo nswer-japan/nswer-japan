@@ -1,22 +1,13 @@
-このZIPは、今ある1枚の画像だけで公開・差し替えしやすい最小構成です。
+Heavy Serenade 更新差し替え用セットです。
 
 含まれるファイル:
 - index.html
-- heavy-serenade.html
-- schedule.html
-- music.html
+- news.html
 - js/wins-data.js
-- images/heavy-serenade-schedule.jpg
 
-用途:
-- Heavy Serenadeカムバック告知
-- スケジュール画像の掲載
-- テキスト版スケジュール表示
-- カレンダーページ反映
-- ニュース反映
-- 予約導線の掲載
+変更内容:
+- トップページの最新情報に Heavy Serenade のカムバック情報を軽め表示で追加
+- ニュースページでも Heavy Serenade の記事が表示されるように更新
+- 記事内容はカムバック日とアルバムバージョン中心に整理
 
-注意:
-- 共通CSSや他の既存画像は含めていません。
-- 既存サイト一式の中に、このZIP内の同名ファイルだけを上書きしてください。
-- 後で新しい画像を追加する場合は images フォルダに入れて差し替えればOKです。
+既存サイト一式の中で、同名ファイルを上書きしてください。
